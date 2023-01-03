@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAyEI;AACJ,mEAAmE;AAEnE,AAAA,CAAC,CAAC;EACA,UAAU,EAAE,UAAU;EACtB,OAAO,EAAE,CAAC;EACV,MAAM,EAAE,CAAC;CACV;;AACD,AAAA,IAAI;AACJ,IAAI,CAAC;EACH;wBACsB;EACtB,4BAA4B;CAC7B;;AACD,AAAA,IAAI,CAAA;EACF,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,GAAG;EACV,gBAAgB,EAAE,OAAO;EACzB,MAAM,EAAE,KAAK;EACb,WAAW,EAAE,WAAY;CAC1B;;AACD,AAAA,CAAC,CAAC;EACA,KAAK,EAAE,OAAO;EACd,eAAe,EAAE,IAAI;CACtB",
+    "sources": [
+        "../../styles/globals.scss"
+    ],
+    "names": [],
+    "file": "globals.css"
+}

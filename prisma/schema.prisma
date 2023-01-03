@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Expense {
+  id                 Int             @id @default(autoincrement()) // relation scalar field (used in the `@relation` attribute above)
+  title              String?
+  amount             Int
+  desc               String?
+  category           Expense_Category @relation(fields: [expensesCategoryID], references: [id])
+  expensesCategoryID Int
+  createdAt          DateTime?       @default(now())
+  updatedAt          DateTime?       @updatedAt
+}
+
+model Expense_Category {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  expenses   Expense[]
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
+// model User {
+//   id        Int      @id @default(autoincrement())
+//   name      String
+//   surname   String
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+
+// @@map(name:"users")
+// }
+// model Like {
+//   id        Int      @id @default(autoincrement())
+//   amount    String
+//   author   Post @relation(fields: [authorId], references: [id])
+//   authorId Int // relation scalar field  (used in the `@relation` attribute above)
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+
+// }

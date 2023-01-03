@@ -1,14 +1,9 @@
-"use client"
-
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
-import "../styles/globals.css"
+import "../styles/globals.scss"
 
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import { theme } from "./theme"
-import { CssBaseline, ThemeProvider } from '@mui/material';
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -27,10 +22,7 @@ export default function RootLayout({
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            {children}
-          </ThemeProvider>
+          {children}
         </main>
       </body>
     </html>

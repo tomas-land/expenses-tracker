@@ -1,19 +1,18 @@
-"use client";
-
 import React from 'react'
-import Button from '@mui/material/Button';
+
+import s from '@styles/_Home.module.scss'
+
 import BalanceDisplay from './BalanceDisplay';
-import { Container } from '@mui/material';
 import ExpensesList from './ExpensesList';
+
 
 const Home = () => {
   return (
-    <>
-      <Container maxWidth='sm' >
-        <BalanceDisplay />
-        <ExpensesList />
-      </Container>
-    </>
+    <div className={s.home}>
+      <BalanceDisplay />
+      {/* @ts-expect-error Server Component */}
+      <ExpensesList />
+    </div>
   )
 }
 

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AA4EA,AAAA,CAAC,AAAC,CACA,UAAU,CAAE,UAAU,CACtB,OAAO,CAAE,CAAC,CACV,MAAM,CAAE,CAAC,CACV,AAOD,AAAA,IAAI,AAAA,CACF,MAAM,CAAE,IAAI,CACZ,KAAK,CAAE,GAAG,CACV,gBAAgB,CAAE,OAAO,CACzB,MAAM,CAAE,KAAK,CACb,WAAW,CAAE,WAAY,CAC1B,AACD,AAAA,CAAC,AAAC,CACA,KAAK,CAAE,OAAO,CACd,eAAe,CAAE,IAAI,CACtB",
+    "sources": [
+        "../../styles/globals.scss"
+    ],
+    "names": [],
+    "file": "globals.min.css"
+}

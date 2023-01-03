@@ -73,24 +73,31 @@
   }
 } */
 /* ///////////////////////////////////////////////////////////// */
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap');
+@import '~styles/_variables.scss';
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+
 html,
 body {
-  /* max-width: 100vw;
-  overflow-x: hidden; */
   background-color: #f3f4f6;
-  /* font-family: "Roboto"; */
+}
+
+main {
+  margin: auto;
+  width: 90%;
   height: 100vh;
+  font-family: "Comfortaa";
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+ul,li{
+  list-style: none;
 }
