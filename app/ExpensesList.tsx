@@ -51,13 +51,12 @@ import { getExpenses } from "@lib/prisma/expenses";
 
 const ExpensesList = async () => {
   const { expenses } = await getExpenses();
-  console.log(expenses)
   return (
 
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
       <ul className={s.list}>
-        {expenses?.map(({ id, title, amount, desc, category }) => {
+        {expenses?.map(({ id, title, amount, desc, category }:any) => {
           return (
             <li className={s.list_item} key={id}>
               <div>{category?.name}</div>
