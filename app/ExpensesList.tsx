@@ -15,6 +15,7 @@ import prisma from '@lib/prisma';
 // },]
 
 async function getData() {
+  {/* @ts-expect-error Server Component */}
   const expenses = await prisma.expense.findMany({
     include: {
       category: {
