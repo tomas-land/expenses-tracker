@@ -9,7 +9,7 @@ const BalanceDisplay = () => {
   return (
     <div className={s.display}>
       <div className={s.btn_wrapper}>
-        <Link href={'/'}><IoMdStats fill='white' size='1.5rem' /></Link>
+        <Link href={'/addexpense'}><IoMdStats fill='white' size='1.5rem' /></Link>
         <Link href={'/'}><IoMdAdd fill='white' size='1.8rem' /></Link>
       </div>
       <div className={s.balance_wrapper}>
