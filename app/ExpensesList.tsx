@@ -1,8 +1,8 @@
 import React from 'react'
 import s from '@styles/_ExpensesList.module.scss'
 import { GiKnifeFork } from 'react-icons/gi'
-
-import { getExpenses } from "@lib/prisma/expenses";
+import prisma from '@lib/prisma';
+// import { getExpenses } from "@lib/prisma/expenses";
 
 // const list = [
 // {
@@ -10,47 +10,28 @@ import { getExpenses } from "@lib/prisma/expenses";
 //   name: "shop",
 // },
 // {
-//   price: "88",
+//   amount: "88",
 //   name: "shop",
-// },
-// {
-//   price: "88",
-//   name: "shop",
-// },
-// {
-//   price: "88",
-//   name: "shop",
-// },
-// {
-//   price: "88",
-//   name: "shop",
-// },
-// {
-//   price: "88",
-//   name: "shop",
-// },
-// {
-//   price: "88",
-//   name: "shop",
-// },
-// {
-//   price: "88",
-//   name: "shop",
-// },
-//   {
-//     id: 1,
-//     price: "88",
-//     name: "shop",
-//   },
-//   {
-//     id: 2,
-//     price: "88",
-//     name: "shop",
-//   },
-// ];
+// },]
 
-const ExpensesList = async () => {
-  const { expenses } = await getExpenses();
+async function getData() {
+  const expenses = await prisma.expense.findMany({
+    include: {
+      category: {
+        select: {
+          name: true,
+        },
+      },
+    },
+  });
+  return { expenses };
+  
+}
+
+const ExpensesList = async  () => {
+//   const { expenses } = await getExpenses();
+const {expenses }= await getData();
+
   return (
 
     <div className={s.expenses_list}>
@@ -59,7 +40,7 @@ const ExpensesList = async () => {
         {expenses?.map(({ id, title, amount, desc, category }:any) => {
           return (
             <li className={s.list_item} key={id}>
-              <div>{category?.name}</div>
+              {/* <div>{category?.name}</div> */}
               <div>{amount}</div>
             </li>
           )
