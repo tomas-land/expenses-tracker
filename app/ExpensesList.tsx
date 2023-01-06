@@ -13,26 +13,38 @@ import prisma from '@lib/prisma';
 //   amount: "88",
 //   name: "shop",
 // },]
-
 async function getData() {
-  {/* @ts-expect-error Server Component */}
-  const expenses = await prisma.expense.findMany({
-    // include: {
-    //   category: {
-    //     select: {
-    //       name: true,
-    //     },
-    //   },
-    // },
-  });
-  return { expenses };
-  
+  const res = await fetch('http://localhost:3001/api/expenses',{ cache: 'no-store' });
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  // Recommendation: handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+console.log(res)
+  return res.json();
 }
+// async function getData() {
+//   {/* @ts-expect-error Server Component */}
+//   const expenses = await prisma.expense.findMany({
+//     // include: {
+//     //   category: {
+//     //     select: {
+//     //       name: true,
+//     //     },
+//     //   },
+//     // },
+//   });
+//   return { expenses };
+  
+// }
 
 const ExpensesList = async  () => {
 //   const { expenses } = await getExpenses();
-const {expenses }= await getData();
-
+const {expenses}= await getData();
+console.log(expenses)
   return (
 
     <div className={s.expenses_list}>
