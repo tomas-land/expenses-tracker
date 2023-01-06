@@ -14,7 +14,7 @@ import prisma from '@lib/prisma';
 //   name: "shop",
 // },]
 async function getData() {
-  const res = await fetch('/api/expenses',{ cache: 'no-store' });
+  const res = await fetch('https://expenses-tracker-self.vercel.app/api/expenses',{ cache: 'no-store' });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
