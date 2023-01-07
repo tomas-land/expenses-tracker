@@ -27,7 +27,8 @@ const AddExpanse = () => {
       // refreshData();
       // router.replace(router.asPath);
       // await router.push("/");
-      router.replace('/')
+      {/* @ts-expect-error Server Component */ }
+      router.replace(router.asPath);
     } catch (error) {
       console.error(error);
     }
