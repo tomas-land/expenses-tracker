@@ -20,12 +20,12 @@ import { useRouter } from 'next/navigation';
 
 
 const ExpensesList = ({ expenses }: any) => {
-  const router = useRouter()
-  useEffect(() => {
-    router.refresh()
-    console.log('refre')
-  }, [])
-
+  // const router = useRouter()
+  // useEffect(() => {
+  //   router.refresh()
+  //   console.log('refre')
+  // }, [])
+console.log('object');
   return (
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
