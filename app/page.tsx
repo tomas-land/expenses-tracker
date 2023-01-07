@@ -6,8 +6,6 @@ import s from '@styles/_Home.module.scss'
 import BalanceDisplay from './BalanceDisplay';
 import ExpensesList from './ExpensesList';
 
-import { useEffect } from 'react'
-import { useRouter } from 'next/navigation';
 
 async function getData() {
   const res = await fetch(`${process.env.BASE_FETCH_URL}/api/expenses`, { cache: 'no-store' });

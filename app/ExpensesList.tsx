@@ -1,7 +1,11 @@
+"use client"
+
 import React from 'react'
 import s from '@styles/_ExpensesList.module.scss'
 import { GiKnifeFork } from 'react-icons/gi'
 import prisma from '@lib/prisma';
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation';
 // import { getExpenses } from "@lib/prisma/expenses";
 
 // const list = [
@@ -15,8 +19,12 @@ import prisma from '@lib/prisma';
 // },]
 
 
-const ExpensesList = ({expenses}:any) => {
- 
+const ExpensesList = ({ expenses }: any) => {
+  const router = useRouter()
+  useEffect(() => {
+    router.refresh()
+    console.log('refre')
+  }, [])
 
   return (
     <div className={s.expenses_list}>
@@ -27,7 +35,7 @@ const ExpensesList = ({expenses}:any) => {
             <li className={s.list_item} key={id}>
               {/* <div>{category?.name}</div> */}
               <div>{amount}</div>
-              <div>{createdAt}</div>
+              {/* <div>{createdAt}</div> */}
             </li>
           )
         })}
