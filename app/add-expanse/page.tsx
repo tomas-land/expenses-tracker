@@ -25,10 +25,9 @@ const AddExpanse = () => {
         body: JSON.stringify(body),
       });
       // refreshData();
-      // router.replace(router.asPath);
-      // await router.push("/");
-      {/* @ts-expect-error Server Component */ }
-      router.replace(router.asPath);
+      await router.push("/");
+      // {/* @ts-expect-error Server Component */ }
+      // // router.replace(router.asPath);
     } catch (error) {
       console.error(error);
     }

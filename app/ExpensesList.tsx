@@ -23,7 +23,6 @@ async function getData() {
 
 
 const ExpensesList = async  () => {
-//   const { expenses } = await getExpenses();
 const {expenses}= await getData();
 console.log(expenses)
   return (
