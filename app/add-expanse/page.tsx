@@ -11,7 +11,7 @@ const AddExpanse = () => {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
     defaultValues: {
-      amount: 99,
+      amount: "",
       title: 'def',
       expensesCategoryID: 1
     }
@@ -24,11 +24,8 @@ const AddExpanse = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      // refreshData();
-      router.refresh()
+      router.prefetch('/')
       router.push("/");
-      // {/* @ts-expect-error Server Component */ }
-      // // router.replace(router.asPath);
     } catch (error) {
       console.error(error);
     }
@@ -39,7 +36,9 @@ const AddExpanse = () => {
       { /* "hand leSubmit" will validate your inputs before invoking "onSubmit" */}
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
-        <input placeholder='Amount' type={'number'} {...register("amount")} />
+        <input placeholder='Amount' {...register("amount", {
+          valueAsNumber: true,
+        })} />
 
         {/* include validation with required or other standard HTML validation rules */}
         <input placeholder='Title' {...register("title", { required: true })} />
