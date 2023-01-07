@@ -9,14 +9,20 @@ import ExpensesList from './ExpensesList';
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 
+async function getData() {
+  const res = await fetch(`${process.env.BASE_FETCH_URL}/api/expenses`, { cache: 'no-store' });
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  return res.json();
+}
 
-const Home = () => {
- 
+const Home = async () => {
+  const { expenses } = await getData();
   return (
     <div className={s.home}>
       <BalanceDisplay />
-      {/* @ts-expect-error Server Component */}
-      <ExpensesList />
+      <ExpensesList expenses={expenses} />
     </div>
   )
 }

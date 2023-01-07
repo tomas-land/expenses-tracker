@@ -13,27 +13,21 @@ import prisma from '@lib/prisma';
 //   amount: "88",
 //   name: "shop",
 // },]
-async function getData() {
-  const res = await fetch(`${process.env.BASE_FETCH_URL}/api/expenses`,{ cache: 'no-store' });
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-  return res.json();
-}
 
 
-const ExpensesList = async  () => {
-const {expenses}= await getData();
-console.log(expenses)
+const ExpensesList = ({expenses}:any) => {
+ 
+
   return (
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
       <ul className={s.list}>
-        {expenses?.map(({ id, title, amount, desc, category }:any) => {
+        {expenses?.map(({ id, title, amount, desc, category, createdAt }: any) => {
           return (
             <li className={s.list_item} key={id}>
               {/* <div>{category?.name}</div> */}
               <div>{amount}</div>
+              <div>{createdAt}</div>
             </li>
           )
         })}
