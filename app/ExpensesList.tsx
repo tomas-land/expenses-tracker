@@ -14,39 +14,19 @@ import prisma from '@lib/prisma';
 //   name: "shop",
 // },]
 async function getData() {
-  const res = await fetch('https://expenses-tracker-self.vercel.app/api/expenses',{ cache: 'no-store' });
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
-
-  // Recommendation: handle errors
+  const res = await fetch(`${process.env.BASE_FETCH_URL}/api/expenses`,{ cache: 'no-store' });
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
   }
-console.log(res)
   return res.json();
 }
-// async function getData() {
-//   {/* @ts-expect-error Server Component */}
-//   const expenses = await prisma.expense.findMany({
-//     // include: {
-//     //   category: {
-//     //     select: {
-//     //       name: true,
-//     //     },
-//     //   },
-//     // },
-//   });
-//   return { expenses };
-  
-// }
+
 
 const ExpensesList = async  () => {
 //   const { expenses } = await getExpenses();
 const {expenses}= await getData();
 console.log(expenses)
   return (
-
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
       <ul className={s.list}>
