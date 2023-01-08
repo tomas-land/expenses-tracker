@@ -3,54 +3,59 @@
 .add_expense {
   display: flex;
   flex-direction: column;
-
-
-  h2 {
-    text-align: center;
-    padding-top: 5rem;
-  }
+  justify-content: space-between;
+  height: 100%;
 
   .form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
-    margin-top: 3rem;
+    justify-content: space-between;
+    padding: 5rem 0;
+    height: 100%;
 
-    input {
+    .inputs {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 1rem 0;
-      // padding-bottom: 2rem;
-      width: 70%;
-      background-color: white;
-      border-radius: 3rem;
-      border: none;
-      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-      text-align: center;
-      font-size: 2rem;
-      padding: 0.5rem;
-      // border: double 3px transparent;
-      // border-radius: 6px;
-      // background-image: linear-gradient(white, white), 
-      //                   linear-gradient(to right, orange, yellow);
-      // background-origin: border-box;
-      // background-clip: padding-box, border-box;
-    }
+      gap: 2rem;
 
-    select {
-      width: 80%;
-      padding: 1rem;
-      background-color: white;
-      border-radius: 1rem;
-      border: none;
-      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-      outline: none;
+      input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 0;
+        // padding-bottom: 2rem;
+        width: 70%;
+        background-color: white;
+        border-radius: 3rem;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        text-align: center;
+        font-size: 2rem;
+        padding: 0.5rem;
+        // border: double 3px transparent;
+        // border-radius: 6px;
+        // background-image: linear-gradient(white, white), 
+        //                   linear-gradient(to right, orange, yellow);
+        // background-origin: border-box;
+        // background-clip: padding-box, border-box;
+      }
 
-      option {
-        min-height: 1.5rem !important;
-        padding: 14px !important;
+      select {
+        background-color: red;
+        width: 80%;
+        padding: 1rem;
+        background-color: white;
+        border-radius: 1rem;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        outline: none;
+
+        option {
+          min-height: 1.5rem !important;
+          padding: 14px !important;
+        }
       }
     }
 
@@ -68,5 +73,6 @@
       color: $textColorWhite;
       letter-spacing: 0.2rem;
     }
+
   }
 }
