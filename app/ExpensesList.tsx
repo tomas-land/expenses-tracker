@@ -6,26 +6,14 @@ import { GiKnifeFork } from 'react-icons/gi'
 import prisma from '@lib/prisma';
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
-// import { getExpenses } from "@lib/prisma/expenses";
-
-// const list = [
-// {
-//   price: "88",
-//   name: "shop",
-// },
-// {
-//   amount: "88",
-//   name: "shop",
-// },]
 
 
 const ExpensesList = ({ expenses }: any) => {
-  // const router = useRouter()
-  // useEffect(() => {
-  //   router.refresh()
-  //   console.log('refre')
-  // }, [])
-console.log('object');
+  const router = useRouter()
+  useEffect(() => {
+    router.refresh()
+  })
+
   return (
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
