@@ -52,7 +52,13 @@ const AddExpanse = () => {
             <option value="" disabled style={{ display: 'none' }}>Kategorija</option>
             <option value="1">Maistas</option>
             <option value="2">Kuras</option>
-            <option value="2">Darbas</option>
+            <option value="3">Safkis</option>
+            <option value="4">Kita</option>
+            <option value="5">Vaistai</option>
+            <option value="6">Senukai</option>
+            <option value="7">Darbas</option>
+            <option value="8">Mokesčiai</option>
+            <option value="9">Lizingas</option>
           </select>
         </div>
         <button type='submit'>IŠSAUGOTI</button>
