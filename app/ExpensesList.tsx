@@ -3,7 +3,6 @@
 import React from 'react'
 import s from '@styles/_ExpensesList.module.scss'
 import { GiKnifeFork } from 'react-icons/gi'
-import prisma from '@lib/prisma';
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 
@@ -12,7 +11,7 @@ const ExpensesList = ({ expenses }: any) => {
   const router = useRouter()
   useEffect(() => {
     router.refresh()
-  })
+  },[])
 
   return (
     <div className={s.expenses_list}>
@@ -21,7 +20,7 @@ const ExpensesList = ({ expenses }: any) => {
         {expenses?.map(({ id, title, amount, desc, category, createdAt }: any) => {
           return (
             <li className={s.list_item} key={id}>
-              {/* <div>{category?.name}</div> */}
+              <div>{category?.name}</div>
               <div>{amount}</div>
               {/* <div>{createdAt}</div> */}
             </li>

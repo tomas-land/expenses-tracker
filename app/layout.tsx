@@ -4,8 +4,6 @@ import { Inter } from '@next/font/google'
 import "../styles/globals.scss"
 
 import * as React from 'react';
-import Home from './page';
-import ExpensesList from './ExpensesList';
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -24,7 +22,6 @@ export default function RootLayout({
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
-          
           {children}
         </main>
       </body>

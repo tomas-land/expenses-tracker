@@ -9,7 +9,7 @@ import s from '@styles/_AddExpense.module.scss'
 
 const AddExpanse = () => {
   const router = useRouter()
-  const { register, handleSubmit, control, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       amount: "",
       title: 'def',

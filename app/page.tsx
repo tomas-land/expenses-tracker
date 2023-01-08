@@ -19,7 +19,7 @@ const Home = async () => {
   const { expenses } = await getData();
   return (
     <div className={s.home}>
-      <BalanceDisplay />
+      <BalanceDisplay expenses={expenses}/>
       <ExpensesList expenses={expenses} />
     </div>
   )
