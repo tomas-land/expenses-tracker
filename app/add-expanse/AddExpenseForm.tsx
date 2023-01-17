@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { use, useState } from 'react'
 import { useRouter } from 'next/navigation';
 import { useForm } from "react-hook-form";
 import Link from 'next/link';
@@ -10,6 +10,7 @@ import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 import { IoIosAdd } from 'react-icons/io';
 
 const AddExpenseForm = ({ expenseCategories }: any) => {
+  const [color,setColor] = useState('')
   const router = useRouter()
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     defaultValues: {

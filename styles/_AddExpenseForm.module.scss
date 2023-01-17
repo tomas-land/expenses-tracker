@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   height: 100vh;
-  padding: 2rem 0;
+  padding: 1rem 0 5rem;
 
   .top_btns {
     width: 100%;
@@ -81,12 +81,17 @@
       font-family: $font-comforta;
       font-size: 1.2rem;
       padding: 0.5rem;
+      &:focus{
+        background: $color-1;
+        color: $textColorWhite;
+      }
     }
   }
 
   .submit_btn {
     // margin-top: 5rem;
     width: 80%;
+    margin-top: 1rem;
     padding: 1rem;
     border-radius: 1rem;
     border: none;
