@@ -20,6 +20,7 @@ const BalanceDisplay = ({ expenses }: any) => {
         </div>
       </div>
     </div>
+    //MATERIAL UI
     // <Paper elevation={10} sx={{
     //   color: '#4158D0',
     //   backgroundImage: 'linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)',

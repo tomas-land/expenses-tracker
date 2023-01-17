@@ -5,37 +5,45 @@
   padding-top: 1rem;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  .btn_wrapper{
+  box-shadow: $main-shadow;
+
+  .btn_wrapper {
     display: flex;
     justify-content: space-between;
     padding: 0 1rem;
-    a{
+
+    a {
       display: flex;
       align-items: center;
       justify-content: center;
     }
   }
-  .balance_wrapper{
+
+  .balance_wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
     margin-top: 2rem;
     padding-bottom: 1rem;
-    h4{
+
+    h4 {
       color: $textColorGray;
       letter-spacing: 0.2rem;
     }
-    .balance{
+
+    .balance {
       display: flex;
       gap: 0.3rem;
       padding-right: 1rem;
       align-items: center;
       color: $textColorWhite;
-      h3{
+
+      h3 {
         font-weight: 300;
       }
-      h1{
+
+      h1 {
         font-family: $font-kufam;
         font-weight: 600;
         letter-spacing: 0.1rem;

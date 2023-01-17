@@ -26,12 +26,18 @@ $font-comforta: 'Comfortaa',
 cursive;
 $font-raleway: 'Raleway',
 sans-serif;
-$font-lexend: 'Lexend', sans-serif;
-$font-bangers: 'Bangers', cursive;
-$font-kufam: 'Kufam', sans-serif;
+$font-lexend: 'Lexend',
+sans-serif;
+$font-bangers: 'Bangers',
+cursive;
+$font-kufam: 'Kufam',
+sans-serif;
 
 
 //colors
+$color-bg:#f3f4f6;
+$color-bg-dark1:#e2e2e4;
+$color-bg-dark2:#c8c8c9;
 $color-1: rgb(235 160 111);
 $color-1-dark: rgb(211, 126, 69);
 $color-2: rgb(125 84 201);
@@ -63,4 +69,5 @@ $border-radius-15: 1.5rem;
 
 $light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 $dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-$main-shadow: -2rem 2rem 5rem rgba(0, 0, 0, 0.4);
+$main-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+

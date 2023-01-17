@@ -6,22 +6,23 @@ import s from '@styles/_Home.module.scss'
 import BalanceDisplay from './BalanceDisplay';
 import ExpensesList from './ExpensesList';
 
+import { getExpenses } from '@lib/prisma/expenses'
+
+export const dynamic = 'force-dynamic'
 
 async function getData() {
-  const res = await fetch(`${process.env.BASE_FETCH_URL}/api/expenses`, { cache: 'no-store' });
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-  return res.json();
+  const expenses = await getExpenses()
+  return expenses;
 }
 
 const Home = async () => {
   const { expenses } = await getData();
+
   return (
-    <div className={s.home}>
-      <BalanceDisplay expenses={expenses}/>
+    <section className={s.home}>
+      <BalanceDisplay expenses={expenses} />
       <ExpensesList expenses={expenses} />
-    </div>
+    </section>
   )
 }
 

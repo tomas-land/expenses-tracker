@@ -1,73 +1,34 @@
-"use client"
 
 import React, { useState } from 'react'
-import { useRouter } from 'next/navigation';
-import { useForm } from "react-hook-form";
+import AddExpenseForm from './AddExpenseForm'
 
-import s from '@styles/_AddExpense.module.scss'
+// import Box from '@mui/material/Box';
+// import InputLabel from '@mui/material/InputLabel';
+// import MenuItem from '@mui/material/MenuItem';
+// import FormControl from '@mui/material/FormControl';
+// import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 
-const AddExpanse = () => {
-  const router = useRouter()
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    defaultValues: {
-      amount: "",
-      title: 'def',
-      expensesCategoryID: ""
-    }
-  });
-  const onSubmit = async ({ title, amount, expensesCategoryID }: any) => {
-    console.log(title, amount, expensesCategoryID);
-    try {
-      const body = { title, amount, expensesCategoryID };
-      await fetch(`/api/expenses`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      router.push("/");
-    } catch (error) {
-      console.error(error);
-    }
-  }
+import { getExpenseCategories } from '@lib/prisma/categories'
+
+// export const dynamic = 'force-dynamic'
+
+async function getData() {
+  const expenseCategories = await getExpenseCategories()
+  return expenseCategories;
+}
+
+const AddExpansePage = async () => {
+  const { expenseCategories } = await getData();
 
   return (
-    <div className={s.add_expense}>
-      { /* "hand leSubmit" will validate your inputs before invoking "onSubmit" */}
-      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        {/* register your input into the hook by invoking the "register" function */}
-        <div className={s.inputs}>
-          <input placeholder='0' {...register("amount", {
-            required: true,
-            valueAsNumber: true,
-          })} />
-          {/* <input placeholder='' {...register("amount", {
-          required: true,
-          valueAsNumber: true,
-        })} /> */}
-          <select {...register("expensesCategoryID", {
-            required: true,
-            valueAsNumber: true
-          })}>
-            <option value="" disabled style={{ display: 'none' }}>Kategorija</option>
-            <option value="1">Maistas</option>
-            <option value="2">Kuras</option>
-            <option value="3">Safkis</option>
-            <option value="4">Kita</option>
-            <option value="5">Vaistai</option>
-            <option value="6">Senukai</option>
-            <option value="7">Darbas</option>
-            <option value="8">Mokesčiai</option>
-            <option value="9">Lizingas</option>
-          </select>
-        </div>
-        <button type='submit'>IŠSAUGOTI</button>
-      </form>
-    </div>
+    <section>
+      <AddExpenseForm expenseCategories={expenseCategories}/>
+    </section>
   )
 }
 
-export default AddExpanse
+export default AddExpansePage
 
 // "use client"
 
@@ -84,7 +45,7 @@ export default AddExpanse
 //   const router = useRouter()
 
 //   // const refreshData = () => {
-//   //   {/* @ts-expect-error Server Component */ }
+
 //   //   router.replace(router.asPath)
 //   // };
 

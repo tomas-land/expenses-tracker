@@ -2,7 +2,6 @@
 
 import React from 'react'
 import s from '@styles/_ExpensesList.module.scss'
-import { GiKnifeFork } from 'react-icons/gi'
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 
@@ -11,7 +10,7 @@ const ExpensesList = ({ expenses }: any) => {
   const router = useRouter()
   useEffect(() => {
     router.refresh()
-  },[])
+  }, [router])
 
   return (
     <div className={s.expenses_list}>
@@ -22,7 +21,7 @@ const ExpensesList = ({ expenses }: any) => {
             <li className={s.list_item} key={id}>
               <div>{category?.name}</div>
               <div>{amount}</div>
-              {/* <div>{createdAt}</div> */}
+              {/* <div>{createdAt.toString()}</div> */}
             </li>
           )
         })}
