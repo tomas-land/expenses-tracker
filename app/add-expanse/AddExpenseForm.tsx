@@ -14,7 +14,7 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
   const router = useRouter()
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     defaultValues: {
-      amount: 0,
+      amount: '',
       title: 'def',
       expensesCategoryID: 0
     }
@@ -53,7 +53,7 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
       </div>
       <div className={s.inputs}>
         {/* //Amount */}
-        <input className={s.amount_input} defaultValue={99} autoComplete='off' {...register("amount", {
+        <input className={s.amount_input} placeholder='0' autoComplete='off' {...register("amount", {
           required: true,
           valueAsNumber: true
         })} />
