@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-import s from '@styles/_Home.module.scss'
+import s from '@styles/Pages/_Home.module.scss'
 
 import BalanceDisplay from './BalanceDisplay';
 import ExpensesList from './ExpensesList';

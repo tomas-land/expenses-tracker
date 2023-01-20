@@ -1,10 +1,10 @@
 "use client"
 
 import React from 'react'
-import s from '@styles/_ExpensesList.module.scss'
+import s from '@styles/Components/_ExpensesList.module.scss'
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
-
+import { MdOutlineEuro } from 'react-icons/md'
 
 const ExpensesList = ({ expenses }: any) => {
   const router = useRouter()
@@ -20,7 +20,7 @@ const ExpensesList = ({ expenses }: any) => {
           return (
             <li className={s.list_item} key={id}>
               <div>{category?.name}</div>
-              <div>{amount}</div>
+              <div className={s.amount}>-<span>{amount}</span><MdOutlineEuro color='gray' size={15} /></div>
               {/* <div>{createdAt.toString()}</div> */}
             </li>
           )

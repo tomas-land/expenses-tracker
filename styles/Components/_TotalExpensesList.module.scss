@@ -1,0 +1,14 @@
+.list {
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    padding: 0.5rem 0;
+  }
+
+  .list_item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+}

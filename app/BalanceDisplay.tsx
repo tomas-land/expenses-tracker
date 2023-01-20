@@ -2,14 +2,14 @@ import React from 'react'
 import Link from 'next/link';
 import { IoMdStats, IoMdAdd } from 'react-icons/io';
 
-import s from '@styles/_BalanceDisplay.module.scss'
+import s from '@styles/Components/_BalanceDisplay.module.scss'
 
 const BalanceDisplay = ({ expenses }: any) => {
   const totalExpenses = expenses.map((item:any) => item.amount).reduce((prev:number, curr:number) => prev + curr, 0);
   return (
     <div className={s.display}>
       <div className={s.btn_wrapper}>
-        <Link href={'/'}><IoMdStats fill='white' size='1.5rem' /></Link>
+        <Link href={'/statistics'}><IoMdStats fill='white' size='1.5rem' /></Link>
         <Link href={'/add-expanse'}><IoMdAdd fill='white' size='1.8rem' /></Link>
       </div>
       <div className={s.balance_wrapper}>

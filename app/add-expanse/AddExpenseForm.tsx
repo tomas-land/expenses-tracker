@@ -5,12 +5,12 @@ import { useRouter } from 'next/navigation';
 import { useForm } from "react-hook-form";
 import Link from 'next/link';
 
-import s from '@styles/_AddExpenseForm.module.scss'
+import s from '@styles/Components/_AddExpenseForm.module.scss'
 import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 import { IoIosAdd } from 'react-icons/io';
 
 const AddExpenseForm = ({ expenseCategories }: any) => {
-  const [color,setColor] = useState('')
+  const [color, setColor] = useState('')
   const router = useRouter()
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     defaultValues: {
@@ -53,10 +53,18 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
       </div>
       <div className={s.inputs}>
         {/* //Amount */}
-        <input className={s.amount_input} placeholder='0' autoComplete='off' {...register("amount", {
-          required: true,
-          valueAsNumber: true
+        <input type="number" className={s.amount_input} placeholder='0' autoComplete='off' {...register("amount", {
+          valueAsNumber: true,
+          required: "Privalote įvesti sumą !",
+          // pattern: {
+          //   value: /^[0-9]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+          //   message: "Naudokite tik skaičius"
+          // }
         })} />
+        <span className={s.error}>
+          {errors.amount && errors.amount.message}
+        </span>
+
         {/* // title  */}
         <input defaultValue={'def'} style={{ display: "none" }}  {...register("title", {
           required: true

@@ -1,0 +1,36 @@
+@import '~styles/_variables.scss';
+
+.stats_page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 1rem 0;
+  .top_btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .back_btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      font-size: 2rem;
+      background-color: $color-bg-dark1;
+      border-radius: 50%;
+      padding: 0.4rem;
+      color: #757575;
+    }
+  }
+  .total_expenses{
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0;
+    color: $textColorDarkGray;
+    .total{
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+  }
+}
