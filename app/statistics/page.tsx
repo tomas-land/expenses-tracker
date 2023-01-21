@@ -5,9 +5,9 @@ import { MdOutlineKeyboardArrowLeft, MdOutlineEuro } from 'react-icons/md';
 import { IoIosAdd } from 'react-icons/io';
 
 import TotalExpensesList from './TotalExpensesList';
-import { getTotalFoodExpenses } from '@lib/prisma/expenses_by_category'
+import { getTotalFoodExpenses } from '../../lib/prisma/expenses_by_category'
 
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 async function getData() {
   const totalFoodExpenses = await getTotalFoodExpenses()
@@ -15,8 +15,8 @@ async function getData() {
 }
 
 const StatsPage = async () => {
-  const { totalFoodExpenses } = await getData();
-
+  const  totalFoodExpenses  = await getData();
+  // console.log(totalFoodExpenses)
   return (
     <section className={s.stats_page}>
       <div className={s.top_btns}>
