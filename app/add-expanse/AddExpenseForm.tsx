@@ -20,7 +20,7 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
     }
   });
   const onSubmit = async ({ title, amount, expensesCategoryID }: any) => {
-    console.log(title, amount, expensesCategoryID);
+    // console.log(title, amount, expensesCategoryID);
     try {
       const body = { title, amount, expensesCategoryID };
       await fetch(`/api/expenses`, {

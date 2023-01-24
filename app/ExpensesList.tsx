@@ -5,8 +5,14 @@ import s from '@styles/Components/_ExpensesList.module.scss'
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import { MdOutlineEuro } from 'react-icons/md'
+import { GrFormDown } from 'react-icons/gr'
+import { ImBin } from 'react-icons/im'
+import { useState } from 'react'
+import ExpensesListItem from './ExpensesListItem';
 
 const ExpensesList = ({ expenses }: any) => {
+
+
   const router = useRouter()
   useEffect(() => {
     router.refresh()
@@ -16,13 +22,9 @@ const ExpensesList = ({ expenses }: any) => {
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
       <ul className={s.list}>
-        {expenses?.map(({ id, title, amount, desc, category, createdAt }: any) => {
+        {expenses?.map((expense: any) => {
           return (
-            <li className={s.list_item} key={id}>
-              <div>{category?.name}</div>
-              <div className={s.amount}>-<span>{amount}</span><MdOutlineEuro color='gray' size={15} /></div>
-              {/* <div>{createdAt.toString()}</div> */}
-            </li>
+            <ExpensesListItem key={expense.id} expense={expense} />
           )
         })}
       </ul>
