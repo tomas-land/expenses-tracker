@@ -34,7 +34,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem 0 1rem;
+    padding: 1rem 0 0,5rem;
 
     .error {
       padding: 0.5rem;
@@ -54,7 +54,6 @@
       text-align: center;
       font-size: 2rem;
       padding: 0.5rem;
-
       // border: double 3px transparent;
       // border-radius: 6px;
       // background-image: linear-gradient(white, white), 
@@ -63,10 +62,32 @@
       // background-clip: padding-box, border-box;
       &:focus {
         border: 2px solid $color-1;
-
+      }
+      &:focus::placeholder {
+        color: transparent;
       }
     }
 
+    .extra_info {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      input {
+        width: 90%;
+        background-color: white;
+        border-radius: 3rem;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        text-align: center;
+        font-family: $font-comforta;
+        font-size: 0.9rem;
+        padding: 0.7rem;
+        &:focus::placeholder {
+          color: transparent;
+        }
+      }
+    }
   }
 
   .category_btns {
@@ -75,8 +96,12 @@
     align-items: center;
     flex-direction: column;
     gap: 1rem;
-    // overflow: scroll;
-    padding: 1rem;
+    overflow-y: scroll;
+    padding: 1rem 0 2rem;
+
+    h3 {
+      color: $textColorDarkGray;
+    }
 
     .btn {
       display: flex;
@@ -98,12 +123,15 @@
         color: $textColorWhite;
       }
     }
+
+  }
+
+  .category_btns::-webkit-scrollbar {
+    display: none;
   }
 
   .submit_btn {
-    // margin-top: 5rem;
     width: 80%;
-    margin-top: 1rem;
     padding: 1rem;
     border-radius: 1rem;
     border: none;

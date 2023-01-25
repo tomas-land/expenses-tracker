@@ -34,10 +34,8 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    opacity: 0;
-    
     overflow: hidden;
-    transition: all 0.2s ease-out;
+    transition: max-height 0.5s ease;
 
     .desc {
       font-size: 0.9rem;
@@ -65,12 +63,6 @@
 
   .open {
     max-height: 4rem;
-    opacity: 1;
-
-
-
-    // transition: all 0.9s ease-in-out;
-
   }
 
 }

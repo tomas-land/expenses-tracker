@@ -15,14 +15,14 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     defaultValues: {
       amount: '',
-      title: 'def',
-      expensesCategoryID: 0
+      expensesCategoryID: 0,
+      desc: ''
     }
   });
-  const onSubmit = async ({ title, amount, expensesCategoryID }: any) => {
+  const onSubmit = async ({ title, amount, expensesCategoryID, desc }: any) => {
     // console.log(title, amount, expensesCategoryID);
     try {
-      const body = { title, amount, expensesCategoryID };
+      const body = { title, amount, expensesCategoryID, desc };
       await fetch(`/api/expenses`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -34,17 +34,7 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
       console.error(error);
     }
   }
-  // const options = [
-  //   { value: 1, label: 'Maistas' },
-  //   { value: 2, label: 'Kuras' },
-  //   { value: 3, label: 'Safkis' },
-  //   { value: 4, label: 'Kita' },
-  //   { value: 5, label: 'Vaistai' },
-  //   { value: 6, label: 'Senukai' },
-  //   { value: 7, label: 'Darbas' },
-  //   { value: 8, label: 'Mokesčiai' },
-  //   { value: 9, label: 'Lizingas' },
-  // ]
+
   return (
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={s.top_btns}>
@@ -64,16 +54,19 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
         <span className={s.error}>
           {errors.amount && errors.amount.message}
         </span>
-
+        <div className={s.extra_info}>
+          <input type="text" placeholder='Įveskite papildomą informaciją...' autoComplete='off' {...register("desc")} />
+        </div>
         {/* // title  */}
-        <input defaultValue={'def'} style={{ display: "none" }}  {...register("title", {
+        {/* <input defaultValue={'def'} style={{ display: "none" }}  {...register("title", {
           required: true
-        })} />
+        })} /> */}
       </div>
       <div className={s.category_btns}>
-        {expenseCategories?.map(({ id, name }: any) => {
+        <h3>Pasirinkite kategoriją</h3>
+        {expenseCategories?.map(({ id, name }: any, index: number) => {
           return (
-            <input type='button' key={id} className={s.btn} onClick={() => setValue("expensesCategoryID", id)} defaultValue={name} />
+            <input type='button' key={index} className={s.btn} onClick={() => setValue("expensesCategoryID", id)} defaultValue={name} />
           )
         })}
       </div>
