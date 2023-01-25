@@ -83,6 +83,9 @@
         font-family: $font-comforta;
         font-size: 0.9rem;
         padding: 0.7rem;
+        &:focus {
+          border: 2px solid $color-1;
+        }
         &:focus::placeholder {
           color: transparent;
         }
