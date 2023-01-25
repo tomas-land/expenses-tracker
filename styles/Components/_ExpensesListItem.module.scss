@@ -30,17 +30,12 @@
 
   .extra_info {
     width: 100%;
- 
- 
+    max-height: 0;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-
-    max-height: 0;
-    opacity: 0;
-    visibility: hidden;
-    transition-delay: 1s, 0s, 0s;
-    transition: visibility 0.2s ease, max-height 0.5s ease, opacity 1s ease ;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
 
     .desc {
       font-size: 0.9rem;
@@ -67,16 +62,7 @@
   }
 
   .open {
-    display: flex;
-    overflow: hidden;
-    opacity: 1;
-    transition: visibility 0s ease, max-height 1s ease, opacity 1s ease ;
     max-height: 4rem;
-    /* magic number for max-height = enough height */
-    visibility: visible;
-    transition-delay: 0s;
-    margin: 0;
-    padding: 0;
   }
 
 }
