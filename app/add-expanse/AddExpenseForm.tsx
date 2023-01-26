@@ -62,13 +62,15 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
           required: true
         })} /> */}
       </div>
+      <h3>Pasirinkite kategoriją</h3>
       <div className={s.category_btns}>
-        <h3>Pasirinkite kategoriją</h3>
+        <div className={s.fade_top}></div>
         {expenseCategories?.map(({ id, name }: any, index: number) => {
           return (
             <input type='button' key={index} className={s.btn} onClick={() => setValue("expensesCategoryID", id)} defaultValue={name} />
           )
         })}
+        <div className={s.fade_bottom}></div>
       </div>
       <button className={s.submit_btn} type='submit'>IŠSAUGOTI</button>
     </form>

@@ -4,14 +4,9 @@ import React from 'react'
 import s from '@styles/Components/_ExpensesList.module.scss'
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
-import { MdOutlineEuro } from 'react-icons/md'
-import { GrFormDown } from 'react-icons/gr'
-import { ImBin } from 'react-icons/im'
-import { useState } from 'react'
 import ExpensesListItem from './ExpensesListItem';
 
 const ExpensesList = ({ expenses }: any) => {
-
 
   const router = useRouter()
   useEffect(() => {

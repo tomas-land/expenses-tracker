@@ -2,15 +2,13 @@
 
 import React from 'react'
 import s from '@styles/Components/_ExpensesListItem.module.scss'
-import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import { MdOutlineEuro } from 'react-icons/md'
 import { GrFormDown } from 'react-icons/gr'
 import { ImBin } from 'react-icons/im'
 import { useState } from 'react'
 import Moment from 'moment';
-import { ClassNames } from '@emotion/react';
-import Router from 'next/navigation';
+
 
 const ExpensesListItem = ({ expense }: any) => {
   const router = useRouter()
@@ -21,7 +19,6 @@ const ExpensesListItem = ({ expense }: any) => {
     setShowExtraInfo((prev) => !prev)
   }
   const deleteExpense = async (id: number) => {
-    // console.log(body);
     try {
       const body = id;
       await fetch(`/api/expenses`, {
@@ -30,7 +27,6 @@ const ExpensesListItem = ({ expense }: any) => {
         body: JSON.stringify(body),
       });
       router.refresh();
-      // router.push("/");
     } catch (error) {
       console.error(error);
     }
