@@ -57,10 +57,6 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
         <div className={s.extra_info}>
           <input type="text" placeholder='Įveskite papildomą informaciją...' autoComplete='off' {...register("desc")} />
         </div>
-        {/* // title  */}
-        {/* <input defaultValue={'def'} style={{ display: "none" }}  {...register("title", {
-          required: true
-        })} /> */}
       </div>
       <div className={s.title}>Pasirinkite kategoriją</div>
       <div className={s.category_btns}>

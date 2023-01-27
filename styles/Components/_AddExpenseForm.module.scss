@@ -47,22 +47,21 @@
       width: 50%;
       background-color: white;
       border-radius: 3rem;
-      border: 2px solid transparent;
+      // border: 2px solid transparent;
       outline: none;
       box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
       text-align: center;
       font-size: 2rem;
       padding: 0.5rem;
 
-      // border: double 3px transparent;
-      // border-radius: 6px;
-      // background-image: linear-gradient(white, white), 
-      //                   linear-gradient(to right, orange, yellow);
-      // background-origin: border-box;
-      // background-clip: padding-box, border-box;
-      &:focus {
-        border: 2px solid $color-1;
-      }
+      border: double 3px transparent;
+      border-radius: 3rem;
+      background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+
+      background-image: linear-gradient(white, white), 
+                        linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
 
       &:focus::placeholder {
         color: transparent;
@@ -79,7 +78,7 @@
         width: 90%;
         background-color: white;
         border-radius: 3rem;
-        border: none;
+        border: 2px solid transparent;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
         text-align: center;
         font-family: $font-comforta;
@@ -106,14 +105,11 @@
   }
 
   .category_btns {
-    margin: 2rem 0 3rem;
+    margin: 1rem 0 0;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    // overflow-y: scroll;
-    // padding: 0rem 0 0rem;
-
 
     .btn {
       display: flex;
@@ -149,5 +145,7 @@
     border-bottom-right-radius: 1rem;
     color: $textColorWhite;
     letter-spacing: 0.2rem;
+    margin-top: auto;
+    
   }
 }

@@ -7,8 +7,6 @@ import { IoIosAdd } from 'react-icons/io';
 import TotalExpensesList from './TotalExpensesList';
 import { getTotalFoodExpenses } from '../../lib/prisma/expenses_by_category'
 
-// export const dynamic = 'force-dynamic'
-
 async function getData() {
   const totalFoodExpenses = await getTotalFoodExpenses()
   return totalFoodExpenses;
