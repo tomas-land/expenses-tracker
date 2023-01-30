@@ -10,19 +10,19 @@ import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 import { IoIosAdd } from 'react-icons/io';
 
 const AddExpenseForm = ({ expenseCategories }: any) => {
-  const [color, setColor] = useState('')
+
   const router = useRouter()
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     defaultValues: {
       amount: '',
-      expensesCategoryID: 0,
-      desc: ''
+      desc: '',
+      expensesCategoryID: 0
     }
   });
-  const onSubmit = async ({ title, amount, expensesCategoryID, desc }: any) => {
-    // console.log(title, amount, expensesCategoryID);
+  const onSubmit = async ({ amount, expensesCategoryID, desc }: any) => {
+    console.log(amount, expensesCategoryID, desc);
     try {
-      const body = { title, amount, expensesCategoryID, desc };
+      const body = { amount, expensesCategoryID, desc };
       await fetch(`/api/expenses`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -42,7 +42,6 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
         <Link href="/"><button className={s.back_btn} ><IoIosAdd /></button></Link>
       </div>
       <div className={s.inputs}>
-        {/* //Amount */}
         <input type="number" className={s.amount_input} placeholder='0' autoComplete='off' {...register("amount", {
           valueAsNumber: true,
           required: "Privalote įvesti sumą !",
@@ -65,7 +64,6 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
             <input type='button' key={index} className={s.btn} onClick={() => setValue("expensesCategoryID", id)} defaultValue={name} />
           )
         })}
-
       </div>
       <button className={s.submit_btn} type='submit'>IŠSAUGOTI</button>
     </form>

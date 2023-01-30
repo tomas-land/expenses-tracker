@@ -1,14 +1,15 @@
+@import '@styles/_variables.scss';
+
+.title {
+  padding: 2rem 1rem 1rem;
+  color: $textColorDarkGray;
+}
+
 .list {
   display: flex;
   flex-direction: column;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 
-  .title {
-    padding: 0.5rem 0;
-  }
-
-  .list_item {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-  }
 }

@@ -1,0 +1,19 @@
+.total_expenses {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding: 1rem 1rem;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+  .date::first-letter {
+    text-transform: capitalize;
+  }
+
+  .total {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+  }
+}

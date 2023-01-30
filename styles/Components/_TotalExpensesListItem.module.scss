@@ -1,0 +1,78 @@
+@import '@styles/_variables.scss';
+
+
+.list_item {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid $textColorGray;
+
+  &:nth-last-child(1) {
+    border-bottom: none;
+  }
+
+  .item_header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem 1rem 0.2rem;
+
+    .toggle_btn {
+      margin-right: 1rem;
+      padding: 0 0.5rem;
+      background-color: transparent;
+      border: none;
+      border-right: 1px solid $textColorGray;
+      outline: none;
+    }
+
+    .rotate_up {
+      transform: rotate(180deg);
+      transition: all 0.3s ease;
+    }
+
+    .rotate_down {
+      transform: rotate(0deg);
+      transition: all 0.3s ease;
+    }
+
+    .amount_radio {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  .sub_items {
+    width: 100%;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease;
+
+    .sub_item {
+      display: flex;
+      justify-content: space-between;
+      background-color: $color-bg;
+      color: $textColorDarkGray;
+      border-top: 1px solid $textColorGray;
+      padding: 1rem;
+
+      .amount_and_radio {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .category_and_desc {
+        color: $textColorDarkGray;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+  }
+
+  .open {
+    max-height: 20rem;
+
+  }
+}

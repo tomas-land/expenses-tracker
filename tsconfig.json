@@ -5,6 +5,7 @@
     "paths": {
       // "@/components/*":["components/**"],
       "@lib/*": ["lib/*"],
+      "@context/*": ["context/*"],
       "@styles/*": ["styles/*"]
     },
     "target": "es5",

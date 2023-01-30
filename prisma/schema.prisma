@@ -11,20 +11,18 @@ datasource db {
 }
 
 model Expense {
-  id                 Int             @id @default(autoincrement()) // relation scalar field (used in the `@relation` attribute above)
-  title              String?
-  amount             Int
-  desc               String?
-  category           ExpenseCategory @relation(fields: [expensesCategoryID], references: [id])
-  expensesCategoryID Int
-  createdAt          DateTime?       @default(now())
-  updatedAt          DateTime?       @updatedAt
+  id        Int        @id @default(autoincrement()) // relation scalar field (used in the `@relation` attribute above)
+  amount    Int
+  desc      String?
+  category  Category[]
+  createdAt DateTime?  @default(now())
+  updatedAt DateTime?  @updatedAt
 }
 
-model ExpenseCategory {
+model Category {
   id        Int       @id @default(autoincrement())
   name      String    @unique
-  expenses   Expense[]
+  expense   Expense[]
   createdAt DateTime? @default(now())
   updatedAt DateTime? @updatedAt
 }

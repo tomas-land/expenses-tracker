@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React from 'react'
 import AddExpenseForm from './AddExpenseForm'
 
 // import Box from '@mui/material/Box';
@@ -30,49 +30,3 @@ const AddExpansePage = async () => {
 
 export default AddExpansePage
 
-// "use client"
-
-// import React, { useState } from 'react'
-// import { useRouter } from 'next/navigation';
-// import { useForm } from "react-hook-form";
-
-
-// const AddExpanse = () => {
-
-//   const [title, setTitle] = useState("dd");
-//   const [amount, setAmount] = useState(777);
-//   const [expensesCategoryID, setExpensesCategoryID] = useState(1);
-//   const router = useRouter()
-
-//   // const refreshData = () => {
-
-//   //   router.replace(router.asPath)
-//   // };
-
-//   const handleSubmit = async (e: any) => {
-//     e.preventDefault();
-
-//     if (title && amount && expensesCategoryID) {
-//       try {
-//         const body = { title, amount, expensesCategoryID };
-//         await fetch(`/api/expenses`, {
-//           method: "POST",
-//           headers: { "Content-Type": "application/json" },
-//           body: JSON.stringify(body),
-//         });
-//         console.log('da');
-//         // refreshData();
-//         await router.push("/");
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     }
-//   }
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <button type='submit'>submit</button>
-//     </form>
-//   )
-// }
-
-// export default AddExpanse
