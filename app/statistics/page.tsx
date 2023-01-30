@@ -10,20 +10,20 @@ import { getCategoryWithExpenses } from '../../lib/prisma/expenses_by_category'
 import TotalDisplay from './TotalDisplay';
 
 
-// async function getCategoryWithExpensesDB() {
-//   const categoryWithExpenses = await getCategoryWithExpenses()
-//   return categoryWithExpenses;
-// }
-// async function getTotalAmountExpensesDB() {
-//   const totalAmountExpenses = await getTotalAmountExpenses()
-//   return totalAmountExpenses;
-// }
+async function getCategoryWithExpensesDB() {
+  const categoryWithExpenses = await getCategoryWithExpenses()
+  return categoryWithExpenses;
+}
+async function getTotalAmountExpensesDB() {
+  const totalAmountExpenses = await getTotalAmountExpenses()
+  return totalAmountExpenses;
+}
 
 const StatsPage = async () => {
-  // const { totalAmountExpenses } = await getTotalAmountExpensesDB(); 
-  // const  categoryWithExpenses  = await getCategoryWithExpensesDB();
+  const { totalAmountExpenses } = await getTotalAmountExpensesDB(); 
+  const  categoryWithExpenses  = await getCategoryWithExpensesDB();
   // const totalFoodExpenses = totalFoodExpenses.map((item:any) => item.amount).reduce((prev:number, curr:number) => prev + curr, 0);
-
+console.log(categoryWithExpenses)
   return (
     <section className={s.stats_page}>
       <div className={s.top_btns}>
