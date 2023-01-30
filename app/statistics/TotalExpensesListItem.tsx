@@ -17,8 +17,8 @@ const TotalExpensesListItem = ({ name, expense }: any) => {
     setShowSubItem((prev) => !prev)
   }
 
-  const totalExpensesAmount = expense.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0);
-
+  const totalExpensesAmount = expense?.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0);
+console.log(expense)
   return (
     <li className={s.list_item} >
       <div className={s.item_header}>

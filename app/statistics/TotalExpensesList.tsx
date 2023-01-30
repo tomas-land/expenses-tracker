@@ -20,7 +20,7 @@ const TotalExpensesList = ({ categoryWithExpenses }: any) => {
     <>
       <h4 className={s.title} >Šį mėnesį išleista</h4>
       <ul className={s.list}>
-        {categoryWithExpenses?.map(({name,expense}: any, index: number) => {
+        {categoryWithExpenses.map(({name,expense}: any, index: number) => {
           return (
             <TotalExpensesListItem key={index} name={name} expense={expense}/>
           )

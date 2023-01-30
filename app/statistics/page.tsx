@@ -31,8 +31,8 @@ console.log(categoryWithExpenses)
         <Link href="/"><button className={s.back_btn} ><IoIosAdd /></button></Link>
       </div>
       
-      {/* <TotalDisplay totalAmountExpenses={totalAmountExpenses} />
-      <TotalExpensesList categoryWithExpenses={categoryWithExpenses} /> */}
+      {/* <TotalDisplay totalAmountExpenses={totalAmountExpenses} /> */}
+      <TotalExpensesList categoryWithExpenses={categoryWithExpenses} />
     </section>
   )
 }
