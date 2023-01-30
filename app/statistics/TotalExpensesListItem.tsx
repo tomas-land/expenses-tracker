@@ -16,7 +16,7 @@ const TotalExpensesListItem = ({ name, expense }: any) => {
   const toggleSubItems = () => {
     setShowSubItem((prev) => !prev)
   }
-  
+
   const totalExpensesAmount = expense.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0);
 
   return (
@@ -33,7 +33,7 @@ const TotalExpensesListItem = ({ name, expense }: any) => {
       </div>
 
       <div className={`${s.sub_items} ${showSubItem && s.open}`}>
-        {expense.map(({ amount }: any, index: number) => {
+        {expense?.map(({ amount }: any, index: number) => {
           return (
             <div className={s.sub_item} key={index}>
               <div className={s.category_and_desc}>
