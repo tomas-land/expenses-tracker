@@ -14,7 +14,7 @@ model Expense {
   id        Int        @id @default(autoincrement()) // relation scalar field (used in the `@relation` attribute above)
   amount    Int
   desc      String?
-  category  Category[]
+  categories  CategoriesOnExpenses[]
   createdAt DateTime?  @default(now())
   updatedAt DateTime?  @updatedAt
 }
@@ -22,9 +22,21 @@ model Expense {
 model Category {
   id        Int       @id @default(autoincrement())
   name      String    @unique
-  expense   Expense[]
+  expenses   CategoriesOnExpenses[]
   createdAt DateTime? @default(now())
   updatedAt DateTime? @updatedAt
+}
+///////////////////////////////
+
+model CategoriesOnExpenses {
+  expense       Expense     @relation(fields: [expenseId], references: [id])
+  expenseId     Int // relation scalar field (used in the `@relation` attribute above)
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int // relation scalar field (used in the `@relation` attribute above)
+  assignedAt DateTime @default(now())
+
+
+  @@id([expenseId, categoryId])
 }
 
 // model User {

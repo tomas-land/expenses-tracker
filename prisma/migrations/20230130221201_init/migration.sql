@@ -21,16 +21,16 @@ CREATE TABLE `Category` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `_CategoryToExpense` (
-    `A` INTEGER NOT NULL,
-    `B` INTEGER NOT NULL,
+CREATE TABLE `CategoriesOnExpenses` (
+    `expenseId` INTEGER NOT NULL,
+    `categoryId` INTEGER NOT NULL,
+    `assignedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    UNIQUE INDEX `_CategoryToExpense_AB_unique`(`A`, `B`),
-    INDEX `_CategoryToExpense_B_index`(`B`)
+    PRIMARY KEY (`expenseId`, `categoryId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `_CategoryToExpense` ADD CONSTRAINT `_CategoryToExpense_A_fkey` FOREIGN KEY (`A`) REFERENCES `Category`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `CategoriesOnExpenses` ADD CONSTRAINT `CategoriesOnExpenses_expenseId_fkey` FOREIGN KEY (`expenseId`) REFERENCES `Expense`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `_CategoryToExpense` ADD CONSTRAINT `_CategoryToExpense_B_fkey` FOREIGN KEY (`B`) REFERENCES `Expense`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `CategoriesOnExpenses` ADD CONSTRAINT `CategoriesOnExpenses_categoryId_fkey` FOREIGN KEY (`categoryId`) REFERENCES `Category`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
