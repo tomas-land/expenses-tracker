@@ -5,7 +5,7 @@ import { IoMdStats, IoMdAdd } from 'react-icons/io';
 import s from '@styles/Components/_BalanceDisplay.module.scss'
 
 const BalanceDisplay = ({ expenses }: any) => {
-  const totalExpenses = expenses.map((item:any) => item.amount).reduce((prev:number, curr:number) => prev + curr, 0);
+  const totalExpenses = expenses?.map((item:any) => item.amount).reduce((prev:number, curr:number) => prev + curr, 0);
   return (
     <div className={s.display}>
       <div className={s.btn_wrapper}>
