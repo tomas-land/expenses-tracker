@@ -5,8 +5,8 @@ import { MdOutlineKeyboardArrowLeft, MdOutlineEuro } from 'react-icons/md';
 import { IoIosAdd } from 'react-icons/io';
 
 import TotalExpensesList from './TotalExpensesList';
-import { getTotalAmountExpenses } from '../../lib/prisma/expenses'
-import { getCategoryWithExpenses } from '../../lib/prisma/expenses_by_category'
+import { getTotalAmountExpenses } from '@lib/prisma/expenses'
+import { getCategoryWithExpenses } from '@lib/prisma/expenses_by_category'
 import TotalDisplay from './TotalDisplay';
 
 
