@@ -12,7 +12,7 @@ const TotalDisplay = ({ totalAmountExpenses }: any) => {
   return (
     <div className={s.total_expenses}>
       <div className={s.date}>{moment().format('MMMM')}</div>
-      <div className={s.total}><span>- {totalExpenses || totalAmountExpenses._sum.amount}</span> <MdOutlineEuro size={15} color='gray' /></div>
+      <div className={s.total}><span>- {totalExpenses }</span> <MdOutlineEuro size={15} color='gray' /></div>
     </div>
   )
 }
