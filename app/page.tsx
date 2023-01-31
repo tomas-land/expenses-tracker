@@ -19,8 +19,8 @@ const Home = async () => {
   // console.dir(expenses, { depth: null })
   return (
     <section className={s.home}>
-      <BalanceDisplay expenses={expenses} />
-      <ExpensesList expenses={expenses} />
+      {/* <BalanceDisplay expenses={expenses} />
+      <ExpensesList expenses={expenses} /> */}
     </section>
   )
 }

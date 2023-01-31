@@ -14,13 +14,13 @@ import TotalDisplay from './TotalDisplay';
 //   const categoryWithExpenses = await getCategoryWithExpenses()
 //   return categoryWithExpenses;
 // }
-async function getTotalAmountExpensesDB() {
-  const totalAmountExpenses = await getTotalAmountExpenses()
-  return totalAmountExpenses;
-}
+// async function getTotalAmountExpensesDB() {
+//   const totalAmountExpenses = await getTotalAmountExpenses()
+//   return totalAmountExpenses;
+// }
 
 const StatsPage = async () => {
-  const { totalAmountExpenses } = await getTotalAmountExpensesDB(); 
+  // const { totalAmountExpenses } = await getTotalAmountExpensesDB(); 
   // const  categoryWithExpenses  = await getCategoryWithExpensesDB();
   // const totalFoodExpenses = totalFoodExpenses.map((item:any) => item.amount).reduce((prev:number, curr:number) => prev + curr, 0);
 // console.dir(categoryWithExpenses, {depth: null})
@@ -31,7 +31,7 @@ const StatsPage = async () => {
         <Link href="/"><button className={s.back_btn} ><IoIosAdd /></button></Link>
       </div>
       
-      <TotalDisplay totalAmountExpenses={totalAmountExpenses} />
+      {/* <TotalDisplay totalAmountExpenses={totalAmountExpenses} /> */}
       {/* <TotalExpensesList categoryWithExpenses={categoryWithExpenses} /> */}
     </section>
   )
