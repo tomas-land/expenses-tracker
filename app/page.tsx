@@ -19,6 +19,7 @@ const Home = async () => {
   // console.dir(expenses, { depth: null })
   return (
     <section className={s.home}>
+      f
       <BalanceDisplay expenses={expenses} />
       <ExpensesList expenses={expenses} />
     </section>
