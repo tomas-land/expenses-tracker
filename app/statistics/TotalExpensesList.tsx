@@ -15,14 +15,14 @@ const TotalExpensesList = ({ categoryWithExpenses }: any) => {
   //   (m: any, { name, expense }: any) => m.set(name, (m.get(name) || 0) + expense), new Map
   // ), ([name, amount]) => ({ name, amount }));
 // console.log(totalExpenses)
-
+// console.log(categoryWithExpenses)
   return (
     <>
       <h4 className={s.title} >Šį mėnesį išleista</h4>
       <ul className={s.list}>
-        {categoryWithExpenses.map(({name,expense}: any, index: number) => {
+        {categoryWithExpenses.map(({name,expenses}: any, index: number) => {
           return (
-            <TotalExpensesListItem key={index} name={name} expense={expense}/>
+            <TotalExpensesListItem key={index} name={name} expenses={expenses}/>
           )
         })}
       </ul>

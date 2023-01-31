@@ -12,7 +12,7 @@ import Moment from 'moment';
 
 const ExpensesListItem = ({ expense }: any) => {
   const router = useRouter()
-  const { id, title, amount, desc, category, createdAt } = expense
+  const { id, amount, desc, categories, createdAt } = expense
   const [showExtraInfo, setShowExtraInfo] = useState(false)
 
   const toggleExtraInfo = () => {
@@ -31,13 +31,13 @@ const ExpensesListItem = ({ expense }: any) => {
       console.error(error);
     }
   }
-console.log(expense)
+
   return (
 
     <li className={s.list_item} key={id}>
       <div>
         <button className={s.toggle_btn} onClick={toggleExtraInfo}><GrFormDown /></button>
-        {category[0]?.name}
+        {categories[0].category.name}
       </div>
       <div className={s.amount}>-<span>{amount}</span><MdOutlineEuro color='gray' size={13} className={`${showExtraInfo ? s.rotate_up : null}`} /></div>
       {/* <div>{createdAt.toString()}</div> */}

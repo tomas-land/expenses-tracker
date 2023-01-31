@@ -8,7 +8,7 @@ import { MdOutlineEuro } from 'react-icons/md';
 import { useState } from 'react';
 import { useGlobalContext } from "@context/context"
 
-const TotalExpensesListItem = ({ name, expense }: any) => {
+const TotalExpensesListItem = ({ name, expenses }: any) => {
 
   const { totalExpenses, addExpenses } = useGlobalContext();
   const [showSubItem, setShowSubItem] = useState(false)
@@ -17,8 +17,8 @@ const TotalExpensesListItem = ({ name, expense }: any) => {
     setShowSubItem((prev) => !prev)
   }
 
-  const totalExpensesAmount = expense?.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0);
-console.log(expense)
+  const totalAmountByCategory = expenses?.map(({ expense }: any) => expense.amount).reduce((prev: number, curr: number) => prev + curr, 0);
+  // console.log(expenses)
   return (
     <li className={s.list_item} >
       <div className={s.item_header}>
@@ -27,13 +27,13 @@ console.log(expense)
           {name}
         </div>
         <div className={s.amount_radio}>
-          <div className={s.amount}>- <span>{totalExpensesAmount} </span><MdOutlineEuro color='gray' size={15} /></div>
-          <input type="radio" value={totalExpensesAmount} onClick={(e: any) => addExpenses(+e.target.value)} />
+          <div className={s.amount}>- <span>{totalAmountByCategory} </span><MdOutlineEuro color='gray' size={15} /></div>
+          <input type="radio" value={totalAmountByCategory} onClick={(e: any) => addExpenses(+e.target.value)} />
         </div>
       </div>
 
       <div className={`${s.sub_items} ${showSubItem && s.open}`}>
-        {expense?.map(({ amount }: any, index: number) => {
+        {expenses?.map(({ expense }: any, index: number) => {
           return (
             <div className={s.sub_item} key={index}>
               <div className={s.category_and_desc}>
@@ -41,37 +41,14 @@ console.log(expense)
                 <div>desc</div>
               </div>
               <div className={s.amount_and_radio}>
-                <div className={s.amount}>- <span>{amount} </span><MdOutlineEuro color='gray' size={15} /></div>
-                <input type="radio" value={amount} onClick={(e: any) => addExpenses(+e.target.value)} />
+                <div className={s.amount}>- <span>{expense.amount}</span> <MdOutlineEuro color='gray' size={15} /></div>
+                <input type="radio" value={expense.amount} onClick={(e: any) => addExpenses(+e.target.value)} />
               </div>
             </div>
           )
         })
         }
-        {/* <div className={s.sub_item}>
-          <div className={s.category_and_desc}>
-            <div>{name}</div>
-            <div>desc</div>
-          </div>
-          <div className={s.amount_and_radio}>
-            <div className={s.amount}>- <span>{amount} </span><MdOutlineEuro color='gray' size={15} /></div>
-            <input type="radio" value={amount} onClick={(e: any) => addExpenses(+e.target.value)} />
-          </div>
-        </div> */}
-
-        {/* <div className={s.sub_item}>
-          <div className={s.category_and_desc}>
-            <div>{name}</div>
-            <div>desc</div>
-          </div>
-          <div className={s.amount_and_radio}>
-            <div className={s.amount}>- <span>{expense.amount} </span><MdOutlineEuro color='gray' size={15} /></div>
-            <input type="radio" value={expense.amount} onClick={(e: any) => addExpenses(+e.target.value)} />
-          </div>
-        </div> */}
-
       </div>
-      {/* <div className={s.sub_item}>fef</div> */}
     </li>
   )
 }

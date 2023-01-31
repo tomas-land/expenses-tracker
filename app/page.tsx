@@ -16,7 +16,7 @@ async function getData() {
 
 const Home = async () => {
   const { expenses } = await getData();
-console.log(expenses)
+  // console.dir(expenses, { depth: null })
   return (
     <section className={s.home}>
       <BalanceDisplay expenses={expenses} />
