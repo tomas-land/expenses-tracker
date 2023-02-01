@@ -22,7 +22,8 @@ console.log(categoryWithExpenses)
       <ul className={s.list}>
         {categoryWithExpenses.map(({name,expenses}: any, index: number) => {
           return (
-            <TotalExpensesListItem key={index} name={name} expenses={expenses}/>
+            <></>
+            // <TotalExpensesListItem key={index} name={name} expenses={expenses}/>
           )
         })}
       </ul>
