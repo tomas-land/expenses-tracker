@@ -17,11 +17,12 @@ const ExpensesList = ({ expenses }: any) => {
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
       <ul className={s.list}>
-        {expenses?.map((expense: any) => {
+        {/* {expenses?.map((expense: any) => {
           return (
             <ExpensesListItem key={expense.id} expense={expense} />
           )
-        })}
+        })} */}
+        wddww
       </ul>
     </div>
   )
