@@ -15,7 +15,7 @@ const TotalExpensesList = ({ categoryWithExpenses }: any) => {
   //   (m: any, { name, expense }: any) => m.set(name, (m.get(name) || 0) + expense), new Map
   // ), ([name, amount]) => ({ name, amount }));
 // console.log(totalExpenses)
-// console.log(categoryWithExpenses)
+console.log(categoryWithExpenses)
   return (
     <>
       <h4 className={s.title} >Šį mėnesį išleista</h4>
