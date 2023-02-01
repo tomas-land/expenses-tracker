@@ -30,10 +30,10 @@ model Category {
 ///////////////////////////////
 
 model CategoriesOnExpenses {
-  expense    Expense  @relation(fields: [expenseId], references: [id])
-  expenseId  Int // relation scalar field (used in the `@relation` attribute above)
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId Int // relation scalar field (used in the `@relation` attribute above)
+  expense    Expense  @relation(fields: [expenseId], references: [id])
+  expenseId  Int // relation scalar field (used in the `@relation` attribute above)
   assignedAt DateTime @default(now())
 
   @@id([expenseId, categoryId])

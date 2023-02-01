@@ -22,15 +22,15 @@ CREATE TABLE `Category` (
 
 -- CreateTable
 CREATE TABLE `CategoriesOnExpenses` (
-    `expenseId` INTEGER NOT NULL,
     `categoryId` INTEGER NOT NULL,
+    `expenseId` INTEGER NOT NULL,
     `assignedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     PRIMARY KEY (`expenseId`, `categoryId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `CategoriesOnExpenses` ADD CONSTRAINT `CategoriesOnExpenses_expenseId_fkey` FOREIGN KEY (`expenseId`) REFERENCES `Expense`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `CategoriesOnExpenses` ADD CONSTRAINT `CategoriesOnExpenses_categoryId_fkey` FOREIGN KEY (`categoryId`) REFERENCES `Category`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `CategoriesOnExpenses` ADD CONSTRAINT `CategoriesOnExpenses_categoryId_fkey` FOREIGN KEY (`categoryId`) REFERENCES `Category`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `CategoriesOnExpenses` ADD CONSTRAINT `CategoriesOnExpenses_expenseId_fkey` FOREIGN KEY (`expenseId`) REFERENCES `Expense`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
