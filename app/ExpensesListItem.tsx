@@ -33,7 +33,7 @@ const ExpensesListItem = ({ expense }: any) => {
   }
 
   const formatedDate = Moment(createdAt).format('YYYY-MM-DD H:mm');
-
+console.log(expense);
 
   return (
     <li className={s.list_item}>
