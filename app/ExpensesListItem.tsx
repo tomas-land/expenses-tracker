@@ -34,7 +34,11 @@ const ExpensesListItem = ({ expense }: any) => {
   console.log(expense)
   return (
     <li className={s.list_item}>
-     
+      <div className={`${s.extra_info} ${showExtraInfo && s.open}`}>
+        {desc?.length > 0 && <div className={s.desc}>{desc}</div>}
+        <div className={s.date}>{Moment(createdAt).format('YYYY-MM-DD H:mm')}</div>
+        <ImBin size={13} className={s.delete_btn} onClick={() => deleteExpense(id)} />
+      </div>
     </li>
   )
 }
