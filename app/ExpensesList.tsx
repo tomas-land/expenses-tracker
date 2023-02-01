@@ -19,7 +19,8 @@ const ExpensesList = ({ expenses }: any) => {
       <ul className={s.list}>
         {expenses?.map((expense: any) => {
           return (
-            <ExpensesListItem key={expense.id} expense={expense} />
+            <></>
+            // <ExpensesListItem key={expense.id} expense={expense} />
           )
         })}
       </ul>
