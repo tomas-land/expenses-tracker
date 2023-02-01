@@ -6,7 +6,7 @@ import s from '@styles/Pages/_Home.module.scss'
 import BalanceDisplay from './BalanceDisplay';
 import ExpensesList from './ExpensesList';
 
-import { getExpenses } from '@lib/prisma/expenses'
+import { getExpenses } from '../lib/prisma/expenses'
 
 export const dynamic = 'force-dynamic'
 
