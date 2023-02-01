@@ -12,16 +12,16 @@ const ExpensesList = ({ expenses }: any) => {
   useEffect(() => {
     router.refresh()
   }, [router])
-console.log(expenses);
+console.dir(expenses, { depth: null });
   return (
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
       <ul className={s.list}>
-        {/* {expenses?.map((expense: any) => {
+        {expenses?.map((expense: any) => {
           return (
             <ExpensesListItem key={expense.id} expense={expense} />
           )
-        })} */}
+        })}
       </ul>
     </div>
   )
