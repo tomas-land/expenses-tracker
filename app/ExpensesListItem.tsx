@@ -44,7 +44,7 @@ console.log(expense);
       <div className={s.amount}>-<span>{amount}</span><MdOutlineEuro color='gray' size={13} className={`${showExtraInfo ? s.rotate_up : null}`} /></div>
       <div className={`${s.extra_info} ${showExtraInfo && s.open}`}>
         {desc?.length > 0 && <div className={s.desc}>{desc}</div>}
-        <p className={s.date}>{createdAt}</p>
+        <p className={s.date}>{Moment(createdAt).format('YYYY-MM-DD H:mm')}</p>
         <ImBin size={13} className={s.delete_btn} onClick={() => deleteExpense(id)} />
       </div>
     </li>
