@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic'
 
 async function getData() {
   // @ts-ignore
-  const expenses = await prisma.expense.findMany({
+  const expenses = await prisma.expense.findMany(
     // include:{
     //   categories: true
     // }
@@ -34,7 +34,7 @@ async function getData() {
     // // orderBy: {
     // //   createdAt: "desc",
     // // },
-  });
+  );
   return JSON.parse(JSON.stringify(expenses));
 }
 
