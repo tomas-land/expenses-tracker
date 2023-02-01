@@ -20,12 +20,12 @@ console.log(categoryWithExpenses)
     <>
       <h4 className={s.title} >Šį mėnesį išleista</h4>
       <ul className={s.list}>
-        {categoryWithExpenses.map(({name,expenses}: any, index: number) => {
+        {/* {categoryWithExpenses.map(({name,expenses}: any, index: number) => {
           return (
             <></>
             // <TotalExpensesListItem key={index} name={name} expenses={expenses}/>
           )
-        })}
+        })} */}
       </ul>
     </>
 
