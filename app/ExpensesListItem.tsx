@@ -37,7 +37,7 @@ console.log(expense);
 
   return (
     <li className={s.list_item}>
-      ff
+      bb
     </li>
   )
 }
