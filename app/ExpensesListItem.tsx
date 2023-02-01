@@ -33,14 +33,11 @@ const ExpensesListItem = ({ expense }: any) => {
   }
 
   return (
-
-    <li className={s.list_item} key={id}>
+    <li className={s.list_item}>
       <div>
         <button className={s.toggle_btn} onClick={toggleExtraInfo}><GrFormDown /></button>
-        {/* {categories[0].category.name} */}
       </div>
       <div className={s.amount}>-<span>{amount}</span><MdOutlineEuro color='gray' size={13} className={`${showExtraInfo ? s.rotate_up : null}`} /></div>
-      {/* <div>{createdAt.toString()}</div> */}
       <div className={`${s.extra_info} ${showExtraInfo && s.open}`}>
         {desc?.length > 0 && <div className={s.desc}>{desc}</div>}
         <div className={s.date}>{Moment(createdAt).format('YYYY-MM-DD H:mm')}</div>
