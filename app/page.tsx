@@ -16,11 +16,11 @@ async function getData() {
 
 const Home = async () => {
   const { expenses } = await getData();
-  // console.dir(expenses, { depth: null })
+  console.dir(expenses, { depth: null })
   return (
     <section className={s.home}>
       <BalanceDisplay expenses={expenses} />
-      {/* <ExpensesList expenses={expenses} /> */}
+      <ExpensesList expenses={expenses} />
     </section>
   )
 }
