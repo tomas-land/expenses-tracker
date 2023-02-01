@@ -13,9 +13,9 @@ export const dynamic = 'force-dynamic'
 async function getData() {
   // @ts-ignore
   const expenses = await prisma.expense.findMany({
-    include:{
-      categories: true
-    }
+    // include:{
+    //   categories: true
+    // }
     // select: {
     //   id: true,
     //   amount: true,
