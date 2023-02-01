@@ -16,7 +16,7 @@ async function getData() {
 }
 
 const Home = async () => {
-  const { expenses } = await getData();
+  const  expenses  = await getData();
   // console.dir(expenses, { depth: null })
   return (
     <section className={s.home}>
