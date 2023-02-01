@@ -12,7 +12,7 @@ const ExpensesList = ({ expenses }: any) => {
   useEffect(() => {
     router.refresh()
   }, [router])
-console.log(expenses)
+
   return (
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
