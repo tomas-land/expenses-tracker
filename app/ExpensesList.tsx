@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import ExpensesListItem from './ExpensesListItem';
 
-const ExpensesList = ( expenses : any) => {
+const ExpensesList = ( {expenses }: any) => {
 
   const router = useRouter()
   useEffect(() => {
