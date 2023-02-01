@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 
 import s from '@styles/Pages/_Home.module.scss'
@@ -16,11 +18,11 @@ async function getData() {
 
 const Home = async () => {
   const { expenses } = await getData();
-  console.dir(expenses, { depth: null })
+  console.log(expenses)
   return (
     <section className={s.home}>
       <BalanceDisplay expenses={expenses} />
-      <ExpensesList expenses={expenses} />
+      {/* <ExpensesList expenses={expenses} /> */}
     </section>
   )
 }
