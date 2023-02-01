@@ -31,7 +31,8 @@ const ExpensesListItem = ({ expense }: any) => {
       console.error(error);
     }
   }
-  console.log(expense)
+  const formatedDate = Moment(createdAt).format('YYYY-MM-DD H:mm');
+
   return (
     <li className={s.list_item}>
       <div>
@@ -40,7 +41,7 @@ const ExpensesListItem = ({ expense }: any) => {
       <div className={s.amount}>-<span>{amount}</span><MdOutlineEuro color='gray' size={13} className={`${showExtraInfo ? s.rotate_up : null}`} /></div>
       <div className={`${s.extra_info} ${showExtraInfo && s.open}`}>
         {desc?.length > 0 && <div className={s.desc}>{desc}</div>}
-        {/* <div className={s.date}>{Moment(createdAt).format('YYYY-MM-DD H:mm')}</div> */}
+        <div className={s.date}>{formatedDate}</div>
         <ImBin size={13} className={s.delete_btn} onClick={() => deleteExpense(id)} />
       </div>
     </li>
