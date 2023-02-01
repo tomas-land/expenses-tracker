@@ -35,7 +35,7 @@ async function getData() {
     // //   createdAt: "desc",
     // // },
   });
-  return JSON.parse(JSON.stringify({expenses}));
+  return JSON.parse(JSON.stringify(expenses));
 }
 
 const Home = async () => {
