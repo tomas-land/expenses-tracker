@@ -31,20 +31,20 @@ const ExpensesListItem = ({ expense }: any) => {
       console.error(error);
     }
   }
-
+const date = new Date(createdAt);
   // const formatedDate = Moment(createdAt).format('YYYY-MM-DD H:mm');
-console.log(expense);
+console.log(date);
 
   return (
     <li className={s.list_item}>
       <div>
         <button className={s.toggle_btn} onClick={toggleExtraInfo}><GrFormDown /></button>
-        {/* {categories[0].category.name} */}
+        {categories[0].category.name}
       </div>
       <div className={s.amount}>-<span>{amount}</span><MdOutlineEuro color='gray' size={13} className={`${showExtraInfo ? s.rotate_up : null}`} /></div>
       <div className={`${s.extra_info} ${showExtraInfo && s.open}`}>
         {desc?.length > 0 && <div className={s.desc}>{desc}</div>}
-        <p className={s.date}>{Moment(createdAt).format('YYYY-MM-DD H:mm')}</p>
+        <p className={s.date}>{createdAt}</p>
         <ImBin size={13} className={s.delete_btn} onClick={() => deleteExpense(id)} />
       </div>
     </li>
