@@ -31,13 +31,14 @@ const ExpensesListItem = ({ expense }: any) => {
       console.error(error);
     }
   }
-const date = new Date(createdAt);
+
   // const formatedDate = Moment(createdAt).format('YYYY-MM-DD H:mm');
-console.log(date);
+console.log(expense);
 
   return (
     <li className={s.list_item}>
       <div>
+        f
         <button className={s.toggle_btn} onClick={toggleExtraInfo}><GrFormDown /></button>
         {categories[0].category.name}
       </div>
