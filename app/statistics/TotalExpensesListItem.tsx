@@ -17,8 +17,8 @@ const TotalExpensesListItem = ({ name, expenses }: any) => {
     setShowSubItem((prev) => !prev)
   }
 
-  // const totalAmountByCategory = expenses?.map(({ expense }: any) => expense.amount).reduce((prev: number, curr: number) => prev + curr, 0);
-  console.log(expenses)
+  const totalAmountByCategory = expenses?.map(({ Expense }: any) => Expense.amount).reduce((prev: number, curr: number) => prev + curr, 0);
+
   return (
     <li className={s.list_item} >
       <div className={s.item_header}>
@@ -27,8 +27,8 @@ const TotalExpensesListItem = ({ name, expenses }: any) => {
           {name}
         </div>
         <div className={s.amount_radio}>
-          {/* <div className={s.amount}>- <span>{totalAmountByCategory} </span><MdOutlineEuro color='gray' size={15} /></div>
-          <input type="radio" value={totalAmountByCategory} onClick={(e: any) => addExpenses(+e.target.value)} /> */}
+          <div className={s.amount}>- <span>{totalAmountByCategory} </span><MdOutlineEuro color='gray' size={15} /></div>
+          <input type="radio" value={totalAmountByCategory} onClick={(e: any) => addExpenses(+e.target.value)} />
         </div>
       </div>
 
