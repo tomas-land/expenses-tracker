@@ -16,7 +16,7 @@ const ExpensesList = ({ expenses }: any) => {
   return (
     <div className={s.expenses_list}>
       fer
-      {/* <h3>Paskutiniai atsiskaitymai</h3>
+      <h3>Paskutiniai atsiskaitymai</h3>
       <div>
         {expenses?.map((item: any) => {
           return (
@@ -35,7 +35,7 @@ const ExpensesList = ({ expenses }: any) => {
           )
         })
         }
-      </div> */}
+      </div>
     </div>
   )
 }
