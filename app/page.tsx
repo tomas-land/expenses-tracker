@@ -12,15 +12,15 @@ export const dynamic = 'force-dynamic'
 
 
 async function getData() {
-  const expenses = await prisma.category.findMany({
-    include: {
-      CategoriesOnExpenses: {
-        include: {
-          Expense: true,
-        },
-      },
-    },
-  });
+  const expenses = await prisma.category.findMany(
+    // include: {
+    //   CategoriesOnExpenses: {
+    //     include: {
+    //       Expense: true,
+    //     },
+    //   },
+    // },
+  );
   return JSON.parse(JSON.stringify(expenses));
 }
 

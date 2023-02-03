@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import ExpensesListItem from './ExpensesListItem';
 
-const ExpensesList = ({expenses} : any) => {
+const ExpensesList = ({ expenses }: any) => {
 
   const router = useRouter()
   useEffect(() => {
@@ -15,26 +15,27 @@ const ExpensesList = ({expenses} : any) => {
   console.log(expenses);
   return (
     <div className={s.expenses_list}>
-      <h3>Paskutiniai atsiskaitymai</h3>
+      fer
+      {/* <h3>Paskutiniai atsiskaitymai</h3>
       <div>
-      {expenses?.map((item:any) => {
-        return (
-          <div key={item.id}>
-            <h1>{item.name}</h1>
-            <ul>
-              {/* {item.CategoriesOnExpenses.map((item:any) => {
-                return (
-                  <li key={item.id}>
-                    <p>{item.Expense.amount}</p>
-                  </li>
-                )
-              })} */}
-            </ul>
-          </div>
-        )
-      })
-      }
-    </div>
+        {expenses?.map((item: any) => {
+          return (
+            <div key={item.id}>
+              <h1>{item.name}</h1>
+              <ul>
+                {item.CategoriesOnExpenses.map((item: any) => {
+                  return (
+                    <li key={item.id}>
+                      <p>{item.Expense.amount}</p>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          )
+        })
+        }
+      </div> */}
     </div>
   )
 }
