@@ -7,10 +7,12 @@ import BalanceDisplay from './BalanceDisplay';
 import ExpensesList from './ExpensesList';
 
 // import { getExpenses } from '../lib/prisma/expenses'
-import { prisma } from '@lib/prisma/db'
+// import { prisma } from '@lib/prisma/db'
 export const dynamic = 'force-dynamic'
+import { PrismaClient } from '@prisma/client'
 
 async function getData() {
+  const prisma = new PrismaClient()
   const expenses = await prisma.category.findMany({
     // include: {
     //   CategoriesOnExpenses: {
