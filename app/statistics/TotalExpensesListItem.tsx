@@ -38,7 +38,7 @@ const TotalExpensesListItem = ({ name, expenses }: any) => {
             <div className={s.sub_item} key={Expense.id}>
               <div className={s.category_and_desc}>
                 <div>{name}</div>
-                <div>desc</div>
+                <div>{Expense.desc}</div>
               </div>
               <div className={s.amount_and_radio}>
                 <div className={s.amount}>- <span>{Expense.amount}</span> <MdOutlineEuro color='gray' size={15} /></div>
