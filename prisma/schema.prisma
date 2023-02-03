@@ -7,6 +7,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model CategoriesOnExpenses {
+  categoryId Int
+  expenseId  Int
+  assignedAt DateTime @default(now())
+  Category   Category @relation(fields: [categoryId], references: [id])
+  Expense    Expense  @relation(fields: [expenseId], references: [id])
+
+  @@id([expenseId, categoryId])
+  @@index([categoryId], map: "CategoriesOnExpenses_categoryId_fkey")
+}
+
 model Category {
   id                   Int                    @id @default(autoincrement())
   name                 String                 @unique
@@ -22,15 +33,4 @@ model Expense {
   createdAt            DateTime?              @default(now())
   updatedAt            DateTime?
   CategoriesOnExpenses CategoriesOnExpenses[]
-}
-
-model CategoriesOnExpenses {
-  categoryId Int
-  expenseId  Int
-  assignedAt DateTime @default(now())
-  Category   Category @relation(fields: [categoryId], references: [id])
-  Expense    Expense  @relation(fields: [expenseId], references: [id])
-
-  @@id([expenseId, categoryId])
-  @@index([categoryId], map: "CategoriesOnExpenses_categoryId_fkey")
 }

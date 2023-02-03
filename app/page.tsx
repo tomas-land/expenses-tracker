@@ -13,14 +13,14 @@ import { PrismaClient } from '@prisma/client'
 
 async function getData() {
   const prisma = new PrismaClient()
-  const expenses = await prisma.expense.findMany({
-    // include: {
-    //   CategoriesOnExpenses: {
-    //     include: {
-    //       Expense: true,
-    //     },
-    //   },
-    // },
+  const expenses = await prisma.category.findMany({
+    include: {
+      CategoriesOnExpenses: {
+        include: {
+          Expense: true,
+        },
+      },
+    },
   });
   return JSON.parse(JSON.stringify(expenses));
 }
