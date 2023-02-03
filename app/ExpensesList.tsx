@@ -6,14 +6,14 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import ExpensesListItem from './ExpensesListItem';
 
-const ExpensesList = ( {expenses }: any) => {
+const ExpensesList = ({ expenses }: any) => {
 
   const router = useRouter()
   useEffect(() => {
     router.refresh()
   }, [router])
-// console.dir(expenses, { depth: null });
-console.log(expenses);
+  // console.dir(expenses, { depth: null });
+  console.log(expenses);
   return (
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
