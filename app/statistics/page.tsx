@@ -3,21 +3,19 @@ import Link from 'next/link'
 import s from '@styles/Pages/_StatsPage.module.scss'
 import { MdOutlineKeyboardArrowLeft, MdOutlineEuro } from 'react-icons/md';
 import { IoIosAdd } from 'react-icons/io';
-
+import { getTotalAmountExpenses } from '@lib/prisma/expenses'
+import { getCategoryWithExpenses } from '@lib/prisma/expenses_by_category'
 import TotalExpensesList from './TotalExpensesList';
-// import { getTotalAmountExpenses } from '@lib/prisma/expenses'
-// import { getCategoryWithExpenses } from '@lib/prisma/expenses_by_category'
 import TotalDisplay from './TotalDisplay';
 
-
-// async function getCategoryWithExpensesDB() {
-//   const categoryWithExpenses = await getCategoryWithExpenses()
-//   return categoryWithExpenses;
-// }
-// async function getTotalAmountExpensesDB() {
-//   const totalAmountExpenses = await getTotalAmountExpenses()
-//   return totalAmountExpenses;
-// }
+async function getCategoryWithExpensesDB() {
+  const categoryWithExpenses = await getCategoryWithExpenses()
+  return categoryWithExpenses;
+}
+async function getTotalAmountExpensesDB() {
+  const totalAmountExpenses = await getTotalAmountExpenses()
+  return totalAmountExpenses;
+}
 
 const StatsPage = async () => {
   // const { totalAmountExpenses } = await getTotalAmountExpensesDB(); 
