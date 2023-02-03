@@ -2,7 +2,7 @@
 import React from 'react'
 import AddExpenseForm from './AddExpenseForm'
 
-import { getExpenseCategories } from '@lib/prisma/categories'
+// import { getExpenseCategories } from '@lib/prisma/categories'
 
 // async function getData() {
 //   const expenseCategories = await getExpenseCategories()
