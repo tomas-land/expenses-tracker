@@ -13,7 +13,7 @@ const ExpensesList = (expenses : any) => {
     router.refresh()
   }, [router])
   // console.dir(expenses, { depth: null });
-  console.log(expenses);
+  console.log(expenses.expenses[0].expenses[0].expense.amount);
   return (
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
