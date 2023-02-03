@@ -17,8 +17,8 @@ const TotalExpensesListItem = ({ name, expenses }: any) => {
     setShowSubItem((prev) => !prev)
   }
 
-  const totalAmountByCategory = expenses?.map(({ expense }: any) => expense.amount).reduce((prev: number, curr: number) => prev + curr, 0);
-  // console.log(expenses)
+  // const totalAmountByCategory = expenses?.map(({ expense }: any) => expense.amount).reduce((prev: number, curr: number) => prev + curr, 0);
+  console.log(expenses)
   return (
     <li className={s.list_item} >
       <div className={s.item_header}>
@@ -27,22 +27,22 @@ const TotalExpensesListItem = ({ name, expenses }: any) => {
           {name}
         </div>
         <div className={s.amount_radio}>
-          <div className={s.amount}>- <span>{totalAmountByCategory} </span><MdOutlineEuro color='gray' size={15} /></div>
-          <input type="radio" value={totalAmountByCategory} onClick={(e: any) => addExpenses(+e.target.value)} />
+          {/* <div className={s.amount}>- <span>{totalAmountByCategory} </span><MdOutlineEuro color='gray' size={15} /></div>
+          <input type="radio" value={totalAmountByCategory} onClick={(e: any) => addExpenses(+e.target.value)} /> */}
         </div>
       </div>
 
       <div className={`${s.sub_items} ${showSubItem && s.open}`}>
-        {expenses?.map(({ expense }: any, index: number) => {
+        {expenses?.map(({ Expense }: any) => {
           return (
-            <div className={s.sub_item} key={index}>
+            <div className={s.sub_item} key={Expense.id}>
               <div className={s.category_and_desc}>
                 <div>{name}</div>
                 <div>desc</div>
               </div>
               <div className={s.amount_and_radio}>
-                <div className={s.amount}>- <span>{expense.amount}</span> <MdOutlineEuro color='gray' size={15} /></div>
-                <input type="radio" value={expense.amount} onClick={(e: any) => addExpenses(+e.target.value)} />
+                <div className={s.amount}>- <span>{Expense.amount}</span> <MdOutlineEuro color='gray' size={15} /></div>
+                <input type="radio" value={Expense.amount} onClick={(e: any) => addExpenses(+e.target.value)} />
               </div>
             </div>
           )
