@@ -31,6 +31,7 @@ const Home = async () => {
   // console.log(expenses);
   return (
     <section className={s.home}>
+      d
       {/* <BalanceDisplay expenses={expenses} /> */}
       <ExpensesList expenses={expenses} />
     </section>
