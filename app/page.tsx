@@ -11,15 +11,14 @@ import { prisma } from '@lib/prisma/db'
 export const dynamic = 'force-dynamic'
 
 async function getData() {
-  // @ts-ignore
   const expenses = await prisma.category.findMany({
-    include: {
-      CategoriesOnExpenses: {
-        include: {
-          Expense: true,
-        },
-      },
-    },
+    // include: {
+    //   CategoriesOnExpenses: {
+    //     include: {
+    //       Expense: true,
+    //     },
+    //   },
+    // },
   });
   return JSON.parse(JSON.stringify(expenses));
 }
