@@ -11,6 +11,7 @@ import { prisma } from '@lib/prisma'
 export const dynamic = 'force-dynamic'
 
 async function getData() {
+  // @ts-ignore
   const expenses = await prisma.category.findMany({
     include: {
       CategoriesOnExpenses: {
