@@ -13,7 +13,7 @@ import { PrismaClient } from '@prisma/client'
 
 async function getData() {
   const prisma = new PrismaClient()
-  const expenses = await prisma.category.findMany({
+  const expenses = await prisma.expense.findMany({
     // include: {
     //   CategoriesOnExpenses: {
     //     include: {
@@ -27,8 +27,8 @@ async function getData() {
 
 const Home = async () => {
   const expenses = await getData();
-  console.dir(expenses, { depth: null })
-  // console.log(expenses);
+  // console.dir(expenses, { depth: null })
+  console.log(expenses);
   return (
     <section className={s.home}>
       d
