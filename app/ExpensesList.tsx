@@ -12,30 +12,17 @@ const ExpensesList = ({ expenses }: any) => {
   useEffect(() => {
     router.refresh()
   }, [router])
-  console.log(expenses);
+
   return (
     <div className={s.expenses_list}>
-      fer
       <h3>Paskutiniai atsiskaitymai</h3>
-      <div>
-        {expenses?.map((item: any) => {
+      <ul className={s.list}>
+        {expenses?.map((expense: any) => {
           return (
-            <div key={item.id}>
-              <h1>{item.name}</h1>
-              <ul>
-                {item.CategoriesOnExpenses.map((item: any) => {
-                  return (
-                    <li key={item.id}>
-                      <p>{item.Expense.amount}</p>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
+            <ExpensesListItem key={expense.id} expense={expense} />
           )
-        })
-        }
-      </div>
+        })}
+      </ul>
     </div>
   )
 }

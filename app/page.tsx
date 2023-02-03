@@ -2,36 +2,25 @@
 import React from 'react'
 
 import s from '@styles/Pages/_Home.module.scss'
-
 import BalanceDisplay from './BalanceDisplay';
 import ExpensesList from './ExpensesList';
+import { getExpensesWithCategory } from '@lib/prisma/expenses'
 
-// import { getExpenses } from '../lib/prisma/expenses'
-import  {prisma}  from '@lib/prisma/prisma'
+
 export const dynamic = 'force-dynamic'
 
-
-const getData = async () => {
-  const data = await prisma.category.findMany({
-    include: {
-      CategoriesOnExpenses: {
-        include: {
-          Expense: true
-        }
-      }
-    }
-  })
-  return JSON.parse(JSON.stringify(data));
+const getExpensesWithCategoryDB = async () => {
+  const data = await getExpensesWithCategory()
+  return data
 }
 
 const Home = async () => {
-  const expenses = await getData();
+  const expenses = await getExpensesWithCategoryDB();
   // console.dir(expenses, { depth: null })
-  console.log(expenses);
+
   return (
     <section className={s.home}>
-      d
-      {/* <BalanceDisplay expenses={expenses} /> */}
+      <BalanceDisplay expenses={expenses} />
       <ExpensesList expenses={expenses} />
     </section>
   )
