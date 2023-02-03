@@ -73,7 +73,7 @@
   }
 } */
 /* ///////////////////////////////////////////////////////////// */
-@import '@styles/_variables.scss';
+// @import '_variables.scss';
 
 * {
   box-sizing: border-box;
@@ -81,15 +81,21 @@
   margin: 0;
 }
 
-html,
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
 body {
   background-color: #f3f4f6;
+  margin: auto;
+  max-width: 360px;
+  max-height: 780rem;
 }
 
 main {
   margin: auto;
   width: 90%;
-  height: 100vh;
   font-family: "Comfortaa";
 }
 
@@ -98,7 +104,7 @@ a {
   text-decoration: none;
 }
 
-ul,li{
+ul,
+li {
   list-style: none;
 }
-

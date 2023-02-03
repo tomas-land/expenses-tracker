@@ -1,2 +1,2 @@
-*{-webkit-box-sizing:border-box;box-sizing:border-box;padding:0;margin:0}main{margin:auto;width:90%;background-color:#f3f4f6;height:100vh;font-family:"Comfortaa"}a{color:inherit;text-decoration:none}
+*{-webkit-box-sizing:border-box;box-sizing:border-box;padding:0;margin:0}html{width:100vw;height:100vh}body{background-color:#f3f4f6;margin:auto;max-width:360px;max-height:780rem}main{margin:auto;width:90%;font-family:"Comfortaa"}a{color:inherit;text-decoration:none}ul,li{list-style:none}
 /*# sourceMappingURL=globals.min.css.map */

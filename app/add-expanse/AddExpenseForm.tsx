@@ -10,19 +10,19 @@ import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 import { IoIosAdd } from 'react-icons/io';
 
 const AddExpenseForm = ({ expenseCategories }: any) => {
-
+console.log(expenseCategories);
   const router = useRouter()
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     defaultValues: {
       amount: '',
       desc: '',
-      expensesCategoryID: 0
+      categoryID: 0
     }
   });
-  const onSubmit = async ({ amount, expensesCategoryID, desc }: any) => {
-    console.log(amount, expensesCategoryID, desc);
+  const onSubmit = async ({categoryID, amount, desc }: any) => {
+    // console.log(amount, categoryID, desc);
     try {
-      const body = { amount, expensesCategoryID, desc };
+      const body = { amount, categoryID, desc };
       await fetch(`/api/expenses`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -59,9 +59,9 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
       </div>
       <div className={s.title}>Pasirinkite kategoriją</div>
       <div className={s.category_btns}>
-        {expenseCategories?.map(({ id, name }: any, index: number) => {
+        {expenseCategories?.map(({ id, name }: any) => {
           return (
-            <input type='button' key={index} className={s.btn} onClick={() => setValue("expensesCategoryID", id)} defaultValue={name} />
+            <input type='button' key={id} className={s.btn} onClick={() => setValue("categoryID", id)} defaultValue={name} />
           )
         })}
       </div>

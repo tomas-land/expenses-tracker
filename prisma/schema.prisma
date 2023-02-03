@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialActions"]
 }
 
 datasource db {
@@ -11,8 +12,8 @@ model CategoriesOnExpenses {
   categoryId Int
   expenseId  Int
   assignedAt DateTime @default(now())
-  Category   Category @relation(fields: [categoryId], references: [id])
-  Expense    Expense  @relation(fields: [expenseId], references: [id])
+  Category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  Expense    Expense  @relation(fields: [expenseId], references: [id], onDelete: Cascade)
 
   @@id([expenseId, categoryId])
   @@index([categoryId], map: "CategoriesOnExpenses_categoryId_fkey")

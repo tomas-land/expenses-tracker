@@ -18,7 +18,7 @@ const ExpensesListItem = ({ expense }: any) => {
   const toggleExtraInfo = () => {
     setShowExtraInfo((prev) => !prev)
   }
-  const deleteExpense = async (id: number) => {
+  const deleteExpense = async (id:number) => {
     try {
       const body = id;
       await fetch(`/api/expenses`, {
