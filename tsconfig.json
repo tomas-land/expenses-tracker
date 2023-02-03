@@ -37,7 +37,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "lib/prisma/prisma.js"  ],
+, "lib/prisma/prisma.tsx"  ],
   "exclude": [
     "node_modules"
   ]

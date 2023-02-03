@@ -7,21 +7,21 @@ import BalanceDisplay from './BalanceDisplay';
 import ExpensesList from './ExpensesList';
 
 // import { getExpenses } from '../lib/prisma/expenses'
-import  prisma  from '@lib/prisma/prisma'
+import  {prisma}  from '@lib/prisma/prisma'
 export const dynamic = 'force-dynamic'
 
 
-async function getData() {
-  const expenses = await prisma.category.findMany(
-    // include: {
-    //   CategoriesOnExpenses: {
-    //     include: {
-    //       Expense: true,
-    //     },
-    //   },
-    // },
-  );
-  return JSON.parse(JSON.stringify(expenses));
+const getData = async () => {
+  const data = await prisma.category.findMany({
+    include: {
+      CategoriesOnExpenses: {
+        include: {
+          Expense: true
+        }
+      }
+    }
+  })
+  return JSON.parse(JSON.stringify(data));
 }
 
 const Home = async () => {
