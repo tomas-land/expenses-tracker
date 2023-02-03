@@ -6,24 +6,36 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import ExpensesListItem from './ExpensesListItem';
 
-const ExpensesList = (expenses : any) => {
+const ExpensesList = ({expenses} : any) => {
 
   const router = useRouter()
   useEffect(() => {
     router.refresh()
   }, [router])
   // console.dir(expenses, { depth: null });
-  console.log(expenses.expenses[0].expenses[0].expense.amount);
+  // console.log(expenses.expenses[0].expenses[0].expense.amount);
   return (
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
-      <ul className={s.list}>
-        {/* {expenses?.map((expense: any) => {
-          return (
-            <ExpensesListItem key={expense.id} expense={expense} />
-          )
-        })} */}
-      </ul>
+      <div>
+      {expenses.map((item:any) => {
+        return (
+          <div key={item.id}>
+            <h1>{item.name}</h1>
+            <ul>
+              {item.CategoriesOnExpenses.map((item:any) => {
+                return (
+                  <li key={item.id}>
+                    <p>{item.Expense.amount}</p>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        )
+      })
+      }
+    </div>
     </div>
   )
 }
