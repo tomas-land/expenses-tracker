@@ -6,8 +6,8 @@ import s from '@styles/Pages/_Home.module.scss'
 import BalanceDisplay from './BalanceDisplay';
 import ExpensesList from './ExpensesList';
 
-import { getExpenses } from '../lib/prisma/expenses'
-import { prisma } from '@lib/prisma'
+// import { getExpenses } from '../lib/prisma/expenses'
+import { prisma } from '@lib/prisma/db'
 export const dynamic = 'force-dynamic'
 
 async function getData() {
