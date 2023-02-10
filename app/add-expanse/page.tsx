@@ -1,20 +1,19 @@
-
 import React from 'react'
 import AddExpenseForm from './AddExpenseForm'
 
-import { getExpenseCategories } from '@lib/prisma/categories'
+import { getCategories } from '@lib/prisma/categories'
 
-async function getData() {
-  const expenseCategories = await getExpenseCategories()
-  return expenseCategories;
+async function getCategoriesDB() {
+  const categories = await getCategories()
+  return categories;
 }
 
 const AddExpansePage = async () => {
-  const expenseCategories  = await getData();
+  const categories = await getCategoriesDB();
 
   return (
     <section>
-      <AddExpenseForm expenseCategories={expenseCategories}/>
+      <AddExpenseForm categories={categories} />
     </section>
   )
 }

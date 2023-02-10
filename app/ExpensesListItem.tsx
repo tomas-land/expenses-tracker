@@ -7,7 +7,6 @@ import { MdOutlineEuro } from 'react-icons/md'
 import { GrFormDown } from 'react-icons/gr'
 import { ImBin } from 'react-icons/im'
 import { useState } from 'react'
-import Moment from 'moment';
 import dayjs from 'dayjs';
 
 
@@ -50,7 +49,6 @@ const ExpensesListItem = ({ expense }: any) => {
     </li>
   )
 }
-
 export default ExpensesListItem
 
 /* <Box display={"flex"} justifyContent={"space-between"} pt={'1.5rem'}>

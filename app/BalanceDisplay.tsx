@@ -5,8 +5,8 @@ import { IoMdStats, IoMdAdd } from 'react-icons/io';
 import s from '@styles/Components/_BalanceDisplay.module.scss'
 
 const BalanceDisplay = ({ expenses }: any) => {
-  const totalExpenses = expenses?.map((item:any) => item.amount).reduce((prev:number, curr:number) => prev + curr, 0);
-  // console.log(expenses)
+  const totalAmountExpenses = expenses?.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0);
+
   return (
     <div className={s.display}>
       <div className={s.btn_wrapper}>
@@ -17,10 +17,16 @@ const BalanceDisplay = ({ expenses }: any) => {
         <h4>MANO IŠLAIDOS</h4>
         <div className={s.balance}>
           <h3>&euro;</h3>
-          <h1>{totalExpenses}</h1>
+          <h1>{totalAmountExpenses}</h1>
         </div>
       </div>
     </div>
+  )
+}
+
+export default BalanceDisplay
+
+
     //MATERIAL UI
     // <Paper elevation={10} sx={{
     //   color: '#4158D0',
@@ -49,7 +55,3 @@ const BalanceDisplay = ({ expenses }: any) => {
     //     </Box>
     //   </Box>
     // </Paper >
-  )
-}
-
-export default BalanceDisplay

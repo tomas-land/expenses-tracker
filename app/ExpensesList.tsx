@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import ExpensesListItem from './ExpensesListItem';
 
+
 const ExpensesList = ({ expenses }: any) => {
 
   const router = useRouter()
@@ -26,7 +27,6 @@ const ExpensesList = ({ expenses }: any) => {
     </div>
   )
 }
-
 export default ExpensesList
 
 /* <Box display={"flex"} justifyContent={"space-between"} pt={'1.5rem'}>

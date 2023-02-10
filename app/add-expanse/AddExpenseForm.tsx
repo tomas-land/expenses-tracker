@@ -9,8 +9,9 @@ import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 import { IoIosAdd } from 'react-icons/io';
 import { iCategory } from '@lib/interfaces';
 
-const AddExpenseForm = ({ expenseCategories }: any) => {
-  console.log(expenseCategories);
+
+const AddExpenseForm = ({ categories }: any) => {
+// console.log(categories)
   const router = useRouter()
   const { register, handleSubmit, setValue, setError, getValues,clearErrors, formState: { errors } } = useForm({
     defaultValues: {
@@ -19,7 +20,7 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
       categoryID: 0
     }
   });
-  const categoryID = getValues('categoryID');
+const categoryId = getValues('categoryID');
   const onSubmit = async ({ categoryID, amount, desc }: any) => {
     // console.log(amount, categoryID, desc);
     if (categoryID === 0) {
@@ -39,6 +40,7 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
       console.error(error);
     }
   }
+
   return (
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={s.top_btns}>
@@ -68,7 +70,7 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
       </div>
       <div className={s.title}>Pasirinkite kategoriją</div>
       <div className={s.category_btns}>
-        {expenseCategories?.map(({ id, name }: iCategory) => {
+        {categories?.map(({ id, name }: iCategory) => {
           return (
             <input type='button' key={id} className={s.btn} onClick={() => {clearErrors("categoryID");setValue("categoryID", id)}} defaultValue={name} />
           )
@@ -77,7 +79,6 @@ const AddExpenseForm = ({ expenseCategories }: any) => {
       <span className={s.error}>
         {errors.categoryID && <p>{errors.categoryID.message}</p>}
       </span>
-
       <button className={s.submit_btn} type='submit'>IŠSAUGOTI</button>
     </form>
   )
