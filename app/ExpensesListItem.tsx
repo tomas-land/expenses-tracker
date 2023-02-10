@@ -8,17 +8,18 @@ import { GrFormDown } from 'react-icons/gr'
 import { ImBin } from 'react-icons/im'
 import { useState } from 'react'
 import Moment from 'moment';
+import dayjs from 'dayjs';
 
 
 const ExpensesListItem = ({ expense }: any) => {
   const router = useRouter()
-  const { id, amount, desc, CategoriesOnExpenses, createdAt } = expense
+  const { id, amount, desc, category, createdAt } = expense
   const [showExtraInfo, setShowExtraInfo] = useState(false)
 
   const toggleExtraInfo = () => {
     setShowExtraInfo((prev) => !prev)
   }
-  const deleteExpense = async (id:number) => {
+  const deleteExpense = async (id: number) => {
     try {
       const body = id;
       await fetch(`/api/expenses`, {
@@ -31,18 +32,20 @@ const ExpensesListItem = ({ expense }: any) => {
       console.error(error);
     }
   }
-  // const formatedDate = Moment(createdAt).format('YYYY-MM-DD H:mm');
+  const formatedDate = dayjs(createdAt).format('YYYY MM-DD')
+  const formatedHours = dayjs(createdAt).format('HH:mm')
+
   return (
     <li className={s.list_item}>
       <div>
         <button className={s.toggle_btn} onClick={toggleExtraInfo}><GrFormDown /></button>
-        {expense.CategoriesOnExpenses[0].Category.name}
+        {category.name}
       </div>
       <div className={s.amount}>-<span>{amount}</span><MdOutlineEuro color='gray' size={13} className={`${showExtraInfo ? s.rotate_up : null}`} /></div>
       <div className={`${s.extra_info} ${showExtraInfo && s.open}`}>
         {desc?.length > 0 && <div className={s.desc}>{desc}</div>}
-        <p className={s.date}>{createdAt}</p>
-        <ImBin size={13} className={s.delete_btn} onClick={() => deleteExpense(id)} />
+        <p className={s.date}><span>{formatedDate}</span><span>{formatedHours}</span></p>
+        <ImBin size={15} className={s.delete_btn} onClick={() => deleteExpense(id)} />
       </div>
     </li>
   )

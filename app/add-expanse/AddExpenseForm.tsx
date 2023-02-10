@@ -4,23 +4,28 @@ import React, { use, useState } from 'react'
 import { useRouter } from 'next/navigation';
 import { useForm } from "react-hook-form";
 import Link from 'next/link';
-
 import s from '@styles/Components/_AddExpenseForm.module.scss'
 import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 import { IoIosAdd } from 'react-icons/io';
+import { iCategory } from '@lib/interfaces';
 
 const AddExpenseForm = ({ expenseCategories }: any) => {
-console.log(expenseCategories);
+  console.log(expenseCategories);
   const router = useRouter()
-  const { register, handleSubmit, setValue, formState: { errors } } = useForm({
+  const { register, handleSubmit, setValue, setError, getValues,clearErrors, formState: { errors } } = useForm({
     defaultValues: {
       amount: '',
       desc: '',
       categoryID: 0
     }
   });
-  const onSubmit = async ({categoryID, amount, desc }: any) => {
+  const categoryID = getValues('categoryID');
+  const onSubmit = async ({ categoryID, amount, desc }: any) => {
     // console.log(amount, categoryID, desc);
+    if (categoryID === 0) {
+      setError("categoryID", { message: "Pasirinkite kategoriją" });
+      return;
+    }
     try {
       const body = { amount, categoryID, desc };
       await fetch(`/api/expenses`, {
@@ -34,7 +39,6 @@ console.log(expenseCategories);
       console.error(error);
     }
   }
-
   return (
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={s.top_btns}>
@@ -54,51 +58,29 @@ console.log(expenseCategories);
           {errors.amount && errors.amount.message}
         </span>
         <div className={s.extra_info}>
-          <input type="text" placeholder='Įveskite papildomą informaciją...' autoComplete='off' {...register("desc")} />
+          <input type="text" placeholder='Įveskite papildomą informaciją...' autoComplete='off' {...register("desc", {
+            maxLength: 22
+          })} />
         </div>
+        <span className={s.error}>
+          {errors.desc && errors.desc.type === "maxLength" && <span>Aprašymas neturi viršyti 22 simbolių !</span>}
+        </span>
       </div>
       <div className={s.title}>Pasirinkite kategoriją</div>
       <div className={s.category_btns}>
-        {expenseCategories?.map(({ id, name }: any) => {
+        {expenseCategories?.map(({ id, name }: iCategory) => {
           return (
-            <input type='button' key={id} className={s.btn} onClick={() => setValue("categoryID", id)} defaultValue={name} />
+            <input type='button' key={id} className={s.btn} onClick={() => {clearErrors("categoryID");setValue("categoryID", id)}} defaultValue={name} />
           )
         })}
       </div>
+      <span className={s.error}>
+        {errors.categoryID && <p>{errors.categoryID.message}</p>}
+      </span>
+
       <button className={s.submit_btn} type='submit'>IŠSAUGOTI</button>
     </form>
   )
 }
 
 export default AddExpenseForm
-
-{/* <select {...register("expensesCategoryID", {
-            required: true,
-            valueAsNumber: true
-          })}>
-            <option value="" disabled style={{ display: 'none' }}>Kategorija</option>
-            <option value="1">Maistas</option>
-            <option value="2">Kuras</option>
-            <option value="3">Safkis</option>
-            <option value="4">Kita</option>
-            <option value="5">Vaistai</option>
-            <option value="6">Senukai</option>
-            <option value="7">Darbas</option>
-            <option value="8">Mokesčiai</option>
-            <option value="9">Lizingas</option>
-          </select> */}
-
-{/* <Select
-          
-                styles={{
-                  control: (baseStyles, state) => ({
-                    ...baseStyles,
-                    backgroundColor: state.isFocused ? 'white' : 'white',
-                    borderColor: state.isFocused ? 'white' : 'white',
-                    // backgroundColor: 'white',
-                    border: 'none',
-                    borderRadius: '1rem',
-                    padding: '0.5rem'
-                  }),
-                }}
-                options={options} className={s.select} /> */}

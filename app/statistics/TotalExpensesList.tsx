@@ -20,9 +20,9 @@ const TotalExpensesList = ({ categoryWithExpenses }: any) => {
     <>
       <h4 className={s.title} >Šį mėnesį išleista</h4>
       <ul className={s.list}>
-        {categoryWithExpenses.map(({ id, name, CategoriesOnExpenses }: any) => {
+        {categoryWithExpenses.map(({ id, name, expenses }: any) => {
           return (
-            <TotalExpensesListItem key={id} name={name} expenses={CategoriesOnExpenses} />
+            <TotalExpensesListItem key={id} name={name} expenses={expenses} />
           )
         })}
       </ul>

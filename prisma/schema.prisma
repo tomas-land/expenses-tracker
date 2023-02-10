@@ -1,6 +1,6 @@
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["referentialActions"]
+  provider = "prisma-client-js"
+  // previewFeatures = ["referentialActions"]
 }
 
 datasource db {
@@ -8,30 +8,48 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model CategoriesOnExpenses {
-  categoryId Int
-  expenseId  Int
-  assignedAt DateTime @default(now())
-  Category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  Expense    Expense  @relation(fields: [expenseId], references: [id], onDelete: Cascade)
+// model CategoriesOnExpenses {
+//   categoryId Int
+//   expenseId  Int
+//   assignedAt DateTime @default(now())
+//   Category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+//   Expense    Expense  @relation(fields: [expenseId], references: [id], onDelete: Cascade)
 
-  @@id([expenseId, categoryId])
-  @@index([categoryId], map: "CategoriesOnExpenses_categoryId_fkey")
+//   @@id([expenseId, categoryId])
+//   @@index([categoryId], map: "CategoriesOnExpenses_categoryId_fkey")
+// }
+
+// model Category {
+//   id                   Int                    @id @default(autoincrement())
+//   name                 String                 @unique
+//   createdAt            DateTime?              @default(now())
+//   updatedAt            DateTime?
+//   CategoriesOnExpenses CategoriesOnExpenses[]
+// }
+
+// model Expense {
+//   id                   Int                    @id @default(autoincrement())
+//   amount               Int
+//   desc                 String?
+//   createdAt            DateTime?              @default(now())
+//   updatedAt            DateTime?
+//   CategoriesOnExpenses CategoriesOnExpenses[]
+// }
+
+model Categories {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  createdAt DateTime?  @default(now())
+  updatedAt DateTime?
+  expenses  Expenses[]
 }
 
-model Category {
-  id                   Int                    @id @default(autoincrement())
-  name                 String                 @unique
-  createdAt            DateTime?              @default(now())
-  updatedAt            DateTime?
-  CategoriesOnExpenses CategoriesOnExpenses[]
-}
-
-model Expense {
-  id                   Int                    @id @default(autoincrement())
-  amount               Int
-  desc                 String?
-  createdAt            DateTime?              @default(now())
-  updatedAt            DateTime?
-  CategoriesOnExpenses CategoriesOnExpenses[]
+model Expenses {
+  id         Int        @id @default(autoincrement())
+  amount     Int
+  desc       String?
+  createdAt  DateTime?  @default(now())
+  updatedAt  DateTime?
+  category Categories @relation(fields: [categoryID], references: [id])
+  categoryID Int
 }
