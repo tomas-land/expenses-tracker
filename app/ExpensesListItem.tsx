@@ -33,7 +33,7 @@ const ExpensesListItem = ({ expense }: any) => {
   }
   const formatedDate = dayjs(createdAt).format('YYYY MM-DD')
   const formatedHours = dayjs(createdAt).format('HH:mm')
-
+  
   return (
     <li className={s.list_item}>
       <div>
