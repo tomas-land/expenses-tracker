@@ -1,19 +1,35 @@
+@import '@styles/_variables.scss';
+
 .total_expenses {
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
   padding: 1rem 1rem;
+  font-size: 0.8rem;
   background-color: white;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 
-  .date::first-letter {
+  .current_month::first-letter {
     text-transform: capitalize;
+  }
+
+  .prev_month {
+    color: $textColorDarkGray;
   }
 
   .total {
     display: flex;
     align-items: center;
     gap: 0.2rem;
+    .euro_icon{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0.5rem 0 0.1rem;
+    }
+    .prev_month_total {
+      color: $textColorDarkGray;
+    }
   }
 }

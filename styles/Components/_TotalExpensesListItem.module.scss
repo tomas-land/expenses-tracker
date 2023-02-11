@@ -36,9 +36,18 @@
     }
 
     .amount_radio {
-      display: flex;
+      display: flex;    
       align-items: center;
-      gap: 1rem;
+      justify-content: center;
+      .prev_month_amount{
+        color: $textColorDarkGray;
+      }
+      .euro_icon{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 0.5rem 0 0.1rem;
+      }
     }
   }
 
