@@ -84,7 +84,8 @@ body {
   background-color: #f3f4f6;
   margin: auto;
   max-width: 425px;
-  border: 1px solid #9c9b9b;
+  border-left: 1px solid #9c9b9b;
+  border-right: 1px solid #9c9b9b;
 }
 
 main {
