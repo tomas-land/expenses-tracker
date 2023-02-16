@@ -8,8 +8,6 @@ import { getCategoriesWithExpenses } from '@lib/prisma/expenses_by_category'
 import TotalExpensesList from './TotalExpensesList';
 import TotalDisplay from './TotalDisplay';
 
-import dayjs from 'dayjs';
-
 export const dynamic = 'force-dynamic'
 
 async function getCategoriesWithExpensesDB() {
@@ -30,8 +28,6 @@ const StatsPage = async () => {
   const totalAmountExpenses = await getTotalAmountExpensesDB();
   const previousMonthTotalAmountExpenses = await getPreviousMonthTotalAmountExpensesDB();
 
-  console.log(previousMonthTotalAmountExpenses)
-  // console.dir(categoriesWithExpenses, {depth: null})
   return (
     <section className={s.stats_page}>
       <div className={s.top_btns}>
@@ -39,10 +35,13 @@ const StatsPage = async () => {
         <Link href="/"><button className={s.back_btn} ><IoIosAdd /></button></Link>
       </div>
       <TotalDisplay totalAmountExpenses={totalAmountExpenses} previousMonthTotalAmountExpenses={previousMonthTotalAmountExpenses}/>
-      <TotalExpensesList categoriesWithExpenses={categoriesWithExpenses} />
+      <TotalExpensesList categoriesWithExpenses={categoriesWithExpenses} totalAmountExpenses={totalAmountExpenses}/>
     </section>
   )
 }
 
 export default StatsPage
 
+// console.log('///////////////////////////////////start')
+// console.dir(categoriesWithExpenses, {depth: null})
+// console.log('///////////////////////////////////finish')

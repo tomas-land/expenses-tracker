@@ -1,4 +1,3 @@
-
 import React from 'react'
 
 import s from '@styles/Pages/_Home.module.scss'
@@ -16,7 +15,7 @@ const getExpensesWithCategoryDB = async () => {
 
 const Home = async () => {
   const expenses = await getExpensesWithCategoryDB();
-
+  
   return (
     <section className={s.home}>
       <BalanceDisplay expenses={expenses} />

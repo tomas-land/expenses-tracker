@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import s from '@styles/Components/_TotalExpensesListItem.module.scss'
 
 import { GrFormDown } from 'react-icons/gr';
@@ -10,28 +10,37 @@ import { useGlobalContext } from "@context/context"
 import dayjs from 'dayjs';
 
 
-const TotalExpensesListItem = ({ name, expenses }: any) => {
+const TotalExpensesListItem = ({ name, expenses, isChecked, setIsChecked }: any) => {
 
-  const { totalExpenses, addExpenses } = useGlobalContext();
+  const { sumTotalExpenses } = useGlobalContext();
   const [showSubItem, setShowSubItem] = useState(false)
 
   const toggleSubItems = () => {
     setShowSubItem((prev) => !prev)
   }
-  /////////////////////////// Current month expenses
+
+  ///////////// Current month expenses
   const startOFMonth = dayjs().startOf("month").toISOString();
   const currentMonthExpenses = expenses.filter((expense: any) => {
     return expense.createdAt > startOFMonth
   })
   const totalAmountByCategory = currentMonthExpenses?.map((expense: any) => expense.amount).reduce((prev: number, curr: number) => prev + curr, 0);
-  /////////////////////////// Previous month expenses
+  //////////// Previous month expenses
   const startOFPreviousMonth = dayjs().subtract(1, 'month').startOf("month").toISOString();
   const endOFPreviousMonth = dayjs().subtract(1, 'month').endOf("month").toISOString()
   const previousMonthExpenses = expenses.filter((expense: any) => {
     return expense.createdAt > startOFPreviousMonth && expense.createdAt < endOFPreviousMonth
   })
   const previousMonthTotalAmountByCategory = previousMonthExpenses?.map((expense: any) => expense.amount).reduce((prev: number, curr: number) => prev + curr, 0);
-  console.log(totalAmountByCategory)
+
+  const toggleRadio = (e: any): void => {
+    const { name, checked } = e.currentTarget
+    if (checked) {
+      setIsChecked([...isChecked, { name: name, checked: true }])
+    } else {
+      setIsChecked(isChecked.filter((item: any) => item.name !== name))
+    }
+  }
 
   return (
     <li className={s.list_item} >
@@ -43,30 +52,30 @@ const TotalExpensesListItem = ({ name, expenses }: any) => {
         <div className={s.amount_radio}>
           <div className={s.amount}>- {totalAmountByCategory} <span className={s.prev_month_amount}> / {previousMonthTotalAmountByCategory}</span> </div>
           <MdOutlineEuro color='gray' className={s.euro_icon} size={12} />
-          <input type="radio" value={totalAmountByCategory} onClick={(e: any) => addExpenses(+e.target.value)} />
+          <label htmlFor="categotyLabel">
+            <input type="checkbox" id="categotyLabel" value={totalAmountByCategory} onClick={(e: any) => sumTotalExpenses(+e.target.value)} name={name} onChange={e => toggleRadio(e)} checked={isChecked.some((item: any) => item.name === name)} />
+          </label>
         </div>
       </div>
 
       <div className={`${s.sub_items} ${showSubItem && s.open}`}>
         {
-          // previousMonthExpenses?.map((prev_expense: any) => {
-          //   return (
-              currentMonthExpenses?.map((expense: any) => {
-                return (
-                  <div className={s.sub_item} key={expense.id}>
-                    <div className={s.category_and_desc}>
-                      <div>{name}</div>
-                      <div>{expense.desc}</div>
-                    </div>
-                    <div className={s.amount_and_radio}>
-                      <div className={s.amount}>- <span>{expense.amount}</span> <MdOutlineEuro color='gray' size={12} /></div>
-                      <input type="radio" value={expense.amount} onClick={(e: any) => addExpenses(+e.target.value)} />
-                    </div>
-                  </div>
-                )
-              })
-          //   )
-          // })
+          currentMonthExpenses?.map((expense: any) => {
+            return (
+              <div className={s.sub_item} key={expense.id}>
+                <div className={s.desc}>
+                  <div>{expense.desc || name}</div>
+                </div>
+                <div className={s.amount_and_radio}>
+                  <div className={s.amount}>- <span>{expense.amount}</span></div>
+                  <MdOutlineEuro color='gray' className={s.euro_icon} size={12} />
+                  <label htmlFor="expenseLabel">
+                    <input type="checkbox" value={expense.amount} id="expenseLabel" onClick={(e: any) => sumTotalExpenses(+e.target.value)} name={expense.id} onChange={e => toggleRadio(e)} checked={isChecked.some((item: any) => item.name == expense.id)} />
+                  </label>
+                </div>
+              </div>
+            )
+          })
         }
       </div>
     </li>
@@ -74,3 +83,9 @@ const TotalExpensesListItem = ({ name, expenses }: any) => {
 }
 
 export default TotalExpensesListItem
+{/* <div>
+<input type="checkbox" value='radio1' name='rad1' onChange={e => toggleRadio(e)} checked={isChecked.some((item: any) => item.name === 'rad1')} />
+<input type="checkbox" value='radio2' name='rad2' onChange={e => toggleRadio(e)} checked={isChecked.some((item: any) => item.name === 'rad2')} />
+<input type="checkbox" value='radio3' name='rad3' onChange={e => toggleRadio(e)} checked={isChecked.some((item: any) => item.name === 'rad3')} />
+<button onClick={reset}>click</button>
+</div> */}
