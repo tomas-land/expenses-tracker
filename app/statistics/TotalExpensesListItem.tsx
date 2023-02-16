@@ -58,7 +58,7 @@ const TotalExpensesListItem = ({ name, expenses, isChecked, setIsChecked }: any)
           </label>
         </div>
       </div>
-
+      
       <div className={`${s.sub_items} ${showSubItem && s.open}`}>
         {
           currentMonthExpenses?.map((expense: any) => {
@@ -84,9 +84,3 @@ const TotalExpensesListItem = ({ name, expenses, isChecked, setIsChecked }: any)
 }
 
 export default TotalExpensesListItem
-{/* <div>
-<input type="checkbox" value='radio1' name='rad1' onChange={e => toggleRadio(e)} checked={isChecked.some((item: any) => item.name === 'rad1')} />
-<input type="checkbox" value='radio2' name='rad2' onChange={e => toggleRadio(e)} checked={isChecked.some((item: any) => item.name === 'rad2')} />
-<input type="checkbox" value='radio3' name='rad3' onChange={e => toggleRadio(e)} checked={isChecked.some((item: any) => item.name === 'rad3')} />
-<button onClick={reset}>click</button>
-</div> */}

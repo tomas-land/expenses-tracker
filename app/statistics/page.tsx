@@ -27,7 +27,10 @@ const StatsPage = async () => {
   const categoriesWithExpenses = await getCategoriesWithExpensesDB();
   const totalAmountExpenses = await getTotalAmountExpensesDB();
   const previousMonthTotalAmountExpenses = await getPreviousMonthTotalAmountExpensesDB();
-
+  
+  // console.log('///////////////////////////////////start')
+  // console.dir(categoriesWithExpenses, {depth: null})
+  // console.log('///////////////////////////////////finish')
   return (
     <section className={s.stats_page}>
       <div className={s.top_btns}>
@@ -41,7 +44,3 @@ const StatsPage = async () => {
 }
 
 export default StatsPage
-
-// console.log('///////////////////////////////////start')
-// console.dir(categoriesWithExpenses, {depth: null})
-// console.log('///////////////////////////////////finish')
