@@ -34,11 +34,12 @@ const TotalExpensesListItem = ({ name, expenses, isChecked, setIsChecked }: any)
   const previousMonthTotalAmountByCategory = previousMonthExpenses?.map((expense: any) => expense.amount).reduce((prev: number, curr: number) => prev + curr, 0);
 
   const toggleRadio = (e: any): void => {
-    const { name, checked } = e.currentTarget
+    const { name, checked, value } = e.currentTarget
     if (checked) {
       setIsChecked([...isChecked, { name: name, checked: true }])
     } else {
       setIsChecked(isChecked.filter((item: any) => item.name !== name))
+      sumTotalExpenses(-value);
     }
   }
 
