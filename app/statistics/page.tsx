@@ -7,9 +7,10 @@ import { getTotalAmountExpenses, getPreviousMonthTotalAmountExpenses } from '@li
 import { getCategoriesWithExpenses } from '@lib/prisma/expenses_by_category'
 import TotalExpensesList from './TotalExpensesList';
 import TotalDisplay from './TotalDisplay';
-import dynamic from 'next/dynamic'
-// import Chart from './Chart';
-const Chart = dynamic(() => import('./Chart'), { ssr: false }) // imports component dynamically on client side, to prevent hydration when rendering on server side
+// import dynamic from 'next/dynamic'
+import Chart from './Chart';
+// const Chart = dynamic(() => import('./Chart'), { ssr: false }) // imports component dynamically on client side, to prevent hydration when rendering on server side
+export const dynamic = 'force-dynamic'
 
 async function getCategoriesWithExpensesDB() {
   const categoryWithExpenses = await getCategoriesWithExpenses()
@@ -38,9 +39,9 @@ const StatsPage = async () => {
         <Link href="/"><button className={s.back_btn} ><MdOutlineKeyboardArrowLeft /></button></Link>
         <Link href="/"><button className={s.back_btn} ><IoIosAdd /></button></Link>
       </div>
-      <TotalDisplay totalAmountExpenses={totalAmountExpenses} previousMonthTotalAmountExpenses={previousMonthTotalAmountExpenses} />
+      {/* <TotalDisplay totalAmountExpenses={totalAmountExpenses} previousMonthTotalAmountExpenses={previousMonthTotalAmountExpenses} /> */}
       <Chart  />
-      <TotalExpensesList categoriesWithExpenses={categoriesWithExpenses} />
+      {/* <TotalExpensesList categoriesWithExpenses={categoriesWithExpenses} /> */}
     </section>
   )
 }
