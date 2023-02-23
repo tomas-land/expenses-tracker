@@ -7,8 +7,7 @@ import { GrFormDown } from 'react-icons/gr';
 import { MdOutlineEuro } from 'react-icons/md';
 import { useState } from 'react';
 import { useGlobalContext } from "@context/context"
-import dayjs from 'dayjs';
-
+import { startOFMonth, startOFPreviousMonth, endOFPreviousMonth } from '@lib/dayJS';
 
 const TotalExpensesListItem = ({ name, expenses, isChecked, setIsChecked }: any) => {
 
@@ -20,18 +19,16 @@ const TotalExpensesListItem = ({ name, expenses, isChecked, setIsChecked }: any)
   }
 
   ///////////// Current month expenses
-  const startOFMonth = dayjs().startOf("month").toISOString();
   const currentMonthExpenses = expenses.filter((expense: any) => {
     return expense.createdAt > startOFMonth
   })
-  const totalAmountByCategory = currentMonthExpenses?.map((expense: any) => expense.amount).reduce((prev: number, curr: number) => prev + curr, 0);
   //////////// Previous month expenses
-  const startOFPreviousMonth = dayjs().subtract(1, 'month').startOf("month").toISOString();
-  const endOFPreviousMonth = dayjs().subtract(1, 'month').endOf("month").toISOString()
   const previousMonthExpenses = expenses.filter((expense: any) => {
     return expense.createdAt > startOFPreviousMonth && expense.createdAt < endOFPreviousMonth
   })
   const previousMonthTotalAmountByCategory = previousMonthExpenses?.map((expense: any) => expense.amount).reduce((prev: number, curr: number) => prev + curr, 0);
+  
+  const totalAmountByCategory = currentMonthExpenses?.map((expense: any) => expense.amount).reduce((prev: number, curr: number) => prev + curr, 0);
 
   const toggleRadio = (e: any): void => {
     const { name, checked, value } = e.currentTarget
@@ -58,7 +55,7 @@ const TotalExpensesListItem = ({ name, expenses, isChecked, setIsChecked }: any)
           </label>
         </div>
       </div>
-      
+
       <div className={`${s.sub_items} ${showSubItem && s.open}`}>
         {
           currentMonthExpenses?.map((expense: any) => {

@@ -7,7 +7,7 @@ import { MdOutlineEuro } from 'react-icons/md'
 import { GrFormDown } from 'react-icons/gr'
 import { ImBin } from 'react-icons/im'
 import { useState } from 'react'
-import dayjs from 'dayjs';
+import { formateDate, formateHours } from '@lib/dayJS';
 
 
 const ExpensesListItem = ({ expense }: any) => {
@@ -31,9 +31,7 @@ const ExpensesListItem = ({ expense }: any) => {
       console.error(error);
     }
   }
-  const formatedDate = dayjs(createdAt).format('YYYY MM-DD')
-  const formatedHours = dayjs(createdAt).format('HH:mm')
-  
+
   return (
     <li className={s.list_item}>
       <div>
@@ -43,7 +41,7 @@ const ExpensesListItem = ({ expense }: any) => {
       <div className={s.amount}>-<span>{amount}</span><MdOutlineEuro color='gray' size={13} className={`${showExtraInfo ? s.rotate_up : null}`} /></div>
       <div className={`${s.extra_info} ${showExtraInfo && s.open}`}>
         {desc?.length > 0 && <div className={s.desc}>{desc}</div>}
-        <p className={s.date}><span>{formatedDate}</span><span>{formatedHours}</span></p>
+        <p className={s.date}><span>{formateDate(createdAt)}</span><span>{formateHours(createdAt)}</span></p>
         <ImBin size={15} className={s.delete_btn} onClick={() => deleteExpense(id)} />
       </div>
     </li>

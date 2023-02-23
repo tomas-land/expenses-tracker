@@ -4,15 +4,15 @@ import React from 'react'
 import s from '@styles/Components/_TotalDisplay.module.scss'
 import { MdOutlineEuro } from 'react-icons/md';
 import { useGlobalContext } from "@context/context"
-import moment from 'moment';
-import 'moment/locale/lt';
+import { currentMonthLT, previousMonthLT } from '@lib/dayJS';
 
 const TotalDisplay = ({ totalAmountExpenses, previousMonthTotalAmountExpenses }: any) => {
+  
   const { totalExpenses } = useGlobalContext();
-  const currentMonth = moment().format('MMMM');
+  
   return (
     <div className={s.total_expenses}>
-      <div className={s.current_month}>{currentMonth} <span className={s.prev_month}>/ Sausis</span></div>
+      <div className={s.current_and_prev_months}>{currentMonthLT} <span className={s.prev_month}>/ {previousMonthLT}</span></div>
       <div className={s.total}>
         <span>- {totalExpenses || totalAmountExpenses._sum.amount}</span>
         <span className={s.prev_month_total}>/ {previousMonthTotalAmountExpenses._sum.amount}</span>
@@ -22,4 +22,5 @@ const TotalDisplay = ({ totalAmountExpenses, previousMonthTotalAmountExpenses }:
   )
 }
 
+// export const dynamic = 'force-dynamic'
 export default TotalDisplay
