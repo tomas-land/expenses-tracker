@@ -36,7 +36,7 @@ const Chart = ({ categoriesWithExpenses }: any) => {
 
   return (
     <div className={s.chart}>
-      <PieChart width={350} height={360}>
+      <PieChart id="test" width={350} height={360}>
         {/* <defs>
           {categoriesWithHighestTotalAmountArr?.map((entry: any, index: any) => (
             <linearGradient id={`myGradient${index}`} key={index}>
@@ -53,6 +53,7 @@ const Chart = ({ categoriesWithExpenses }: any) => {
           ))}
         </defs> */}
         <Pie
+          id="test2"
           data={categoriesWithHighestTotalAmountArr}
           // cx={200}
           // cy={150}
@@ -97,8 +98,8 @@ const Chart = ({ categoriesWithExpenses }: any) => {
           innerRadius={55}
           cornerRadius={7}
           dataKey="amount"
-          // paddingAngle={5}
-          // innerRadius={isMobile ? 60 : 80}
+        // paddingAngle={5}
+        // innerRadius={isMobile ? 60 : 80}
         >
           {/* {categoriesWithHighestTotalAmountArr?.map((entry: any, index: any) => (
             <Cell key={`cell-${index}`} fill={`url(#myGradient${index})`} />
