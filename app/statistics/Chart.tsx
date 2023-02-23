@@ -4,22 +4,23 @@ import { PieChart, Pie, Cell, Tooltip } from "recharts";
 import s from "@styles/Components/_Chart.module.scss";
 import { startOFMonth } from '@lib/dayJS'
 
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
-const COLORS = [
-  { start: "#9e54ed", end: "#5c4cb6" },
-  { start: "#34c3ff", end: "#2876bd" },
-  { start: "#da9d35", end: "#e96935" },
-  { start: "#FFCC70", end: "#ebae07" },
-  { start: "#424242", end: "#424242" }
+// const COLORS = [
+//   { start: "#9e54ed", end: "#5c4cb6" },
+//   { start: "#34c3ff", end: "#2876bd" },
+//   { start: "#da9d35", end: "#e96935" },
+//   { start: "#FFCC70", end: "#ebae07" },
+//   { start: "#424242", end: "#424242" }
+// ];
+
+const data01 = [
+  { name: "Active Campagins", value: 90 },
+  { name: "Inactive Campagins", value: 25 },
+  { name: "ICPs with no campagins", value: 10 }
 ];
 
 const Chart = ({ categoriesWithExpenses }: any) => {
-  const data01 = [
-    { name: "Active Campagins", value: 90 },
-    { name: "Inactive Campagins", value: 25 },
-    { name: "ICPs with no campagins", value: 10 }
-  ];
-  
   // const currentMonthTotalExpensesAmountByCategoryArr = categoriesWithExpenses.map((category: any) => {
   //   const currentMonthExpensesArr = category.expenses.filter((expense: any) => {
   //     return expense.createdAt > startOFMonth
@@ -40,74 +41,22 @@ const Chart = ({ categoriesWithExpenses }: any) => {
 
   return (
     <div className={s.chart}>
-      <PieChart id="test" width={350} height={360}>
-        {/* <defs>
-          {categoriesWithHighestTotalAmountArr?.map((entry: any, index: any) => (
-            <linearGradient id={`myGradient${index}`} key={index}>
-              <stop
-                offset="0%"
-                stopColor={COLORS[index % COLORS.length].start}
-              />
-              <stop
-                offset="100%"
-                stopColor={COLORS[index % COLORS.length].end}
-                stopOpacity={0.8}
-              />
-            </linearGradient>
-          ))}
-        </defs> */}
+      <PieChart width={300} height={300}>
         <Pie
-          id="test2"
           data={data01}
-          // cx={200}
-          // cy={150}
-          // label={({
-          //   cx,
-          //   cy,
-          //   midAngle,
-          //   innerRadius,
-          //   outerRadius,
-          //   percent,
-          //   index,
-          // }: any) => {
-          //   const RADIAN = Math.PI / 180;
-          //   // eslint-disable-next-line
-          //   const radius = 25 + innerRadius + (outerRadius - innerRadius);
-          //   // eslint-disable-next-line
-          //   const x = cx + radius * Math.cos(-midAngle * RADIAN);
-          //   // eslint-disable-next-line
-          //   const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-          //   return (
-          //     <>
-          //       <text
-          //         style={{ fontSize: "10px" }}
-          //         x={x}
-          //         y={y}
-          //         fill="gray"
-          //         textAnchor={x > cx ? "start" : "end"}
-          //         dominantBaseline="central"
-
-          //       >
-          //         {`${categoriesWithHighestTotalAmountArr[index].name}`}
-          //       </text>
-          //       <text style={{ fontSize: "8px" }} x={x} y={y + 10} fill="gray" textAnchor={x > cx ? "start" : "end"} dominantBaseline="central">
-          //         {`${(percent * 100).toFixed(0)}%`} </text>
-          //     </>
-
-          //   );
-          // }}
-          isAnimationActive={true}
-          outerRadius={90}
-          innerRadius={55}
-          cornerRadius={7}
           dataKey="value"
-        // paddingAngle={5}
-        // innerRadius={isMobile ? 60 : 80}
+          cx={200}
+          cy={200}
+          innerRadius={80}
+          outerRadius={100}
         >
-          {/* {categoriesWithHighestTotalAmountArr?.map((entry: any, index: any) => (
-            <Cell key={`cell-${index}`} fill={`url(#myGradient${index})`} />
-          ))} */}
+          {data01?.map((entry, index) => (
+            <Cell
+              key={`cell-${index}`}
+              fill={COLORS[index % COLORS.length]}
+            />
+          ))}
+
         </Pie>
       </PieChart>
     </div>
