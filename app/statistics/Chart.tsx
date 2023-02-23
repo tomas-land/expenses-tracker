@@ -1,6 +1,5 @@
 "use client"
 
-import React, { useCallback, useState, useEffect } from "react";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 import s from "@styles/Components/_Chart.module.scss";
 import { startOFMonth } from '@lib/dayJS'
@@ -15,24 +14,29 @@ const COLORS = [
 ];
 
 const Chart = ({ categoriesWithExpenses }: any) => {
+  const data01 = [
+    { name: "Active Campagins", value: 90 },
+    { name: "Inactive Campagins", value: 25 },
+    { name: "ICPs with no campagins", value: 10 }
+  ];
+  
+  // const currentMonthTotalExpensesAmountByCategoryArr = categoriesWithExpenses.map((category: any) => {
+  //   const currentMonthExpensesArr = category.expenses.filter((expense: any) => {
+  //     return expense.createdAt > startOFMonth
+  //   })
+  //   const totalAmountByCategory = currentMonthExpensesArr?.map((expense: any) => expense.amount).reduce((prev: number, curr: number) => prev + curr, 0);
+  //   return { name: category.name, amount: totalAmountByCategory }
+  // })
 
-  const currentMonthTotalExpensesAmountByCategoryArr = categoriesWithExpenses.map((category: any) => {
-    const currentMonthExpensesArr = category.expenses.filter((expense: any) => {
-      return expense.createdAt > startOFMonth
-    })
-    const totalAmountByCategory = currentMonthExpensesArr?.map((expense: any) => expense.amount).reduce((prev: number, curr: number) => prev + curr, 0);
-    return { name: category.name, amount: totalAmountByCategory }
-  })
+  // const categoriesWithExpensesByAmountArr = currentMonthTotalExpensesAmountByCategoryArr.sort((a: any, b: any) => b.amount - a.amount)
+  // const categoriesWithHighestTotalAmountArr = categoriesWithExpensesByAmountArr.slice(0, 4)
+  // const categoriesWithLowestTotalAmountArr = categoriesWithExpensesByAmountArr.slice(4, categoriesWithExpensesByAmountArr.length)
+  // const sumOfLowestTotalAmounts = categoriesWithLowestTotalAmountArr.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0)
 
-  const categoriesWithExpensesByAmountArr = currentMonthTotalExpensesAmountByCategoryArr.sort((a: any, b: any) => b.amount - a.amount)
-  const categoriesWithHighestTotalAmountArr = categoriesWithExpensesByAmountArr.slice(0, 4)
-  const categoriesWithLowestTotalAmountArr = categoriesWithExpensesByAmountArr.slice(4, categoriesWithExpensesByAmountArr.length)
-  const sumOfLowestTotalAmounts = categoriesWithLowestTotalAmountArr.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0)
-
-  const isAmountHigherThanZero = categoriesWithHighestTotalAmountArr.some((item: any) => item.amount > 0)
-  if (isAmountHigherThanZero) {
-    categoriesWithHighestTotalAmountArr.push({ name: 'Kita', amount: sumOfLowestTotalAmounts })
-  }
+  // const isAmountHigherThanZero = categoriesWithHighestTotalAmountArr.some((item: any) => item.amount > 0)
+  // if (isAmountHigherThanZero) {
+  //   categoriesWithHighestTotalAmountArr.push({ name: 'Kita', amount: sumOfLowestTotalAmounts })
+  // }
 
   return (
     <div className={s.chart}>
@@ -54,7 +58,7 @@ const Chart = ({ categoriesWithExpenses }: any) => {
         </defs> */}
         <Pie
           id="test2"
-          data={categoriesWithHighestTotalAmountArr}
+          data={data01}
           // cx={200}
           // cy={150}
           // label={({
@@ -97,7 +101,7 @@ const Chart = ({ categoriesWithExpenses }: any) => {
           outerRadius={90}
           innerRadius={55}
           cornerRadius={7}
-          dataKey="amount"
+          dataKey="value"
         // paddingAngle={5}
         // innerRadius={isMobile ? 60 : 80}
         >
