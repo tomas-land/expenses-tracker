@@ -92,6 +92,7 @@ const Chart = ({ categoriesWithExpenses }: any) => {
 
             );
           }}
+          isAnimationActive={false}
           outerRadius={90}
           innerRadius={55}
           cornerRadius={7}
