@@ -37,7 +37,7 @@ const Chart = ({ categoriesWithExpenses }: any) => {
   return (
     <div className={s.chart}>
       <PieChart width={350} height={360}>
-        <defs>
+        {/* <defs>
           {categoriesWithHighestTotalAmountArr?.map((entry: any, index: any) => (
             <linearGradient id={`myGradient${index}`} key={index}>
               <stop
@@ -51,48 +51,48 @@ const Chart = ({ categoriesWithExpenses }: any) => {
               />
             </linearGradient>
           ))}
-        </defs>
+        </defs> */}
         <Pie
           data={categoriesWithHighestTotalAmountArr}
           // cx={200}
           // cy={150}
-          label={({
-            cx,
-            cy,
-            midAngle,
-            innerRadius,
-            outerRadius,
-            percent,
-            index,
-          }: any) => {
-            const RADIAN = Math.PI / 180;
-            // eslint-disable-next-line
-            const radius = 25 + innerRadius + (outerRadius - innerRadius);
-            // eslint-disable-next-line
-            const x = cx + radius * Math.cos(-midAngle * RADIAN);
-            // eslint-disable-next-line
-            const y = cy + radius * Math.sin(-midAngle * RADIAN);
+          // label={({
+          //   cx,
+          //   cy,
+          //   midAngle,
+          //   innerRadius,
+          //   outerRadius,
+          //   percent,
+          //   index,
+          // }: any) => {
+          //   const RADIAN = Math.PI / 180;
+          //   // eslint-disable-next-line
+          //   const radius = 25 + innerRadius + (outerRadius - innerRadius);
+          //   // eslint-disable-next-line
+          //   const x = cx + radius * Math.cos(-midAngle * RADIAN);
+          //   // eslint-disable-next-line
+          //   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
-            return (
-              <>
-                <text
-                  style={{ fontSize: "10px" }}
-                  x={x}
-                  y={y}
-                  fill="gray"
-                  textAnchor={x > cx ? "start" : "end"}
-                  dominantBaseline="central"
+          //   return (
+          //     <>
+          //       <text
+          //         style={{ fontSize: "10px" }}
+          //         x={x}
+          //         y={y}
+          //         fill="gray"
+          //         textAnchor={x > cx ? "start" : "end"}
+          //         dominantBaseline="central"
 
-                >
-                  {`${categoriesWithHighestTotalAmountArr[index].name}`}
-                </text>
-                <text style={{ fontSize: "8px" }} x={x} y={y + 10} fill="gray" textAnchor={x > cx ? "start" : "end"} dominantBaseline="central">
-                  {`${(percent * 100).toFixed(0)}%`} </text>
-              </>
+          //       >
+          //         {`${categoriesWithHighestTotalAmountArr[index].name}`}
+          //       </text>
+          //       <text style={{ fontSize: "8px" }} x={x} y={y + 10} fill="gray" textAnchor={x > cx ? "start" : "end"} dominantBaseline="central">
+          //         {`${(percent * 100).toFixed(0)}%`} </text>
+          //     </>
 
-            );
-          }}
-          isAnimationActive={false}
+          //   );
+          // }}
+          isAnimationActive={true}
           outerRadius={90}
           innerRadius={55}
           cornerRadius={7}
@@ -100,9 +100,9 @@ const Chart = ({ categoriesWithExpenses }: any) => {
           // paddingAngle={5}
           // innerRadius={isMobile ? 60 : 80}
         >
-          {categoriesWithHighestTotalAmountArr?.map((entry: any, index: any) => (
+          {/* {categoriesWithHighestTotalAmountArr?.map((entry: any, index: any) => (
             <Cell key={`cell-${index}`} fill={`url(#myGradient${index})`} />
-          ))}
+          ))} */}
         </Pie>
       </PieChart>
     </div>
