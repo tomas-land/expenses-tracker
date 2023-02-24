@@ -39,7 +39,7 @@ const StatsPage = async () => {
         <Link href="/"><button className={s.back_btn} ><IoIosAdd /></button></Link>
       </div>
       <TotalDisplay totalAmountExpenses={totalAmountExpenses} previousMonthTotalAmountExpenses={previousMonthTotalAmountExpenses} />
-      <Chart  />
+      <Chart categoriesWithExpenses={categoriesWithExpenses} />
       <TotalExpensesList categoriesWithExpenses={categoriesWithExpenses} />
     </section>
   )
