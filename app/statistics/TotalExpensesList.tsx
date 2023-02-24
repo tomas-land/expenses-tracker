@@ -33,13 +33,13 @@ const TotalExpensesList = ({ categoriesWithExpenses }: any) => {
           />
         </div>
       </div>
-      {/* <ul className={s.list}>
+      <ul className={s.list}>
         {categoriesWithExpenses?.map(({ id, name, expenses }: any) => {
           return (
             <TotalExpensesListItem key={id} name={name} expenses={expenses} isChecked={isChecked} setIsChecked={setIsChecked} />
           )
         })}
-      </ul> */}
+      </ul>
     </>
   )
 }
