@@ -41,7 +41,7 @@ const StatsPage = async () => {
       </div>
       <TotalDisplay totalAmountExpenses={totalAmountExpenses} previousMonthTotalAmountExpenses={previousMonthTotalAmountExpenses} />
       <Chart  />
-      {/* <TotalExpensesList categoriesWithExpenses={categoriesWithExpenses} /> */}
+      <TotalExpensesList categoriesWithExpenses={categoriesWithExpenses} />
     </section>
   )
 }
