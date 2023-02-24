@@ -9,7 +9,7 @@ import TotalExpensesList from './TotalExpensesList';
 import TotalDisplay from './TotalDisplay';
 import Chart from './Chart';
 
-export const dynamic = "auto"
+
 
 async function getCategoriesWithExpensesDB() {
   const categoryWithExpenses = await getCategoriesWithExpenses()
@@ -38,9 +38,9 @@ const StatsPage = async () => {
         <Link href="/"><button className={s.back_btn} ><MdOutlineKeyboardArrowLeft /></button></Link>
         <Link href="/"><button className={s.back_btn} ><IoIosAdd /></button></Link>
       </div>
-      <TotalDisplay totalAmountExpenses={totalAmountExpenses} previousMonthTotalAmountExpenses={previousMonthTotalAmountExpenses} />
+      {/* <TotalDisplay totalAmountExpenses={totalAmountExpenses} previousMonthTotalAmountExpenses={previousMonthTotalAmountExpenses} /> */}
       <Chart categoriesWithExpenses={categoriesWithExpenses} />
-      <TotalExpensesList categoriesWithExpenses={categoriesWithExpenses} />
+      {/* <TotalExpensesList categoriesWithExpenses={categoriesWithExpenses} /> */}
     </section>
   )
 }

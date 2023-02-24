@@ -4,7 +4,7 @@ import React, { useCallback, useState, useEffect } from "react";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 import s from "@styles/Components/_Chart.module.scss";
 import { startOFMonth } from '@lib/dayJS'
-
+export const dynamic = "auto"
 const COLORS = [
   { start: "#9e54ed", end: "#5c4cb6" },
   { start: "#34c3ff", end: "#2876bd" },
