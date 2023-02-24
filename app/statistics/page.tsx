@@ -7,9 +7,14 @@ import { getTotalAmountExpenses, getPreviousMonthTotalAmountExpenses } from '@li
 import { getCategoriesWithExpenses } from '@lib/prisma/expenses_by_category'
 import TotalExpensesList from './TotalExpensesList';
 import TotalDisplay from './TotalDisplay';
-import Chart from './Chart';
+// import Chart from './Chart';
+import dynamic from 'next/dynamic';
 
-export const dynamic = 'force-dynamic'
+const Chart = dynamic(
+  () => import('./Chart'),
+  { ssr: false }
+)
+// export const dynamic = 'force-dynamic'
 
 async function getCategoriesWithExpensesDB() {
   const categoryWithExpenses = await getCategoriesWithExpenses()
