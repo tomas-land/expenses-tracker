@@ -9,7 +9,7 @@ import TotalExpensesList from './TotalExpensesList';
 import TotalDisplay from './TotalDisplay';
 import Chart from './Chart';
 
-// export const dynamic = 'force-dynamic'
+export const dynamic = "force-static"
 
 async function getCategoriesWithExpensesDB() {
   const categoryWithExpenses = await getCategoriesWithExpenses()
