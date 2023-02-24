@@ -9,7 +9,7 @@ import { VscDebugRestart } from 'react-icons/vsc';
 import { useGlobalContext } from "@context/context"
 
 
-const TotalExpensesList = () => {
+const TotalExpensesList = ({ categoriesWithExpenses }: any) => {
   const { setTotalExpenses } = useGlobalContext();
 
   const [isChecked, setIsChecked] = useState<any>([{ name: '', checked: false }])
@@ -18,7 +18,7 @@ const TotalExpensesList = () => {
   useEffect(() => {
     router.refresh()
   }, [router])
-
+  
   const reset = () => {
     setIsChecked([])
     setTotalExpenses(null)
@@ -33,13 +33,13 @@ const TotalExpensesList = () => {
           />
         </div>
       </div>
-      {/* <ul className={s.list}>
+      <ul className={s.list}>
         {categoriesWithExpenses?.map(({ id, name, expenses }: any) => {
           return (
             <TotalExpensesListItem key={id} name={name} expenses={expenses} isChecked={isChecked} setIsChecked={setIsChecked} />
           )
         })}
-      </ul> */}
+      </ul>
     </>
   )
 }

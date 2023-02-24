@@ -9,6 +9,7 @@ import TotalExpensesList from './TotalExpensesList';
 import TotalDisplay from './TotalDisplay';
 import Chart from './Chart';
 
+
 async function getCategoriesWithExpensesDB() {
   const categoryWithExpenses = await getCategoriesWithExpenses()
   return categoryWithExpenses;
@@ -38,8 +39,7 @@ const StatsPage = async () => {
       </div>
       <TotalDisplay totalAmountExpenses={totalAmountExpenses} previousMonthTotalAmountExpenses={previousMonthTotalAmountExpenses} />
       <Chart categoriesWithExpenses={categoriesWithExpenses} />
-      <TotalDisplay totalAmountExpenses={totalAmountExpenses} previousMonthTotalAmountExpenses={previousMonthTotalAmountExpenses} />
-
+      <TotalExpensesList categoriesWithExpenses={categoriesWithExpenses} />
     </section>
   )
 }
