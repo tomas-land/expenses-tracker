@@ -43,5 +43,5 @@ const StatsPage = async () => {
     </section>
   )
 }
-
+export const dynamic = 'force-dynamic'
 export default StatsPage
