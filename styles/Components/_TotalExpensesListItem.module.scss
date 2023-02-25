@@ -104,9 +104,10 @@
 
   .sub_items {
     width: 100%;
-    overflow: hidden;
+    overflow: scroll;
     max-height: 0;
     transition: max-height 0.5s ease;
+
 
     .sub_item {
       display: flex;

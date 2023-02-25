@@ -86,6 +86,7 @@ body {
   max-width: 425px;
   border-left: 1px solid #9c9b9b;
   border-right: 1px solid #9c9b9b;
+  height: 100vh;
 }
 
 main {

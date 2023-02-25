@@ -11,7 +11,7 @@ const TotalDisplay = ({ totalAmountExpenses, previousMonthTotalAmountExpenses }:
   const { totalExpenses } = useGlobalContext();
   
   return (
-    <div className={s.total_expenses}>
+    <div className={s.total_display}>
       <div className={s.current_and_prev_months}>{currentMonthLT} <span className={s.prev_month}>/ {previousMonthLT}</span></div>
       <div className={s.total}>
         <span>- {totalExpenses || totalAmountExpenses._sum.amount}</span>

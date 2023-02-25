@@ -3,13 +3,13 @@
 .stats_page {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  padding: 1rem 0;
+  padding: 1rem 0 2rem;
 
   .top_btns {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 3rem;
 
     .back_btn {
       display: flex;

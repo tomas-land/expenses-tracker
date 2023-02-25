@@ -36,7 +36,7 @@ const Chart = ({ categoriesWithExpenses }: any) => {
 
   return (
     <div className={s.chart}>
-      <PieChart width={350} height={360}>
+      <PieChart width={350} height={300}>
         <defs>
           {categoriesWithHighestTotalAmountArr?.map((entry: any, index: any) => (
             <linearGradient id={`myGradient${index}`} key={index}>

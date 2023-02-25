@@ -6,20 +6,22 @@ import Link from 'next/link';
 import s from '@styles/Components/_AddExpenseForm.module.scss'
 import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 import { IoIosAdd } from 'react-icons/io';
+import { BsPlusCircle } from 'react-icons/bs';
+import { HiOutlineDotsVertical } from 'react-icons/hi';
 import { iCategory } from '@lib/interfaces';
 
 
 const AddExpenseForm = ({ categories }: any) => {
-// console.log(categories)
+  // console.log(categories)
   const router = useRouter()
-  const { register, handleSubmit, setValue, setError, getValues,clearErrors, formState: { errors } } = useForm({
+  const { register, handleSubmit, setValue, setError, getValues, clearErrors, formState: { errors } } = useForm({
     defaultValues: {
       amount: '',
       desc: '',
       categoryID: 0
     }
   });
-const categoryId = getValues('categoryID');
+  const categoryId = getValues('categoryID');
   const onSubmit = async ({ categoryID, amount, desc }: any) => {
     // console.log(amount, categoryID, desc);
     if (categoryID === 0) {
@@ -43,8 +45,8 @@ const categoryId = getValues('categoryID');
   return (
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={s.top_btns}>
-        <Link href="/"><button className={s.back_btn} ><MdOutlineKeyboardArrowLeft /></button></Link>
-        <Link href="/"><button className={s.back_btn} ><IoIosAdd /></button></Link>
+        <Link href="/"><button className={`${s.back_btn} ${s.btn}`} ><MdOutlineKeyboardArrowLeft /></button></Link>
+        <Link href="/"><button className={`${s.dots_btn} ${s.btn}`} ><HiOutlineDotsVertical /></button></Link>
       </div>
       <div className={s.inputs}>
         <input type="number" className={s.amount_input} placeholder='0' autoComplete='off' {...register("amount", {
@@ -71,9 +73,10 @@ const categoryId = getValues('categoryID');
       <div className={s.category_btns}>
         {categories?.map(({ id, name }: iCategory) => {
           return (
-            <input type='button' key={id} className={s.btn} onClick={() => {clearErrors("categoryID");setValue("categoryID", id)}} defaultValue={name} />
+            <input type='button' key={id} className={s.btn} onClick={() => { clearErrors("categoryID"); setValue("categoryID", id) }} defaultValue={name} />
           )
         })}
+        <button className={`${s.new_category_btn} ${s.btn}`} ><BsPlusCircle /></button>
       </div>
       <span className={s.error}>
         {errors.categoryID && <p>{errors.categoryID.message}</p>}
