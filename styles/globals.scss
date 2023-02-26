@@ -73,7 +73,7 @@
   }
 } */
 /* ///////////////////////////////////////////////////////////// */
-// @import '_variables.scss';
+@import '_variables.scss';
 
 * {
   box-sizing: border-box;
@@ -82,7 +82,7 @@
 }
 
 body {
-  background-color: #f3f4f6;
+  background-color: $color-bg;
   margin: auto;
   max-width: 425px; // selected this width to preview as mobile screen on larger screens
   border-left: 1px solid rgb(156, 155, 155);

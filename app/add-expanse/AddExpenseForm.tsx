@@ -1,18 +1,19 @@
 "use client"
 
+import React, { useState } from 'react'
 import { useRouter } from 'next/navigation';
 import { useForm } from "react-hook-form";
 import Link from 'next/link';
 import s from '@styles/Components/_AddExpenseForm.module.scss'
 import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
-import { IoIosAdd } from 'react-icons/io';
 import { BsPlusCircle } from 'react-icons/bs';
 import { HiOutlineDotsVertical } from 'react-icons/hi';
 import { iCategory } from '@lib/interfaces';
+import ModalAddCategory from '@app/components/ModalAddCategory';
 
 
 const AddExpenseForm = ({ categories }: any) => {
-  // console.log(categories)
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter()
   const { register, handleSubmit, setValue, setError, getValues, clearErrors, formState: { errors } } = useForm({
     defaultValues: {
@@ -35,7 +36,7 @@ const AddExpenseForm = ({ categories }: any) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      router.refresh();
+      // router.refresh();
       router.push("/");
     } catch (error) {
       console.error(error);
@@ -43,46 +44,51 @@ const AddExpenseForm = ({ categories }: any) => {
   }
 
   return (
-    <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-      <div className={s.top_btns}>
-        <Link href="/"><button className={`${s.back_btn} ${s.btn}`} ><MdOutlineKeyboardArrowLeft /></button></Link>
-        <Link href="/"><button className={`${s.dots_btn} ${s.btn}`} ><HiOutlineDotsVertical /></button></Link>
-      </div>
-      <div className={s.inputs}>
-        <input type="number" className={s.amount_input} placeholder='0' autoComplete='off' {...register("amount", {
-          valueAsNumber: true,
-          required: "Privalote įvesti sumą !",
-          // pattern: {
-          //   value: /^[0-9]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-          //   message: "Naudokite tik skaičius"
-          // }
-        })} />
-        <span className={s.error}>
-          {errors.amount && errors.amount.message}
-        </span>
-        <div className={s.extra_info}>
-          <input type="text" placeholder='Įveskite papildomą informaciją...' autoComplete='off' {...register("desc", {
-            maxLength: 22
+    <>
+      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        <div className={s.top_btns}>
+          <Link href="/"><button className={`${s.back_btn} ${s.btn}`} ><MdOutlineKeyboardArrowLeft /></button></Link>
+          <Link href="/"><button className={`${s.dots_btn} ${s.btn}`} ><HiOutlineDotsVertical /></button></Link>
+        </div>
+        <div className={s.inputs}>
+          <input type="number" className={s.amount_input} placeholder='0' autoComplete='off' {...register("amount", {
+            valueAsNumber: true,
+            required: "Privalote įvesti sumą !",
+            // pattern: {
+            //   value: /^[0-9]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            //   message: "Naudokite tik skaičius"
+            // }
           })} />
+          <span className={s.error}>
+            {errors.amount && errors.amount.message}
+          </span>
+          <div className={s.extra_info}>
+            <input type="text" placeholder='Įveskite papildomą informaciją...' autoComplete='off' {...register("desc", {
+              maxLength: 22
+            })} />
+          </div>
+          <span className={s.error}>
+            {errors.desc && errors.desc.type === "maxLength" && <span>Aprašymas neturi viršyti 22 simbolių !</span>}
+          </span>
+        </div>
+        <div className={s.title}>Pasirinkite kategoriją</div>
+        <div className={s.category_btns}>
+          {categories?.map(({ id, name }: iCategory) => {
+            return (
+              <input type='button' key={id} className={s.btn} onClick={() => { clearErrors("categoryID"); setValue("categoryID", id) }} defaultValue={name} />
+            )
+          })}
+          <div className={`${s.new_category_btn} ${s.btn}`} onClick={() => setIsModalOpen(true)} ><BsPlusCircle /></div>
         </div>
         <span className={s.error}>
-          {errors.desc && errors.desc.type === "maxLength" && <span>Aprašymas neturi viršyti 22 simbolių !</span>}
+          {errors.categoryID && <span>{errors.categoryID.message}</span>}
         </span>
-      </div>
-      <div className={s.title}>Pasirinkite kategoriją</div>
-      <div className={s.category_btns}>
-        {categories?.map(({ id, name }: iCategory) => {
-          return (
-            <input type='button' key={id} className={s.btn} onClick={() => { clearErrors("categoryID"); setValue("categoryID", id) }} defaultValue={name} />
-          )
-        })}
-        <button className={`${s.new_category_btn} ${s.btn}`} ><BsPlusCircle /></button>
-      </div>
-      <span className={s.error}>
-        {errors.categoryID && <p>{errors.categoryID.message}</p>}
-      </span>
-      <button className={s.submit_btn} type='submit'>IŠSAUGOTI</button>
-    </form>
+        <button className={s.submit_btn} type='submit'>IŠSAUGOTI</button>
+      </form>
+      {
+        isModalOpen ? <ModalAddCategory setIsModalOpen={setIsModalOpen} /> : null
+      }
+    </>
   )
 }
 

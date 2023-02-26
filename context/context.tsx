@@ -8,7 +8,7 @@ interface IProps {
 export type ContextType = {
   totalExpenses: number;
   setTotalExpenses: any;
-  sumTotalExpenses:any;
+  sumTotalExpenses: any;
 
 }
 const AppContext = React.createContext<ContextType>({} as ContextType);
@@ -26,7 +26,8 @@ const AppProvider = ({ children }: IProps) => {
       value={{
         totalExpenses,
         setTotalExpenses,
-        sumTotalExpenses
+        sumTotalExpenses,
+
       }}
     >
       {children}

@@ -2,14 +2,14 @@
 
 .total_display {
   position: fixed;
-  width: calc(425px - 2rem);
+  width: calc(425px - 6rem);
   left: 50;
   right: 50%;
   transform: translateX(50%);
   z-index: 1;
   display: flex;
   justify-content: space-between;
-  margin-top: 4rem;
+  margin-top: 5rem;
   padding: 1rem 1rem;
   font-size: 0.9rem;
   background-color: white;
