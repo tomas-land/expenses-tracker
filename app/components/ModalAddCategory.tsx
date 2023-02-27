@@ -5,6 +5,8 @@ import s from '@styles/Components/Modal/_ModalAddCategory.module.scss'
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/navigation';
 
+export const dynamic = 'force-dynamic'
+
 
 const ModalAddCategory = ({ setIsModalOpen }: any) => {
   const router = useRouter()

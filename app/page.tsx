@@ -19,7 +19,7 @@ const Home = async () => {
   return (
     <section className={s.home}>
       <BalanceDisplay expenses={expenses} />
-      <ExpensesList expenses={expenses} />
+      {/* <ExpensesList expenses={expenses} /> */}
     </section>
   )
 }
