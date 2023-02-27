@@ -41,7 +41,7 @@ const ExpensesListItem = ({ expense }: any) => {
       <div className={s.amount}>-<span>{amount}</span><MdOutlineEuro color='gray' size={13} className={`${showExtraInfo ? s.rotate_up : null}`} /></div>
       <div className={`${s.extra_info} ${showExtraInfo && s.open}`}>
         {desc?.length > 0 && <div className={s.desc}>{desc}</div>}
-        <p className={s.date}><span>{formateDate(createdAt)}</span><span>{formateHours(createdAt)}</span></p>
+        <p className={s.date}><span suppressHydrationWarning >{formateDate(createdAt)}</span><span suppressHydrationWarning>{formateHours(createdAt)}</span></p>
         <ImBin size={15} className={s.delete_btn} onClick={() => deleteExpense(id)} />
       </div>
     </li>
