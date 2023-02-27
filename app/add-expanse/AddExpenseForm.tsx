@@ -9,7 +9,7 @@ import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 import { BsPlusCircle } from 'react-icons/bs';
 import { HiOutlineDotsVertical } from 'react-icons/hi';
 import { iCategory } from '@lib/interfaces';
-import ModalAddCategory from '@app/components/ModalAddCategory';
+import ModalAddCategory from '@app/add-expanse/ModalAddCategory';
 
 
 const AddExpenseForm = ({ categories }: any) => {
