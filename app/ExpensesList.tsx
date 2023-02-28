@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import ExpensesListItem from './ExpensesListItem';
 
+export const dynamic = 'force-dynamic'
 
 const ExpensesList = ( {expensesWithCategory} : any) => {
 

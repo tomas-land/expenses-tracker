@@ -2,7 +2,6 @@ import React from 'react'
 import AddExpenseForm from './AddExpenseForm'
 import { getCategories } from '@lib/prisma/categories'
 
-export const dynamic = 'force-dynamic'
 
 async function getCategoriesDB() {
   const categories = await getCategories()
