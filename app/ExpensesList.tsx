@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import ExpensesListItem from './ExpensesListItem';
 
 
-const ExpensesList = ({ expenses }: any) => {
+const ExpensesList = ({ expensesWithCategory }: any) => {
 
   // const router = useRouter()
   // useEffect(() => {
@@ -18,7 +18,7 @@ const ExpensesList = ({ expenses }: any) => {
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
       <ul className={s.list}>
-        {expenses?.map((expense: any) => {
+        {expensesWithCategory?.map((expense: any) => {
           return (
             <ExpensesListItem key={expense.id} expense={expense} />
           )

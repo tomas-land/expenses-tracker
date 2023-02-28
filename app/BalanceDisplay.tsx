@@ -4,14 +4,14 @@ import { IoMdStats, IoMdAdd } from 'react-icons/io';
 
 import s from '@styles/Components/_BalanceDisplay.module.scss'
 
-const BalanceDisplay = ({ expenses }: any) => {
-  const totalAmountExpenses = expenses?.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0);
+const BalanceDisplay = ({ expensesWithCategory }: any) => {
+  const totalAmountExpenses = expensesWithCategory?.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0);
 
   return (
     <div className={s.display}>
       <div className={s.btn_wrapper}>
         <Link href={'/statistics'}><IoMdStats fill='white' size='1.5rem' /></Link>
-        <Link href={'/add-expanse'}><IoMdAdd fill='white' size='1.8rem' /></Link>
+        <Link href={'/add-expense'}><IoMdAdd fill='white' size='1.8rem' /></Link>
       </div>
       <div className={s.balance_wrapper}>
         <h4>MANO IŠLAIDOS</h4>

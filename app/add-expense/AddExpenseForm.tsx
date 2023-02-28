@@ -9,7 +9,7 @@ import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 import { BsPlusCircle } from 'react-icons/bs';
 import { HiOutlineDotsVertical } from 'react-icons/hi';
 import { iCategory } from '@lib/interfaces';
-import ModalAddCategory from '@app/add-expanse/ModalAddCategory';
+import ModalAddCategory from '@app/add-expense/ModalAddCategory';
 
 
 const AddExpenseForm = ({ categories }: any) => {
@@ -48,7 +48,7 @@ const AddExpenseForm = ({ categories }: any) => {
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={s.top_btns}>
           <Link href="/"><button className={`${s.back_btn} ${s.btn}`} ><MdOutlineKeyboardArrowLeft /></button></Link>
-          <Link href="/"><button className={`${s.dots_btn} ${s.btn}`} ><HiOutlineDotsVertical /></button></Link>
+          <Link href="/add=-expense"><button className={`${s.dots_btn} ${s.btn}`} ><HiOutlineDotsVertical /></button></Link>
         </div>
         <div className={s.inputs}>
           <input type="number" className={s.amount_input} placeholder='0' autoComplete='off' {...register("amount", {

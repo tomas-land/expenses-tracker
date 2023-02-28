@@ -3,7 +3,7 @@ export interface iCategory {
   name: string;
   createdAt: Date;
   updatedAt: Date;
-  CategoriesOnExpenses: [];
+  expenses: iExpense[];
 }
 export interface iExpense {
   id: number;
@@ -11,5 +11,4 @@ export interface iExpense {
   desc?: null | string;
   createdAt: Date;
   updatedAt: Date;
-  CategoriesOnExpenses: [];
 }

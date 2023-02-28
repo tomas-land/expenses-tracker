@@ -1,12 +1,8 @@
-import React from 'react'
-
 import s from '@styles/Pages/_Home.module.scss'
 import BalanceDisplay from './BalanceDisplay';
 import ExpensesList from './ExpensesList';
 import { getExpensesWithCategory } from '@lib/prisma/expenses'
 
-
-export const dynamic = 'force-dynamic'
 
 const getExpensesWithCategoryDB = async () => {
   const data = await getExpensesWithCategory()
@@ -14,14 +10,14 @@ const getExpensesWithCategoryDB = async () => {
 }
 
 const Home = async () => {
-  const expenses = await getExpensesWithCategoryDB();
-  
+  const expensesWithCategory = await getExpensesWithCategoryDB();
   return (
     <section className={s.home}>
-      <BalanceDisplay expenses={expenses} />
-      <ExpensesList expenses={expenses} />
+      <BalanceDisplay expensesWithCategory={expensesWithCategory} />
+      <ExpensesList expensesWithCategory={expensesWithCategory} />
     </section>
   )
 }
 
+export const dynamic = 'force-dynamic'
 export default Home
