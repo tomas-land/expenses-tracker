@@ -3,6 +3,7 @@ import BalanceDisplay from './BalanceDisplay';
 import ExpensesList from './ExpensesList';
 import { getExpensesWithCategory } from '@lib/prisma/expenses'
 
+export const dynamic = 'force-dynamic'
 
 const getExpensesWithCategoryDB = async () => {
   const data = await getExpensesWithCategory()
