@@ -14,7 +14,7 @@ const Home = async () => {
   return (
     <section className={s.home}>
       <BalanceDisplay expensesWithCategory={expensesWithCategory} />
-      <ExpensesList expensesWithCategory={expensesWithCategory} />
+      {/* <ExpensesList expensesWithCategory={expensesWithCategory} /> */}
     </section>
   )
 }
