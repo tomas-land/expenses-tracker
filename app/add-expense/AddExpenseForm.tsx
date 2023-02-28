@@ -36,7 +36,7 @@ const AddExpenseForm = ({ categories }: any) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      router.refresh();
+      // router.refresh();
       router.push("/");
     } catch (error) {
       console.error(error);
