@@ -1,10 +1,10 @@
-import { iExpense } from "./../../../lib/interfaces";
 import {
   getExpensesWithCategory,
   createExpense,
   deleteExpense,
 } from "@lib/prisma/expenses";
 import { NextApiRequest, NextApiResponse } from "next";
+import { iExpense } from "@lib/interfaces";
 
 type Data = {
   expenses: iExpense[];
