@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import ExpensesListItem from './ExpensesListItem';
 
 
-const ExpensesList = ({ expensesWithCategory }: any) => {
+const ExpensesList = ( {expensesWithCategory} : any) => {
 
   // const router = useRouter()
   // useEffect(() => {
