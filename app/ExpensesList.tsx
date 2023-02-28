@@ -9,10 +9,10 @@ import ExpensesListItem from './ExpensesListItem';
 
 const ExpensesList = ( {expensesWithCategory} : any) => {
 
-  const router = useRouter()
-  useEffect(() => {
-    router.refresh()
-  }, [router])
+  // const router = useRouter()
+  // useEffect(() => {
+  //   router.refresh()
+  // }, [router])
 
   return (
     <div className={s.expenses_list}>
