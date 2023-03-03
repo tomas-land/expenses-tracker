@@ -45,8 +45,8 @@ const AddExpenseForm = ({ categories }: iProps) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      // router.refresh();
       router.push("/");
+      router.refresh();
     } catch (error) {
       console.error(error);
     }
@@ -57,7 +57,7 @@ const AddExpenseForm = ({ categories }: iProps) => {
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={s.top_btns}>
           <Link href="/"><button className={`${s.back_btn} ${s.btn}`} ><MdOutlineKeyboardArrowLeft /></button></Link>
-          <Link href="/add=-expense"><button className={`${s.dots_btn} ${s.btn}`} ><HiOutlineDotsVertical /></button></Link>
+          <Link href="/add-expense"><button className={`${s.dots_btn} ${s.btn}`} ><HiOutlineDotsVertical /></button></Link>
         </div>
         <div className={s.inputs}>
           <input type="number" className={s.amount_input} placeholder='0' autoComplete='off' {...register("amount", {
