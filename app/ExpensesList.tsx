@@ -5,7 +5,7 @@ import s from '@styles/Components/_ExpensesList.module.scss'
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import ExpensesListItem from './ExpensesListItem';
-import { iCategory, iExpense } from '@lib/interfaces';
+import { iExpense } from '@lib/interfaces';
 
 interface iProps {
   expensesWithCategory: iExpense[]
