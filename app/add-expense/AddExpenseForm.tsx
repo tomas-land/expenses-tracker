@@ -8,11 +8,20 @@ import s from '@styles/Components/_AddExpenseForm.module.scss'
 import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 import { BsPlusCircle } from 'react-icons/bs';
 import { HiOutlineDotsVertical } from 'react-icons/hi';
-import { iCategory } from '@lib/interfaces';
+// import { iCategory } from '@lib/interfaces';
 import ModalAddCategory from '@app/add-expense/ModalAddCategory';
 
+interface iProps {
+  categories: iCategory[]
+}
+interface iCategory {
+  id: number;
+  name: string;
+  createdAt: Date;
+  updatedAt?: Date;
 
-const AddExpenseForm = ({ categories }: any) => {
+}
+const AddExpenseForm = ({ categories }: iProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter()
   const { register, handleSubmit, setValue, setError, getValues, clearErrors, formState: { errors } } = useForm({

@@ -5,15 +5,19 @@ import s from '@styles/Components/_ExpensesList.module.scss'
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import ExpensesListItem from './ExpensesListItem';
+import { iCategory, iExpense } from '@lib/interfaces';
+
+interface iProps {
+  expensesWithCategory: iExpense[]
+}
 
 
-const ExpensesList = ( {expensesWithCategory} : any) => {
+const ExpensesList = ({ expensesWithCategory }: iProps) => {
 
   // const router = useRouter()
   // useEffect(() => {
   //   router.refresh()
   // }, [router])
-
   return (
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>

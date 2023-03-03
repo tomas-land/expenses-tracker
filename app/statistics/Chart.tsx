@@ -29,7 +29,7 @@ const Chart = ({ categoriesWithExpenses }: any) => {
   const categoriesWithLowestTotalAmountArr = categoriesWithExpensesByAmountArr.slice(4, categoriesWithExpensesByAmountArr.length)
   const sumOfLowestTotalAmounts = categoriesWithLowestTotalAmountArr.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0)
 
-  const isAmountHigherThanZero = categoriesWithHighestTotalAmountArr.some((item: any) => item.amount > 0)
+  const isAmountHigherThanZero = categoriesWithLowestTotalAmountArr.some((item: any) => item.amount > 0) // returns true if any of the items in the array is higher than 0
   if (isAmountHigherThanZero) {
     categoriesWithHighestTotalAmountArr.push({ name: 'Kita', amount: sumOfLowestTotalAmounts })
   }

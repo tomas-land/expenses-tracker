@@ -11,15 +11,14 @@ import { AppProvider } from '@context/context';
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: any
 }) {
   return (
     <html>
       <body>
-       {/* <head/> */}
+        {/* <head/> */}
         <main>
           <AppProvider>
-            {/* @ts-ignore */}
             {children}
           </AppProvider>
         </main>

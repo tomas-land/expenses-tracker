@@ -2,11 +2,14 @@ import s from '@styles/Pages/_Home.module.scss'
 import BalanceDisplay from './BalanceDisplay';
 import ExpensesList from './ExpensesList';
 import { getExpensesWithCategory } from '@lib/prisma/expenses'
+import { iExpense } from '@lib/interfaces'
 
 export const dynamic = 'force-dynamic'
 
-const getExpensesWithCategoryDB = async () => {
-  const data = await getExpensesWithCategory()
+
+
+const getExpensesWithCategoryDB = ():Promise<iExpense[]> => {
+  const data =  getExpensesWithCategory()
   return data
 }
 
