@@ -14,6 +14,11 @@ import ModalAddCategory from '@app/add-expense/ModalAddCategory';
 interface iProps {
   categories: iCategory[]
 }
+interface iFormData {
+  amount: string;
+  desc: string;
+  categoryID: number;
+}
 
 const AddExpenseForm = ({ categories }: iProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,7 +31,7 @@ const AddExpenseForm = ({ categories }: iProps) => {
     }
   });
   const categoryId = getValues('categoryID');
-  const onSubmit = async ({ categoryID, amount, desc }: any) => {
+  const onSubmit = async ({ categoryID, amount, desc }: iFormData) => {
     // console.log(amount, categoryID, desc);
     if (categoryID === 0) {
       setError("categoryID", { message: "Pasirinkite kategoriją" });
@@ -40,7 +45,7 @@ const AddExpenseForm = ({ categories }: iProps) => {
         body: JSON.stringify(body),
       });
       router.push("/");
-      router.refresh();
+      // router.refresh();
     } catch (error) {
       console.error(error);
     }

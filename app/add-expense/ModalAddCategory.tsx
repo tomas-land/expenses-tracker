@@ -5,13 +5,17 @@ import s from '@styles/Components/Modal/_ModalAddCategory.module.scss'
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/navigation';
 
+interface iProps {
+  setIsModalOpen: (value: boolean) => void;
+}
 
-const ModalAddCategory = ({ setIsModalOpen }: any) => {
+const ModalAddCategory = ({ setIsModalOpen }: iProps) => {
   const router = useRouter()
-  const { register, handleSubmit, formState: { errors } }: any = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const createNewCategory = async (categoryName: any) => {
+  const createNewCategory = async (categoryName:any) => {
     try {
+      const body = { categoryName};
       await fetch(`/api/categories`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -24,7 +28,7 @@ const ModalAddCategory = ({ setIsModalOpen }: any) => {
       console.error(error);
     }
   }
-  
+
   return (
     <div className={s.modal_add_category}>
       <div className={s.modal_overlay}>
