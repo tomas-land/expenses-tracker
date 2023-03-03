@@ -14,11 +14,6 @@ const TotalExpensesList = ({ categoriesWithExpenses }: any) => {
 
   const [isChecked, setIsChecked] = useState<any>([{ name: '', checked: false }])
 
-  const router = useRouter()
-  useEffect(() => {
-    router.refresh()
-  }, [router])
-  
   const reset = () => {
     setIsChecked([])
     setTotalExpenses(null)
