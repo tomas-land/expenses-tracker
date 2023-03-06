@@ -11,6 +11,7 @@ import { HiOutlineDotsVertical } from 'react-icons/hi';
 import { iCategory } from '@lib/interfaces';
 import ModalAddCategory from '@app/add-expense/ModalAddCategory';
 
+export const dynamic = 'force-dynamic'
 interface iProps {
   categories: iCategory[]
 }
@@ -93,9 +94,9 @@ const AddExpenseForm = ({ categories }: iProps) => {
         </span>
         <button className={s.submit_btn} type='submit'>IŠSAUGOTI</button>
       </form>
-      {
+      {/* {
         isModalOpen ? <ModalAddCategory setIsModalOpen={setIsModalOpen} /> : null
-      }
+      } */}
     </>
   )
 }

@@ -3,9 +3,9 @@ import AddExpenseForm from './AddExpenseForm'
 import { getCategories } from '@lib/prisma/categories'
 import { iCategory } from '@lib/interfaces'
 
-export const dynamic = 'force-dynamic'
 
-async function getCategoriesDB():Promise<iCategory[]> {
+
+async function getCategoriesDB() {
   const categories = await getCategories()
   return categories;
 }
