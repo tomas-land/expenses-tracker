@@ -27,7 +27,7 @@ const StatsPage = async () => {
   const categoriesWithExpenses = await getCategoriesWithExpensesDB();
   const totalAmountExpenses = await getTotalAmountExpensesDB();
   const previousMonthTotalAmountExpenses = await getPreviousMonthTotalAmountExpensesDB();
-console.log('///////////////////////////////////start')
+
   // console.log('///////////////////////////////////start')
   // console.dir(categoriesWithExpenses, {depth: null})
   // console.log('///////////////////////////////////finish')

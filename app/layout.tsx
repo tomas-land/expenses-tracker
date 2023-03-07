@@ -5,13 +5,8 @@ import "../styles/globals.scss"
 
 import * as React from 'react';
 import { AppProvider } from '@context/context';
-import { SWRConfig } from 'swr';
-import { getExpensesWithCategory } from '@lib/prisma/expenses';
-import { iExpense } from '@lib/interfaces';
-import useSWR from 'swr'
 
 // const inter = Inter({ subsets: ['latin'] })
-
 
 export default function RootLayout({children,}: {children: any}) {
   return (

@@ -6,7 +6,8 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import ExpensesListItem from './ExpensesListItem';
 import { iExpense } from '@lib/interfaces';
-import { useSWRrequest } from '@lib/hooks/useSWRrequest';
+// import { useSWRrequest } from '@lib/hooks/useSWRrequest';
+import useSWR from 'swr'
 
 // interface iProps {
 //   data: iExpense[],
@@ -14,7 +15,8 @@ import { useSWRrequest } from '@lib/hooks/useSWRrequest';
 // }
 
 const ExpensesList = () => {
-  const { data: expensesWithCategory, error }= useSWRrequest()
+  // const { data: expensesWithCategory, error }= useSWRrequest()
+  const { data: expensesWithCategory, error } = useSWR('/api/expenses')
   if (!expensesWithCategory) return <div>Loading...</div>;
   if (error) return <div>Fail to Load Data</div>;
   // const router = useRouter()

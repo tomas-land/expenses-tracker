@@ -19,7 +19,7 @@ const ExpensesListItem = ({ expense }: any) => {
   }
   const deleteExpense = async (id: number) => {
     try {
-      mutate('http://localhost:3000/api/expenses', data => data.filter((expense: any) => expense.id !== id), false)
+      mutate('/api/expenses', data => data.filter((expense: any) => expense.id !== id), false)
       const body = id;
       await fetch(`/api/expenses`, {
         method: "DELETE",
