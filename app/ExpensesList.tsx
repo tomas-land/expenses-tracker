@@ -17,7 +17,7 @@ import useSWR from 'swr'
 const ExpensesList = () => {
   // const { data: expensesWithCategory, error }= useSWRrequest()
   const fetcher = (url:string) => fetch(url).then(res => res.json());
-  const { data: expensesWithCategory, error } = useSWR('/api/expenses')
+  const { data: expensesWithCategory, error } = useSWR('/api/expenses', fetcher)
   if (!expensesWithCategory) return <div>Loading...</div>;
   if (error) return <div>Fail to Load Data</div>;
   // const router = useRouter()
