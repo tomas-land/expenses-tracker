@@ -6,18 +6,22 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import ExpensesListItem from './ExpensesListItem';
 import { iExpense } from '@lib/interfaces';
+import { useSWRrequest } from '@lib/hooks/useSWRrequest';
 
 interface iProps {
-  expensesWithCategory: iExpense[]
+  data: iExpense[],
+  error: string
 }
 
-
-const ExpensesList = ({ expensesWithCategory }: iProps) => {
-
+const ExpensesList = () => {
+  const { data: expensesWithCategory, error }: iProps = useSWRrequest('/api/expenses')
+  if (!expensesWithCategory) return <div>Loading...</div>;
+  if (error) return <div>Fail to Load Data</div>;
   // const router = useRouter()
   // useEffect(() => {
   //   router.refresh()
   // }, [router])
+
   return (
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>

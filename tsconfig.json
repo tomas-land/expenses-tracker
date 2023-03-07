@@ -40,7 +40,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "lib/prisma/index.tsx"  ],
+, "lib/prisma/index.tsx", "lib/hooks/useSWRrequest.ts"  ],
   "exclude": [
     "node_modules"
   ]

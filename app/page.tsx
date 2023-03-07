@@ -4,20 +4,19 @@ import ExpensesList from './ExpensesList';
 import { getExpensesWithCategory } from '@lib/prisma/expenses'
 import { iExpense } from '@lib/interfaces'
 
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
-
-const getExpensesWithCategoryDB = ():Promise<iExpense[]> => {
-  const data =  getExpensesWithCategory()
-  return data
-}
+// const getExpensesWithCategoryDB = (): Promise<iExpense[]> => {
+//   const data = getExpensesWithCategory()
+//   return data
+// }
 
 const Home = async () => {
-  const expensesWithCategory = await getExpensesWithCategoryDB();
+  // const expensesWithCategory = await getExpensesWithCategoryDB();
   return (
     <section className={s.home}>
-      <BalanceDisplay expensesWithCategory={expensesWithCategory} />
-      <ExpensesList expensesWithCategory={expensesWithCategory} />
+      <BalanceDisplay />
+      <ExpensesList />
     </section>
   )
 }

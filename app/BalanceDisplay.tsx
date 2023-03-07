@@ -1,10 +1,15 @@
+"use client"
+
 import React from 'react'
 import Link from 'next/link';
 import { IoMdStats, IoMdAdd } from 'react-icons/io';
-
+import { useSWRrequest } from '@lib/hooks/useSWRrequest';
 import s from '@styles/Components/_BalanceDisplay.module.scss'
 
-const BalanceDisplay = ({ expensesWithCategory }: any) => {
+const BalanceDisplay = () => {
+  const { data: expensesWithCategory, error } = useSWRrequest('/api/expenses')
+  if (!expensesWithCategory) return <div>Loading...</div>;
+  if (error) return <div>Fail to Load Data</div>;
   const totalAmountExpenses = expensesWithCategory?.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0);
 
   return (
