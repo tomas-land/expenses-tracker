@@ -24,10 +24,9 @@ interface iFormData {
 }
 
 const AddExpenseForm = ({ categories }: iProps) => {
-//@ts-ignore
-  const fetcher = (...args) => fetch(...args).then(res => res.json());
-  const { data, error, isLoading,mutate }:any = useSWR('http://localhost:3000/api/expenses', fetcher)  
 
+  const fetcher = (url: string) => fetch(url).then(res => res.json());
+  const { data, mutate, error, isLoading }: any = useSWR('/api/expenses', fetcher)
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter()
@@ -45,7 +44,7 @@ const AddExpenseForm = ({ categories }: iProps) => {
       setError("categoryID", { message: "Pasirinkite kategoriją" });
       return;
     }
-    mutate('/api/expenses',[...data, {amount, categoryID, desc}],false);
+    mutate('/api/expenses', [...data, { amount, categoryID, desc }], false);
     try {
       const body = { amount, categoryID, desc };
       await fetch(`/api/expenses`, {
@@ -53,7 +52,7 @@ const AddExpenseForm = ({ categories }: iProps) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      mutate();
+      mutate('/api/expenses');
       router.push("/");
       // router.refresh();
     } catch (error) {
