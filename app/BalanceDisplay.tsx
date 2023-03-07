@@ -5,9 +5,12 @@ import Link from 'next/link';
 import { IoMdStats, IoMdAdd } from 'react-icons/io';
 import { useSWRrequest } from '@lib/hooks/useSWRrequest';
 import s from '@styles/Components/_BalanceDisplay.module.scss'
+import useSWR from 'swr';
 
 const BalanceDisplay = () => {
-  const { data: expensesWithCategory, error } = useSWRrequest()
+  // const { data: expensesWithCategory, error } = useSWRrequest()
+  const fetcher = (url:string) => fetch(url).then(res => res.json());
+  const { data: expensesWithCategory, error } = useSWR('/api/expenses', fetcher)
   if (!expensesWithCategory) return <div>Loading...</div>;
   if (error) return <div>Fail to Load Data</div>;
   const totalAmountExpenses = expensesWithCategory?.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0);
