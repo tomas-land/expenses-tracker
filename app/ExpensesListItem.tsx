@@ -2,7 +2,6 @@
 
 import React from 'react'
 import s from '@styles/Components/_ExpensesListItem.module.scss'
-import { useRouter } from 'next/navigation';
 import { MdOutlineEuro } from 'react-icons/md'
 import { GrFormDown } from 'react-icons/gr'
 import { ImBin } from 'react-icons/im'
@@ -12,7 +11,6 @@ import { mutate } from 'swr';
 
 
 const ExpensesListItem = ({ expense }: any) => {
-  const router = useRouter()
   const { id, amount, desc, category, createdAt } = expense
   const [showExtraInfo, setShowExtraInfo] = useState(false)
 
@@ -21,14 +19,13 @@ const ExpensesListItem = ({ expense }: any) => {
   }
   const deleteExpense = async (id: number) => {
     try {
-      // mutate('http://localhost:3000/api/expenses', data => data.filter((expense: any) => expense.id !== id), false)
+      mutate('http://localhost:3000/api/expenses', data => data.filter((expense: any) => expense.id !== id), false)
       const body = id;
       await fetch(`/api/expenses`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      router.refresh();
     } catch (error) {
       console.error(error);
     }

@@ -8,13 +8,13 @@ import ExpensesListItem from './ExpensesListItem';
 import { iExpense } from '@lib/interfaces';
 import { useSWRrequest } from '@lib/hooks/useSWRrequest';
 
-interface iProps {
-  data: iExpense[],
-  error: string
-}
+// interface iProps {
+//   data: iExpense[],
+//   error: string
+// }
 
 const ExpensesList = () => {
-  const { data: expensesWithCategory, error }: iProps = useSWRrequest('/api/expenses')
+  const { data: expensesWithCategory, error }= useSWRrequest('/api/expenses')
   if (!expensesWithCategory) return <div>Loading...</div>;
   if (error) return <div>Fail to Load Data</div>;
   // const router = useRouter()
