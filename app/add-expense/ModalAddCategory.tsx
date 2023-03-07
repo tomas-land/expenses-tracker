@@ -37,7 +37,6 @@ const ModalAddCategory = ({ setIsModalOpen }: iProps) => {
       });
       setIsModalOpen(false)
       router.refresh();
-
     } catch (error) {
       console.error(error);
     }

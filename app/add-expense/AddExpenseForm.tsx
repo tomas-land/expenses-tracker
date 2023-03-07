@@ -45,7 +45,7 @@ const AddExpenseForm = ({ categories }: iProps) => {
       setError("categoryID", { message: "Pasirinkite kategoriją" });
       return;
     }
-    mutate('http://localhost:3000/api/expenses',[...data, {amount, categoryID, desc}],false);
+    mutate('/api/expenses',[...data, {amount, categoryID, desc}],false);
     try {
       const body = { amount, categoryID, desc };
       await fetch(`/api/expenses`, {
