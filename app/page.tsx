@@ -15,7 +15,7 @@ const Home = async () => {
   // const expensesWithCategory = await getExpensesWithCategoryDB();
   return (
     <section className={s.home}>
-      {/* <BalanceDisplay /> */}
+      <BalanceDisplay />
       <ExpensesList />
     </section>
   )
