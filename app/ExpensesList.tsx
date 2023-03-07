@@ -14,7 +14,7 @@ import { useSWRrequest } from '@lib/hooks/useSWRrequest';
 // }
 
 const ExpensesList = () => {
-  const { data: expensesWithCategory, error }= useSWRrequest('/api/expenses')
+  const { data: expensesWithCategory, error }= useSWRrequest()
   if (!expensesWithCategory) return <div>Loading...</div>;
   if (error) return <div>Fail to Load Data</div>;
   // const router = useRouter()

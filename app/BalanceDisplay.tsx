@@ -7,7 +7,7 @@ import { useSWRrequest } from '@lib/hooks/useSWRrequest';
 import s from '@styles/Components/_BalanceDisplay.module.scss'
 
 const BalanceDisplay = () => {
-  const { data: expensesWithCategory, error } = useSWRrequest('/api/expenses')
+  const { data: expensesWithCategory, error } = useSWRrequest()
   if (!expensesWithCategory) return <div>Loading...</div>;
   if (error) return <div>Fail to Load Data</div>;
   const totalAmountExpenses = expensesWithCategory?.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0);
