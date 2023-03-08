@@ -5,22 +5,4 @@
   flex-direction: column;
   padding: 1rem 0 2rem;
 
-  .top_btns {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 4rem;
-
-    .back_btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: none;
-      font-size: 2rem;
-      background-color: $color-bg-dark1;
-      border-radius: 50%;
-      padding: 0.4rem;
-      color: #757575;
-    }
-  }
 }

@@ -3,22 +3,15 @@
 import { IoMdCloseCircle } from 'react-icons/io'
 import s from '@styles/Components/Modal/_ModalAddCategory.module.scss'
 import { useForm } from "react-hook-form";
-import { FieldValues, UseFormRegister } from "react-hook-form";
 import { useRouter } from 'next/navigation';
 
 interface iProps {
   setIsModalOpen: (value: boolean) => void;
-
 }
-
-// interface iFormData {
-//   categoryName: string ;
-//   handleSubmit: (data: iFormData) => void;
-//   register: UseFormRegister<FieldValues>;
-// }
 interface iFormData {
   categoryName: string;
 }
+
 const ModalAddCategory = ({ setIsModalOpen }: iProps) => {
   const router = useRouter()
   const { register, handleSubmit, formState: { errors } } = useForm<iFormData>({
@@ -27,9 +20,9 @@ const ModalAddCategory = ({ setIsModalOpen }: iProps) => {
     }
   });
 
-  const createNewCategory = async ( categoryName : iFormData) => {
+  const createNewCategory = async (categoryName: iFormData) => {
     try {
-      const body = categoryName ;
+      const body = categoryName;
       await fetch(`/api/categories`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

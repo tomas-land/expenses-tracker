@@ -15,7 +15,7 @@ import useSWR, { mutate } from 'swr';
 
 // export const dynamic = 'force-dynamic'
 interface iProps {
-  categories: iCategory[]
+  categories: iCategory[];
 }
 interface iFormData {
   amount: string;
@@ -38,22 +38,22 @@ const AddExpenseForm = ({ categories }: iProps) => {
     }
   });
   const categoryId = getValues('categoryID');
-  const onSubmit = async ({ categoryID, amount, desc }: iFormData) => {
+  const createNewExpense = async ({ categoryID, amount, desc }: iFormData) => {
     // console.log(amount, categoryID, desc);
     if (categoryID === 0) {
       setError("categoryID", { message: "Pasirinkite kategoriją" });
       return;
     }
-    mutate('/api/expenses', [...data, { amount, categoryID, desc }], false);
     try {
+      mutate('/api/expenses', [...data, { amount, categoryID, desc }], false);
       const body = { amount, categoryID, desc };
       await fetch(`/api/expenses`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      // mutate('/api/expenses');
       router.push("/");
+      mutate('/api/expenses');
       // router.refresh();
     } catch (error) {
       console.error(error);
@@ -61,7 +61,7 @@ const AddExpenseForm = ({ categories }: iProps) => {
   }
   return (
     <>
-      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+      <form className={s.form} onSubmit={handleSubmit(createNewExpense)}>
         <div className={s.top_btns}>
           <Link href="/"><button className={`${s.back_btn} ${s.btn}`} ><MdOutlineKeyboardArrowLeft /></button></Link>
           <Link href="/add-expense"><button className={`${s.dots_btn} ${s.btn}`} ><HiOutlineDotsVertical /></button></Link>

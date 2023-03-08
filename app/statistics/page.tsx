@@ -1,13 +1,13 @@
 import React from 'react'
 import Link from 'next/link'
 import s from '@styles/Pages/_StatsPage.module.scss'
-import { MdOutlineKeyboardArrowLeft, MdOutlineEuro } from 'react-icons/md';
-import { IoIosAdd } from 'react-icons/io';
+
 import { getTotalAmountExpenses, getPreviousMonthTotalAmountExpenses } from '@lib/prisma/expenses'
 import { getCategoriesWithExpenses } from '@lib/prisma/expenses_by_category'
 import TotalExpensesList from './TotalExpensesList';
 import TotalDisplay from './TotalDisplay';
 import Chart from './Chart';
+import TopButtons from './TopButtons';
 
 
 async function getCategoriesWithExpensesDB() {
@@ -28,15 +28,13 @@ const StatsPage = async () => {
   const totalAmountExpenses = await getTotalAmountExpensesDB();
   const previousMonthTotalAmountExpenses = await getPreviousMonthTotalAmountExpensesDB();
 
+
   // console.log('///////////////////////////////////start')
   // console.dir(categoriesWithExpenses, {depth: null})
   // console.log('///////////////////////////////////finish')
   return (
     <section className={s.stats_page}>
-      <div className={s.top_btns}>
-        <Link href="/"><button className={s.back_btn} ><MdOutlineKeyboardArrowLeft /></button></Link>
-        <Link href="/"><button className={s.back_btn} ><IoIosAdd /></button></Link>
-      </div>
+      <TopButtons />
       <TotalDisplay totalAmountExpenses={totalAmountExpenses} previousMonthTotalAmountExpenses={previousMonthTotalAmountExpenses} />
       <Chart categoriesWithExpenses={categoriesWithExpenses} />
       <TotalExpensesList categoriesWithExpenses={categoriesWithExpenses} />

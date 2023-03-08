@@ -2,11 +2,7 @@
 
 import React from 'react'
 import s from '@styles/Components/_ExpensesList.module.scss'
-import { useEffect } from 'react'
-import { useRouter } from 'next/navigation';
 import ExpensesListItem from './ExpensesListItem';
-import { iExpense } from '@lib/interfaces';
-// import { useSWRrequest } from '@lib/hooks/useSWRrequest';
 import useSWR from 'swr'
 
 // interface iProps {
@@ -17,9 +13,9 @@ import useSWR from 'swr'
 const ExpensesList = () => {
   // const { data: expensesWithCategory, error }= useSWRrequest()
   const fetcher = (url:string) => fetch(url).then(res => res.json());
-  const { data: expensesWithCategory, error } = useSWR('/api/expenses', fetcher)
-  if (!expensesWithCategory) return <div>Loading...</div>;
-  if (error) return <div>Fail to Load Data</div>;
+  const { data, error } = useSWR('/api/expenses', fetcher)
+  // if (!expensesWithCategory) return <div>Loading...</div>;
+  // if (error) return <div>Fail to Load Data</div>;
   // const router = useRouter()
   // useEffect(() => {
   //   router.refresh()
@@ -29,7 +25,7 @@ const ExpensesList = () => {
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
       <ul className={s.list}>
-        {expensesWithCategory?.map((expense: any) => {
+        {data?.map((expense: any) => {
           return (
             <ExpensesListItem key={expense.id} expense={expense} />
           )
