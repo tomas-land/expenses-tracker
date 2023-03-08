@@ -12,8 +12,6 @@ import { iCategory } from '@lib/interfaces';
 import ModalAddCategory from '@app/add-expense/ModalAddCategory';
 import useSWR, { mutate } from 'swr';
 
-
-export const dynamic = 'force-dynamic'
 interface iProps {
   categories: iCategory[];
 }
