@@ -4,7 +4,7 @@ import ExpensesList from './ExpensesList';
 import { getExpensesWithCategory } from '@lib/prisma/expenses'
 import { iExpense } from '@lib/interfaces'
 
-// export const dynamic = 'force-dynamic'
+export const dynamic = 'force-dynamic'
 
 // const getExpensesWithCategoryDB = (): Promise<iExpense[]> => {
 //   const data = getExpensesWithCategory()
