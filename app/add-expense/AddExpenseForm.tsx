@@ -52,7 +52,7 @@ const AddExpenseForm = ({ categories }: iProps) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      mutate('/api/expenses');
+      // mutate('/api/expenses');
       router.push("/");
       // router.refresh();
     } catch (error) {
