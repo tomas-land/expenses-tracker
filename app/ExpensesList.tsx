@@ -4,18 +4,18 @@ import React from 'react'
 import s from '@styles/Components/_ExpensesList.module.scss'
 import ExpensesListItem from './ExpensesListItem';
 import useSWR from 'swr'
-
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css'
 // interface iProps {
 //   data: iExpense[],
 //   error: string
 // }
 
 const ExpensesList = () => {
-  // const { data: expensesWithCategory, error }= useSWRrequest()
-  const fetcher = (url:string) => fetch(url).then(res => res.json());
-  const { data, error } = useSWR('/api/expenses', fetcher)
-  // if (!expensesWithCategory) return <div>Loading...</div>;
-  // if (error) return <div>Fail to Load Data</div>;
+
+  const fetcher = (url: string) => fetch(url).then(res => res.json());
+  const { data: expenses, error, isLoading } = useSWR('/api/expenses', fetcher)
+
   // const router = useRouter()
   // useEffect(() => {
   //   router.refresh()
@@ -25,7 +25,8 @@ const ExpensesList = () => {
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
       <ul className={s.list}>
-        {data?.map((expense: any) => {
+        {isLoading ? <Skeleton height={50} className={s.skeleton} count={10} highlightColor={'#c8c8c9'} /> : null}
+        {expenses?.map((expense: any) => {
           return (
             <ExpensesListItem key={expense.id} expense={expense} />
           )

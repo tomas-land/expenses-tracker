@@ -6,29 +6,35 @@ import { IoMdStats, IoMdAdd } from 'react-icons/io';
 import { useSWRrequest } from '@lib/hooks/useSWRrequest';
 import s from '@styles/Components/_BalanceDisplay.module.scss'
 import useSWR from 'swr';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const BalanceDisplay = () => {
-  // const { data: expensesWithCategory, error } = useSWRrequest()
-  const fetcher = (url:string) => fetch(url).then(res => res.json());
-  const { data: expensesWithCategory, error } = useSWR('/api/expenses', fetcher)
-  if (!expensesWithCategory) return <div>Loading...</div>;
-  if (error) return <div>Fail to Load Data</div>;
-  const totalAmountExpenses = expensesWithCategory?.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0);
+
+  const fetcher = (url: string) => fetch(url).then(res => res.json());
+  const { data: expenses, error, isLoading } = useSWR('/api/expenses', fetcher)
+
+  const totalAmountExpenses = expenses?.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0);
 
   return (
-    <div className={s.display}>
-      <div className={s.btn_wrapper}>
-        <Link href={'/statistics'}><IoMdStats fill='white' size='1.5rem' /></Link>
-        <Link href={'/add-expense'}><IoMdAdd fill='white' size='1.8rem' /></Link>
-      </div>
-      <div className={s.balance_wrapper}>
-        <h4>MANO IŠLAIDOS</h4>
-        <div className={s.balance}>
-          <h3>&euro;</h3>
-          <h1>{totalAmountExpenses}</h1>
+    <>
+      {isLoading ? <Skeleton height={172} highlightColor={'#c8c8c9'} /> : (
+        <div className={s.display}>
+          <div className={s.btn_wrapper}>
+            <Link href={'/statistics'}><IoMdStats fill='white' size='1.5rem' /></Link>
+            <Link href={'/add-expense'}><IoMdAdd fill='white' size='1.8rem' /></Link>
+          </div>
+          <div className={s.balance_wrapper}>
+            <h4>MANO IŠLAIDOS</h4>
+            <div className={s.balance}>
+              <h3>&euro;</h3>
+              <h1>{totalAmountExpenses}</h1>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
+
   )
 }
 

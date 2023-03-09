@@ -11,6 +11,7 @@ import { mutate } from 'swr';
 
 
 const ExpensesListItem = ({ expense }: any) => {
+
   const { id, amount, desc, category, createdAt } = expense
   const [showExtraInfo, setShowExtraInfo] = useState(false)
 
