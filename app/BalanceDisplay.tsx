@@ -18,7 +18,7 @@ const BalanceDisplay = () => {
 
   return (
     <>
-      {isLoading ? <Skeleton height={172} highlightColor={'#c8c8c9'} /> : (
+      {isLoading ? <Skeleton height={172} highlightColor={'#c8c8c9'} width={'250'}/> : (
         <div className={s.display}>
           <div className={s.btn_wrapper}>
             <Link href={'/statistics'}><IoMdStats fill='white' size='1.5rem' /></Link>

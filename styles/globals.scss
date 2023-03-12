@@ -84,15 +84,13 @@
 body {
   background-color: $color-bg;
   font-family: "Comfortaa";
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
+
 
 main {
   max-width: 425px; // selected this width to preview as mobile screen on larger screens
   max-height: 780px;
+  margin: auto;
   overflow-y: scroll;
   border: 1px solid rgb(156, 155, 155);
   border-radius: 2rem;
@@ -109,6 +107,12 @@ main {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    border-radius: 0;
+  }
 }
 
 .wrapper {
