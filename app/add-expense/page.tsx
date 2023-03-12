@@ -2,6 +2,7 @@ import React from 'react'
 import AddExpenseForm from './AddExpenseForm'
 import { getCategories } from '@lib/prisma/categories'
 import { iCategory } from '@lib/interfaces'
+import TopButtons from './TopButtons'
 
 export const dynamic = 'force-dynamic'
 
@@ -15,6 +16,7 @@ const AddExpansePage = async () => {
 
   return (
     <section>
+      <TopButtons/>
       <AddExpenseForm categories={categories} />
     </section>
   )

@@ -8,8 +8,6 @@ import TotalDisplay from './TotalDisplay';
 import Chart from './Chart';
 import TopButtons from './TopButtons';
 
-import { useRouter } from 'next/navigation';
-
 async function getCategoriesWithExpensesDB() {
   const categoryWithExpenses = await getCategoriesWithExpenses()
   return categoryWithExpenses;
@@ -24,7 +22,7 @@ async function getPreviousMonthTotalAmountExpensesDB() {
 }
 
 const StatsPage = async () => {
-  // const router = useRouter()
+
   const categoriesWithExpenses = await getCategoriesWithExpensesDB();
   const totalAmountExpenses = await getTotalAmountExpensesDB();
   const previousMonthTotalAmountExpenses = await getPreviousMonthTotalAmountExpensesDB();
@@ -35,8 +33,6 @@ const StatsPage = async () => {
   return (
     <section className={s.stats_page}>
       <TopButtons/>
-
-
       <TotalDisplay totalAmountExpenses={totalAmountExpenses} previousMonthTotalAmountExpenses={previousMonthTotalAmountExpenses} />
       <Chart categoriesWithExpenses={categoriesWithExpenses} />
       <TotalExpensesList categoriesWithExpenses={categoriesWithExpenses} />

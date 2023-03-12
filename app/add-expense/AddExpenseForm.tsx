@@ -60,10 +60,6 @@ const AddExpenseForm = ({ categories }: iProps) => {
   return (
     <>
       <form className={s.form} onSubmit={handleSubmit(createNewExpense)}>
-        <div className={s.top_btns}>
-          <button type="button" onClick={() => router.replace('/')} className={`${s.back_btn} ${s.btn}`} ><MdOutlineKeyboardArrowLeft /></button>
-          <Link href="/add-expense"><button className={`${s.dots_btn} ${s.btn}`} ><HiOutlineDotsVertical /></button></Link>
-        </div>
         <div className={s.inputs}>
           <input type="number" className={s.amount_input} placeholder='0' autoComplete='off' {...register("amount", {
             valueAsNumber: true,
