@@ -83,17 +83,19 @@
 
 body {
   background-color: $color-bg;
-  padding-top: 3rem;
   font-family: "Comfortaa";
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
   max-width: 425px; // selected this width to preview as mobile screen on larger screens
   max-height: 780px;
-  margin: auto;
   overflow-y: scroll;
   border: 1px solid rgb(156, 155, 155);
-  border-radius: 10px;
+  border-radius: 2rem;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
