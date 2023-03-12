@@ -83,17 +83,35 @@
 
 body {
   background-color: $color-bg;
-  margin: auto;
-  max-width: 425px; // selected this width to preview as mobile screen on larger screens
-  border-left: 1px solid rgb(156, 155, 155);
-  border-right: 1px solid rgb(156, 155, 155);
-  height: 100%;
+  padding-top: 3rem;
+  font-family: "Comfortaa";
 }
 
 main {
+  max-width: 425px; // selected this width to preview as mobile screen on larger screens
+  max-height: 780px;
   margin: auto;
+  overflow-y: scroll;
+  border: 1px solid rgb(156, 155, 155);
+  border-radius: 10px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+main::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+main {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.wrapper {
   width: 90%;
-  font-family: "Comfortaa";
+  margin: auto;
 }
 
 a {
