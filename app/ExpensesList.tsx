@@ -25,7 +25,7 @@ const { expenses, mutate, error, isLoading }: any = useExpensesSWR();
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
       <ul className={s.list}>
-        {isLoading ? <Skeleton height={50} className={s.skeleton} count={10} highlightColor={'#c8c8c9'} /> : null}
+        {/* {isLoading ? <Skeleton height={50} className={s.skeleton} count={10} highlightColor={'#c8c8c9'} /> : null} */}
         {expenses?.map((expense: any) => {
           return (
             <ExpensesListItem key={expense.id} expense={expense} />
