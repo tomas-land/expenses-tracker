@@ -1,15 +1,9 @@
+//Components
 import BalanceDisplay from './BalanceDisplay';
 import ExpensesList from './ExpensesList';
-import { getExpensesWithCategory } from '@lib/prisma/expenses'
-import { iExpense } from '@lib/interfaces'
-//react
-//Components
 //Internal Lib
-//External Lib
-//Interfaces
-//Styles
-//Icons
-ff
+import { getExpensesWithCategory } from '@lib/prisma/expenses'
+
 
 const Home = async () => {
   return (
