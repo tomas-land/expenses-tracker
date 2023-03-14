@@ -1,16 +1,21 @@
 "use client"
 
+//react
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation';
-import { useForm } from "react-hook-form";
-import Link from 'next/link';
-import s from '@styles/Components/_AddExpenseForm.module.scss'
-import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
-import { BsPlusCircle } from 'react-icons/bs';
-import { HiOutlineDotsVertical } from 'react-icons/hi';
-import { iCategory } from '@lib/interfaces';
+//Components
 import ModalAddCategory from '@app/add-expense/ModalAddCategory';
+//Internal Lib
+import { useExpensesSWR } from '@lib/hooks/useSWRrequest';
+//External Lib
 import useSWR, { mutate } from 'swr';
+import { useForm } from "react-hook-form";
+//Interfaces
+import { iCategory } from '@lib/interfaces';
+//Styles
+import s from '@styles/Components/_AddExpenseForm.module.scss'
+//Icons
+import { BsPlusCircle } from 'react-icons/bs';
 
 interface iProps {
   categories: iCategory[];
@@ -23,11 +28,10 @@ interface iFormData {
 
 const AddExpenseForm = ({ categories }: iProps) => {
 
-  const fetcher = (url: string) => fetch(url).then(res => res.json());
-  const { data, mutate, error, isLoading }: any = useSWR('/api/expenses', fetcher)
-
+  const { expenses, mutate, error, isLoading }: any = useExpensesSWR();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter()
+
   const { register, handleSubmit, setValue, setError, getValues, clearErrors, formState: { errors } } = useForm({
     defaultValues: {
       amount: '',
@@ -43,7 +47,7 @@ const AddExpenseForm = ({ categories }: iProps) => {
       return;
     }
     try {
-      mutate('/api/expenses', [...data, { amount, categoryID, desc }], false);
+      mutate('/api/expenses', [...expenses, { amount, categoryID, desc }]);
       const body = { amount, categoryID, desc };
       await fetch(`/api/expenses`, {
         method: "POST",
@@ -52,7 +56,6 @@ const AddExpenseForm = ({ categories }: iProps) => {
       });
       mutate();
       router.push("/");
-      // router.refresh();
     } catch (error) {
       console.error(error);
     }
@@ -69,17 +72,17 @@ const AddExpenseForm = ({ categories }: iProps) => {
             //   message: "Naudokite tik skaičius"
             // }
           })} />
-          <span className={s.error}>
+          <div className={s.error}>
             {errors.amount && errors.amount.message}
-          </span>
+          </div>
           <div className={s.extra_info}>
             <input type="text" placeholder='Įveskite papildomą informaciją...' autoComplete='off' {...register("desc", {
               maxLength: 22
             })} />
           </div>
-          <span className={s.error}>
+          <div className={s.error}>
             {errors.desc && errors.desc.type === "maxLength" && <span>Aprašymas neturi viršyti 22 simbolių !</span>}
-          </span>
+          </div>
         </div>
         <div className={s.title}>Pasirinkite kategoriją</div>
         <div className={s.category_btns}>
@@ -90,9 +93,9 @@ const AddExpenseForm = ({ categories }: iProps) => {
           })}
           <div className={`${s.new_category_btn} ${s.btn}`} onClick={() => setIsModalOpen(true)} ><BsPlusCircle /></div>
         </div>
-        <span className={s.error}>
+        <div className={s.error}>
           {errors.categoryID && <span>{errors.categoryID.message}</span>}
-        </span>
+        </div>
         <button className={s.submit_btn} type='submit'>IŠSAUGOTI</button>
       </form>
       {

@@ -1,9 +1,14 @@
 "use client"
 
-import { IoMdCloseCircle } from 'react-icons/io'
-import s from '@styles/Components/Modal/_ModalAddCategory.module.scss'
-import { useForm } from "react-hook-form";
+//react
 import { useRouter } from 'next/navigation';
+//External Lib
+import { useForm } from "react-hook-form";
+//Styles
+import s from '@styles/Components/Modal/_ModalAddCategory.module.scss'
+//Icons
+import { IoMdCloseCircle } from 'react-icons/io'
+
 
 interface iProps {
   setIsModalOpen: (value: boolean) => void;
@@ -22,11 +27,10 @@ const ModalAddCategory = ({ setIsModalOpen }: iProps) => {
 
   const createNewCategory = async (categoryName: iFormData) => {
     try {
-      const body = categoryName;
       await fetch(`/api/categories`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
+        body: JSON.stringify( categoryName ),
       });
       setIsModalOpen(false)
       router.refresh();
@@ -48,9 +52,9 @@ const ModalAddCategory = ({ setIsModalOpen }: iProps) => {
               <input type="text" className={s.input} placeholder="Kategorijos pavadinimas..." autoComplete='off' {...register("categoryName", {
                 maxLength: 22
               })} />
-              <span className={s.error}>
+              <div className={s.error}>
                 {errors.categoryName && errors.categoryName.type === "maxLength" && <span>Kategorijos pavdinimas neturi viršyti 22 simbolių !</span>}
-              </span>
+              </div>
             </div>
             <div className={s.modal_footer}>
               <button className={s.submit_btn} type='submit' >IŠSAUGOTI</button>

@@ -1,12 +1,28 @@
-import React from 'react'
-import Link from 'next/link'
-import s from '@styles/Pages/_StatsPage.module.scss'
-import { getTotalAmountExpenses, getPreviousMonthTotalAmountExpenses } from '@lib/prisma/expenses'
-import { getCategoriesWithExpenses } from '@lib/prisma/expenses_by_category'
+//react
+
+//Components
 import TotalExpensesList from './TotalExpensesList';
 import TotalDisplay from './TotalDisplay';
 import Chart from './Chart';
 import TopButtons from './TopButtons';
+//Internal Lib
+import { getTotalAmountExpenses, getPreviousMonthTotalAmountExpenses } from '@lib/prisma/expenses'
+import { getCategoriesWithExpenses } from '@lib/prisma/expenses_by_category'
+//Dependencies
+
+//Interfaces
+
+//Styles
+import s from '@styles/Pages/_StatsPage.module.scss'
+//Icons
+
+//react
+//Components
+//Internal Lib
+//External Lib
+//Interfaces
+//Styles
+//Icons
 
 async function getCategoriesWithExpensesDB() {
   const categoryWithExpenses = await getCategoriesWithExpenses()

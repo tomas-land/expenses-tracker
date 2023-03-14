@@ -3,11 +3,22 @@ import useSWR from "swr";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 // const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
-export const useSWRrequest = () => {
-  const { data, error } = useSWR(`https://expenses-tracker-self.vercel.app/api/expenses`, fetcher);
+export const useCategoriesSWR = () => {
+  const { data, error } = useSWR(`/api/categories`, fetcher);
 
   return {
-    data,
+    categories: data,
     error,
+  };
+};
+
+export const useExpensesSWR = () => {
+  const { data, mutate, error, isLoading } = useSWR('/api/expenses', fetcher)
+
+  return {
+    expenses: data,
+    error,
+    mutate,
+    isLoading
   };
 };

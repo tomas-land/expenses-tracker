@@ -4,6 +4,7 @@ import React from 'react'
 import s from '@styles/Components/_ExpensesList.module.scss'
 import ExpensesListItem from './ExpensesListItem';
 import useSWR from 'swr'
+import { useExpensesSWR } from '@lib/hooks/useSWRrequest';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
 // interface iProps {
@@ -13,9 +14,8 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 const ExpensesList = () => {
 
-  const fetcher = (url: string) => fetch(url).then(res => res.json());
-  const { data: expenses, error, isLoading } = useSWR('/api/expenses', fetcher)
 
+const { expenses, mutate, error, isLoading }: any = useExpensesSWR();
   // const router = useRouter()
   // useEffect(() => {
   //   router.refresh()

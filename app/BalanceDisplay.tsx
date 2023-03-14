@@ -3,7 +3,6 @@
 import React from 'react'
 import Link from 'next/link';
 import { IoMdStats, IoMdAdd } from 'react-icons/io';
-import { useSWRrequest } from '@lib/hooks/useSWRrequest';
 import s from '@styles/Components/_BalanceDisplay.module.scss'
 import useSWR from 'swr';
 import Skeleton from 'react-loading-skeleton'

@@ -1,22 +1,20 @@
-import React from 'react'
+
+//Components
 import AddExpenseForm from './AddExpenseForm'
-import { getCategories } from '@lib/prisma/categories'
-import { iCategory } from '@lib/interfaces'
 import TopButtons from './TopButtons'
+//Internal Lib
+import { getCategories } from '@lib/prisma/categories'
+//Interfaces
+import { iCategory } from '@lib/interfaces'
+
 
 export const dynamic = 'force-dynamic'
 
-async function getCategoriesDB() {
-  const categories = await getCategories()
-  return categories;
-}
-
 const AddExpansePage = async () => {
-  const categories = await getCategoriesDB();
-
+  const categories: iCategory[] = await getCategories();
   return (
     <section>
-      <TopButtons/>
+      <TopButtons />
       <AddExpenseForm categories={categories} />
     </section>
   )
