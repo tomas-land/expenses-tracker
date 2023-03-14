@@ -17,6 +17,7 @@ export const useExpensesSWR = () => {
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
+    revalidateOnMount: false,
   })
 
   return {
