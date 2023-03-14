@@ -6,7 +6,6 @@ import { iExpense } from '@lib/interfaces'
 
 
 const Home = async () => {
-  // const expensesWithCategory = await getExpensesWithCategoryDB();
   return (
     <section >
       <BalanceDisplay />

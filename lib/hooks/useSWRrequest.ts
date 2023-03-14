@@ -13,7 +13,11 @@ export const useCategoriesSWR = () => {
 };
 
 export const useExpensesSWR = () => {
-  const { data, mutate, error, isLoading } = useSWR('/api/expenses', fetcher)
+  const { data, mutate, error, isLoading } = useSWR('/api/expenses', fetcher,{
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+  })
 
   return {
     expenses: data,
