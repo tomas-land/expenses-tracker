@@ -3,7 +3,6 @@ import BalanceDisplay from './BalanceDisplay';
 import ExpensesList from './ExpensesList';
 
 
-
 const Home = async () => {
   return (
     <section >

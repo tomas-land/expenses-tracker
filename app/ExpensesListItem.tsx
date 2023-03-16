@@ -1,16 +1,24 @@
 "use client"
 
-import React from 'react'
+//react
+import { useState } from 'react'
+//External Lib
+import { formateDate, formateHours } from '@lib/dayJS';
+import { mutate } from 'swr';
+//Interfaces
+import { iExpense } from '@lib/interfaces';
+//Styles
 import s from '@styles/Components/_ExpensesListItem.module.scss'
+//Icons
 import { MdOutlineEuro } from 'react-icons/md'
 import { GrFormDown } from 'react-icons/gr'
 import { ImBin } from 'react-icons/im'
-import { useState } from 'react'
-import { formateDate, formateHours } from '@lib/dayJS';
-import { mutate } from 'swr';
 
+interface iProps {
+  expense: iExpense;
+}
 
-const ExpensesListItem = ({ expense }: any) => {
+const ExpensesListItem = ({ expense }: iProps) => {
 
   const { id, amount, desc, category, createdAt } = expense
   const [showExtraInfo, setShowExtraInfo] = useState(false)
@@ -40,7 +48,7 @@ const ExpensesListItem = ({ expense }: any) => {
       </div>
       <div className={s.amount}>-<span>{amount}</span><MdOutlineEuro color='gray' size={13} className={`${showExtraInfo ? s.rotate_up : null}`} /></div>
       <div className={`${s.extra_info} ${showExtraInfo && s.open}`}>
-        {desc?.length > 0 && <div className={s.desc}>{desc}</div>}
+        {desc ? <div className={s.desc}>{desc}</div> : null}
         <p className={s.date}><span suppressHydrationWarning >{formateDate(createdAt)}</span><span suppressHydrationWarning>{formateHours(createdAt)}</span></p>
         <ImBin size={15} className={s.delete_btn} onClick={() => deleteExpense(id)} />
       </div>

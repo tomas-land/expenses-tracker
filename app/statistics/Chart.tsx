@@ -1,10 +1,17 @@
 "use client"
 
-import React, { useCallback, useState, useEffect } from "react";
-import { PieChart, Pie, Cell, Tooltip } from "recharts";
-import s from "@styles/Components/_Chart.module.scss";
+//Internal Lib
 import { startOFMonth } from '@lib/dayJS'
+//External Lib
+import { PieChart, Pie, Cell, Tooltip } from "recharts";
+//Interfaces
+import { iCategory } from '@lib/interfaces';
+//Styles
+import s from "@styles/Components/_Chart.module.scss";
+
+
 export const dynamic = "auto"
+
 const COLORS = [
   { start: "#9e54ed", end: "#5c4cb6" },
   { start: "#34c3ff", end: "#2876bd" },
@@ -13,8 +20,11 @@ const COLORS = [
   { start: "#424242", end: "#424242" }
 ];
 
+interface iProps {
+  categoriesWithExpenses: iCategory[];
+}
 
-const Chart = ({ categoriesWithExpenses }: any) => {
+const Chart = ({ categoriesWithExpenses }: iProps) => {
 
   const currentMonthTotalExpensesAmountByCategoryArr = categoriesWithExpenses.map((category: any) => {
     const currentMonthExpensesArr = category.expenses.filter((expense: any) => {
@@ -25,7 +35,7 @@ const Chart = ({ categoriesWithExpenses }: any) => {
   })
 
   const categoriesWithExpensesByAmountArr = currentMonthTotalExpensesAmountByCategoryArr.sort((a: any, b: any) => b.amount - a.amount)
-  const categoriesWithHighestTotalAmountArr = categoriesWithExpensesByAmountArr.slice(0, 4)
+  const categoriesWithHighestTotalAmountArr = categoriesWithExpensesByAmountArr.filter(category => category.name !== 'Kita').slice(0, 4)
   const categoriesWithLowestTotalAmountArr = categoriesWithExpensesByAmountArr.slice(4, categoriesWithExpensesByAmountArr.length)
   const sumOfLowestTotalAmounts = categoriesWithLowestTotalAmountArr.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0)
 
@@ -97,8 +107,8 @@ const Chart = ({ categoriesWithExpenses }: any) => {
           innerRadius={55}
           cornerRadius={7}
           dataKey="amount"
-          // paddingAngle={5}
-          // innerRadius={isMobile ? 60 : 80}
+        // paddingAngle={5}
+        // innerRadius={isMobile ? 60 : 80}
         >
           {categoriesWithHighestTotalAmountArr?.map((entry: any, index: any) => (
             <Cell key={`cell-${index}`} fill={`url(#myGradient${index})`} />

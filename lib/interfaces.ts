@@ -7,8 +7,7 @@ export interface iCategory {
 export interface iExpense {
   id: number;
   amount: number;
-  desc?: null | string;
-  createdAt: number;
-  updatedAt?: Date;
-  category?: iCategory;
+  desc: string | null;
+  createdAt: string;
+  category: iCategory;
 }

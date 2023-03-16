@@ -7,8 +7,8 @@ import { useRouter } from 'next/navigation';
 import ModalAddCategory from '@app/add-expense/ModalAddCategory';
 //Internal Lib
 import { useExpensesSWR } from '@lib/hooks/useSWRrequest';
+import { mutate } from 'swr';
 //External Lib
-import useSWR, { mutate } from 'swr';
 import { useForm } from "react-hook-form";
 //Interfaces
 import { iCategory } from '@lib/interfaces';
@@ -27,7 +27,7 @@ interface iFormData {
 }
 
 const AddExpenseForm = ({ categories }: iProps) => {
-
+  const [expensesState, setExpensesState] = useState<any>([]);
   const { expenses, mutate, error, isLoading }: any = useExpensesSWR();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter()
@@ -46,15 +46,16 @@ const AddExpenseForm = ({ categories }: iProps) => {
       setError("categoryID", { message: "Pasirinkite kategoriją" });
       return;
     }
+
+
     try {
-      mutate('/api/expenses', [...expenses, { amount, categoryID, desc }]);
       const body = { amount, categoryID, desc };
       await fetch(`/api/expenses`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      mutate();
+      mutate()
       router.push("/");
     } catch (error) {
       console.error(error);
@@ -62,6 +63,7 @@ const AddExpenseForm = ({ categories }: iProps) => {
   }
   return (
     <>
+      {/* length: {expenses?.length} */}
       <form className={s.form} onSubmit={handleSubmit(createNewExpense)}>
         <div className={s.inputs}>
           <input type="number" className={s.amount_input} placeholder='0' autoComplete='off' {...register("amount", {

@@ -1,37 +1,35 @@
 "use client"
 
-import React from 'react'
+//react
 import Link from 'next/link';
+//Internal Lib
+import { useExpensesSWR } from '@lib/hooks/useSWRrequest';
+//Icons
 import { IoMdStats, IoMdAdd } from 'react-icons/io';
+//Styles
 import s from '@styles/Components/_BalanceDisplay.module.scss'
-import useSWR from 'swr';
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+
 
 const BalanceDisplay = () => {
-
-  const fetcher = (url: string) => fetch(url).then(res => res.json());
-  const { data: expenses, error, isLoading } = useSWR('/api/expenses', fetcher)
+  const { expenses, mutate, error, isLoading }: any = useExpensesSWR();
 
   const totalAmountExpenses = expenses?.map((item: any) => item.amount).reduce((prev: number, curr: number) => prev + curr, 0);
 
   return (
     <>
-      {isLoading ? <Skeleton height={172} highlightColor={'#c8c8c9'} width={'250'}/> : (
-        <div className={s.display}>
-          <div className={s.btn_wrapper}>
-            <Link href={'/statistics'}><IoMdStats fill='white' size='1.5rem' /></Link>
-            <Link href={'/add-expense'}><IoMdAdd fill='white' size='1.8rem' /></Link>
-          </div>
-          <div className={s.balance_wrapper}>
-            <h4>MANO IŠLAIDOS</h4>
-            <div className={s.balance}>
-              <h3>&euro;</h3>
-              <h1>{totalAmountExpenses}</h1>
-            </div>
+      <div className={s.display}>
+        <div className={s.btn_wrapper}>
+          <Link href={'/statistics'}><IoMdStats fill='white' size='1.5rem' /></Link>
+          <Link href={'/add-expense'}><IoMdAdd fill='white' size='1.8rem' /></Link>
+        </div>
+        <div className={s.balance_wrapper}>
+          <h4>MANO IŠLAIDOS</h4>
+          <div className={s.balance}>
+            <h3>&euro;</h3>
+            <h1>{totalAmountExpenses}</h1>
           </div>
         </div>
-      )}
+      </div>
     </>
 
   )
