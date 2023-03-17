@@ -18,6 +18,7 @@ export const useExpensesSWR = () => {
     // revalidateOnFocus: false,
     // revalidateOnReconnect: false
     // revalidateOnMount: false
+    suspense: true
   });
 
   return {

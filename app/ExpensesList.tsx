@@ -14,7 +14,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 const ExpensesList = () => {
 
   const { expenses, mutate, error, isLoading }: any = useExpensesSWR();
-
+console.log(isLoading)
   return (
     <div className={s.expenses_list}>
       <h3>Paskutiniai atsiskaitymai</h3>
