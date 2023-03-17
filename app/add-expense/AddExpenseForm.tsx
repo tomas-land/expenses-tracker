@@ -46,21 +46,21 @@ const AddExpenseForm = ({ categories }: iProps) => {
       setError("categoryID", { message: "Pasirinkite kategoriją" });
       return;
     }
-
-
     try {
-      mutate();
       const body = { amount, categoryID, desc, id: 800 };
       await fetch(`/api/expenses`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      router.push("/");
+      mutate();
+      router.replace('/');
+      // router.push("/");
     } catch (error) {
       console.error(error);
     }
   }
+
   return (
     <>
       <form className={s.form} onSubmit={handleSubmit(createNewExpense)}>
