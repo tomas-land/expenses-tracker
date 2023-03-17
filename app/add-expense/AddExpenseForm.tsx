@@ -49,13 +49,13 @@ const AddExpenseForm = ({ categories }: iProps) => {
 
 
     try {
+      mutate();
       const body = { amount, categoryID, desc, id: 800 };
       await fetch(`/api/expenses`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      mutate();
       router.push("/");
     } catch (error) {
       console.error(error);
@@ -63,7 +63,6 @@ const AddExpenseForm = ({ categories }: iProps) => {
   }
   return (
     <>
-      {/* length: {expenses?.length} */}
       <form className={s.form} onSubmit={handleSubmit(createNewExpense)}>
         <div className={s.inputs}>
           <input type="number" className={s.amount_input} placeholder='0' autoComplete='off' {...register("amount", {

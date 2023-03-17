@@ -28,7 +28,7 @@ const ExpensesListItem = ({ expense }: iProps) => {
   }
   const deleteExpense = async (id: number) => {
     try {
-      mutate('/api/expenses', data => data.filter((expense: any) => expense.id !== id),false)
+      mutate('/api/expenses', data => data.filter((expense: any) => expense.id !== id), false)
       const body = id;
       await fetch(`/api/expenses`, {
         method: "DELETE",
