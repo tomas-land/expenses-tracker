@@ -49,13 +49,13 @@ const AddExpenseForm = ({ categories }: iProps) => {
 
 
     try {
-      const body = { amount, categoryID, desc };
+      const body = { amount, categoryID, desc, id: 800 };
       await fetch(`/api/expenses`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      mutate()
+      mutate();
       router.push("/");
     } catch (error) {
       console.error(error);
