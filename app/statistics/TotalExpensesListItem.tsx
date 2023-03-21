@@ -8,6 +8,7 @@ import { MdOutlineEuro } from 'react-icons/md';
 import { useState } from 'react';
 import { useGlobalContext } from "@context/context"
 import { startOFMonth, startOFPreviousMonth, endOFPreviousMonth } from '@lib/dayJS';
+import { NearMe } from '@mui/icons-material';
 
 const TotalExpensesListItem = ({ name, expenses, isChecked, setIsChecked }: any) => {
 
@@ -50,8 +51,8 @@ const TotalExpensesListItem = ({ name, expenses, isChecked, setIsChecked }: any)
         <div className={s.amount_radio}>
           <div className={s.amount}>- {totalAmountByCategory} <span className={s.prev_month_amount}> / {previousMonthTotalAmountByCategory}</span> </div>
           <MdOutlineEuro color='gray' className={s.euro_icon} size={11} />
-          <label htmlFor="categotyLabel">
-            <input type="checkbox" id="categotyLabel" value={totalAmountByCategory} onClick={(e: any) => sumTotalExpenses(+e.target.value)} name={name} onChange={e => toggleRadio(e)} checked={isChecked.some((item: any) => item.name === name)} />
+          <label htmlFor={name}>
+            <input type="checkbox" id={name} value={totalAmountByCategory} onClick={(e: any) => sumTotalExpenses(+e.target.value)} name={name} onChange={e => toggleRadio(e)} checked={isChecked.some((item: any) => item.name === name)} />
           </label>
         </div>
       </div>
@@ -67,8 +68,8 @@ const TotalExpensesListItem = ({ name, expenses, isChecked, setIsChecked }: any)
                 <div className={s.amount_and_radio}>
                   <div className={s.amount}>- <span>{expense.amount}</span></div>
                   <MdOutlineEuro color='gray' className={s.euro_icon} size={11} />
-                  <label htmlFor="expenseLabel">
-                    <input type="checkbox" value={expense.amount} id="expenseLabel" onClick={(e: any) => sumTotalExpenses(+e.target.value)} name={expense.id} onChange={e => toggleRadio(e)} checked={isChecked.some((item: any) => item.name == expense.id)} />
+                  <label htmlFor={expense.id}>
+                    <input type="checkbox" value={expense.amount} id={expense.id} onClick={(e: any) => sumTotalExpenses(+e.target.value)} name={expense.id} onChange={e => toggleRadio(e)} checked={isChecked.some((item: any) => item.name == expense.id)} />
                   </label>
                 </div>
               </div>

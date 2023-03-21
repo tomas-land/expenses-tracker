@@ -46,7 +46,7 @@ const Chart = ({ categoriesWithExpenses }: iProps) => {
 
   return (
     <div className={s.chart}>
-      <PieChart width={350} height={300}>
+      <PieChart width={420} height={320}>
         <defs>
           {categoriesWithHighestTotalAmountArr?.map((entry: any, index: any) => (
             <linearGradient id={`myGradient${index}`} key={index}>
