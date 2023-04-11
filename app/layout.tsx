@@ -11,9 +11,9 @@ export default function RootLayout({ children }: { children: any }) {
       <body>
         <main>
           <div className="wrapper">
+            <Analytics />
             <AppProvider>
               {children}
-              <Analytics />
             </AppProvider>
           </div>
         </main>
