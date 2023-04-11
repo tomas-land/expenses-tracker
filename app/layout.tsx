@@ -13,6 +13,7 @@ export default function RootLayout({ children }: { children: any }) {
           <div className="wrapper">
             <Analytics />
             <AppProvider>
+              d
               {children}
             </AppProvider>
           </div>
