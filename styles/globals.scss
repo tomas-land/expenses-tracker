@@ -82,15 +82,16 @@
 }
 
 body {
-  background-color: $color-bg;
+  background-color: gray;
   font-family: "Comfortaa";
 }
 
 
 main {
+  background-color: $color-bg;
   max-width: 425px; // selected this width to preview as mobile screen on larger screens
   height: 780px;
-  margin: auto;
+  margin: 5rem auto 0;
   overflow-y: scroll;
   border: 1px solid rgb(156, 155, 155);
   border-radius: 2rem;

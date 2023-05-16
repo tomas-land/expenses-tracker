@@ -1,5 +1,5 @@
 //External Lib
-import { Analytics } from '@vercel/analytics/react';
+
 //Internal Lib
 import { AppProvider } from '@context/context';
 //Styles
@@ -11,9 +11,9 @@ export default function RootLayout({ children }: { children: any }) {
       <body>
         <main>
           <div className="wrapper">
+            dwwwwwww
             <AppProvider>
               {children}
-              <Analytics />
             </AppProvider>
           </div>
         </main>
