@@ -11,7 +11,6 @@ export default function RootLayout({ children }: { children: any }) {
       <body>
         <main>
           <div className="wrapper">
-            dwwwwwww
             <AppProvider>
               {children}
             </AppProvider>
