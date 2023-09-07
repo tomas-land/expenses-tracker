@@ -4,6 +4,7 @@ import TotalExpensesList from './TotalExpensesList';
 import TotalDisplay from './TotalDisplay';
 import Chart from './Chart';
 import TopButtons from './TopButtons';
+import DropdownMenu from './DropdownMenu';
 //Internal Lib
 import { getTotalAmountExpenses, getPreviousMonthTotalAmountExpenses } from '@lib/prisma/expenses'
 import { getCategoriesWithExpenses } from '@lib/prisma/expenses_by_category'
@@ -23,7 +24,8 @@ const StatsPage = async () => {
   // console.log('///////////////////////////////////finish')
   return (
     <section className={s.stats_page}>
-      <TopButtons/>
+       <DropdownMenu />
+      <TopButtons />
       <TotalDisplay totalAmountExpenses={totalAmountExpenses} previousMonthTotalAmountExpenses={previousMonthTotalAmountExpenses} />
       <Chart categoriesWithExpenses={categoriesWithExpenses} />
       <TotalExpensesList categoriesWithExpenses={categoriesWithExpenses} />

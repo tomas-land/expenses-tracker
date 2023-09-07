@@ -14,6 +14,8 @@ body {
 
 
 main {
+  position: relative;
+  z-index: 1011;
   background-color: $color-bg;
   max-width: 425px; // selected this width to preview as mobile screen on larger screens
   height: 780px;

@@ -1,0 +1,40 @@
+@import '~styles/_variables.scss';
+
+.dropdown {
+  position: relative;
+  width: 385px;
+  height: 0rem;
+  top: -10rem;
+  background-color: $color-bg-dark1;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 1010;
+  opacity: 0;
+  transition: all 0.8s ease-in-out, opacity 0.4s ease-in-out;
+
+  .dropdown_item {
+    width: 100%;
+    text-align: center;
+
+    border-bottom: 1px solid $color-bg;
+    cursor: pointer;
+    &:last-child {
+      border-bottom: none;
+    }
+    &:hover {
+      background-color: $color-bg-dark0;
+      transition: all 0.5s ease-in-out;
+    }
+    a {
+      display: block;
+      padding: 1rem;
+    }
+  }
+}
+
+.open {
+  height: 10rem;
+  top: 0rem;
+  opacity: 1;
+}

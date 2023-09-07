@@ -16,5 +16,10 @@
     padding: 0.4rem;
     color: #757575;
     border: none;
+    cursor: pointer;
+    &:hover {
+      background-color: #cbcbcc;
+      transition: all 0.2s ease-in-out;
+    }
   }
 }

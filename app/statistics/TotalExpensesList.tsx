@@ -3,8 +3,6 @@
 import React, { useState } from 'react'
 import s from '@styles/Components/_TotalExpensesList.module.scss'
 import TotalExpensesListItem from './TotalExpensesListItem';
-import { useEffect } from 'react'
-import { useRouter } from 'next/navigation';
 import { VscDebugRestart } from 'react-icons/vsc';
 import { useGlobalContext } from "@context/context"
 

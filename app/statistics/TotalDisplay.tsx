@@ -22,5 +22,4 @@ const TotalDisplay = ({ totalAmountExpenses, previousMonthTotalAmountExpenses }:
   )
 }
 
-// export const dynamic = 'force-dynamic'
 export default TotalDisplay
