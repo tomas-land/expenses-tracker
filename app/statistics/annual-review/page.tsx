@@ -4,6 +4,7 @@ import s from '@styles/Pages/_Annual_review_page.module.scss';
 import AnnualTable from './AnnualTable';
 import { getCategoriesWithMonthlyExpensesTotal } from '@lib/prisma/expenses';
 
+export const dynamic = 'force-dynamic'
 
 const AnnualReviewPage = async () => {
   const categoriesWithMonthlyExpensesTotal = await getCategoriesWithMonthlyExpensesTotal();
