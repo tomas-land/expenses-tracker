@@ -6,11 +6,11 @@ import { getSortedMonths } from '@lib/helpers/getSortedMonths';
 
 interface iProps {
   categoriesWithMonthlyExpensesTotal:
-    | {
-        category: string;
-        monthlyTotal: any;
-      }[]
-    | undefined;
+  | {
+    category: string;
+    monthlyTotal: any;
+  }[]
+  | undefined;
 }
 const AnnualTable = ({ categoriesWithMonthlyExpensesTotal }: iProps) => {
   const categories = categoriesWithMonthlyExpensesTotal?.map((category: any) => category.category);
@@ -22,10 +22,7 @@ const AnnualTable = ({ categoriesWithMonthlyExpensesTotal }: iProps) => {
     });
   });
   const sortedMonths = getSortedMonths(categoriesWithMonthlyExpensesTotal);
-  console.log(categories)
-  console.log(sortedMonths)
-  console.log(categoriesWithMonthlyExpensesTotal)
-  
+
   return (
     <div className={s.annual_table}>
       <h4 className={s.title}>Metinių išlaidų ataskaita</h4>
@@ -33,7 +30,7 @@ const AnnualTable = ({ categoriesWithMonthlyExpensesTotal }: iProps) => {
         {startOFYear} <MdOutlineCode fontSize={15} /> {currentMonth}
       </p>
       <div className={s.table_wrapper}>
-        {/* <table className={s.table}>
+        <table className={s.table}>
           <thead className={s.table_head}>
             <tr>
               <th>Mėnuo</th>
@@ -45,8 +42,8 @@ const AnnualTable = ({ categoriesWithMonthlyExpensesTotal }: iProps) => {
           </thead>
           <tbody className={s.table_body}>
             {sortedMonths.map((month: string) => (
-              <tr>
-                <td className={s.months_column} key={month}>
+              <tr key={month}>
+                <td className={s.months_column} >
                   {month}
                 </td>
                 {categoriesWithMonthlyExpensesTotal?.map((item: any) => (
@@ -56,7 +53,7 @@ const AnnualTable = ({ categoriesWithMonthlyExpensesTotal }: iProps) => {
               </tr>
             ))}
           </tbody>
-        </table> */}
+        </table>
       </div>
     </div>
   );
