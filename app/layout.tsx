@@ -9,17 +9,16 @@ import React from 'react';
 
 import { Montserrat } from 'next/font/google'
 
-export const montserrat = Montserrat({ 
+const montserrat = Montserrat({ 
   subsets: ['latin'],
-  fallback: ['Montserrat', 'sans-serif'],
-  variable:'--font-montserrat',
+  // fallback: ['Montserrat', 'sans-serif'],
+  // variable:'--font-montserrat',
   display:"swap"
-
 })
 
 export default function RootLayout({ children }: { children: any }) {
   return (
-    <html>
+    <html lang="en" className={montserrat.className}>
       <body>
         <main >
           <div className="wrapper">
