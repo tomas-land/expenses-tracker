@@ -7,18 +7,16 @@ import "../styles/globals.scss"
 
 import React from 'react';
 
-import { Montserrat } from 'next/font/google'
+import { Comfortaa } from 'next/font/google'
 
-const montserrat = Montserrat({ 
+const comfortaa = Comfortaa({
   subsets: ['latin'],
-  // fallback: ['Montserrat', 'sans-serif'],
-  // variable:'--font-montserrat',
-  display:"swap"
+  display: "swap"
 })
 
 export default function RootLayout({ children }: { children: any }) {
   return (
-    <html lang="en" className={montserrat.className}>
+    <html lang="en" className={comfortaa.className}>
       <body>
         <main >
           <div className="wrapper">
