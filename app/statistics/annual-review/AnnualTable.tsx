@@ -33,7 +33,7 @@ const AnnualTable = ({ categoriesWithMonthlyExpensesTotal }: iProps) => {
         {startOFYear} <MdOutlineCode fontSize={15} /> {currentMonth}
       </p>
       <div className={s.table_wrapper}>
-        {/* <table className={s.table}>
+        <table className={s.table}>
           <thead className={s.table_head}>
             <tr>
               <th>Mėnuo</th>
@@ -56,7 +56,7 @@ const AnnualTable = ({ categoriesWithMonthlyExpensesTotal }: iProps) => {
               </tr>
             ))}
           </tbody>
-        </table> */}
+        </table>
       </div>
     </div>
   );

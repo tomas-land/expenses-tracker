@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: any }) {
   return (
     <html>
       <body>
-        <main className={montserrat.className}>
+        <main >
           <div className="wrapper">
             <AppProvider>
               {children}
