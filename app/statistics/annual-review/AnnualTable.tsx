@@ -22,6 +22,9 @@ const AnnualTable = ({ categoriesWithMonthlyExpensesTotal }: iProps) => {
     });
   });
   const sortedMonths = getSortedMonths(categoriesWithMonthlyExpensesTotal);
+  console.log(categories)
+  console.log(sortedMonths)
+  console.log(categoriesWithMonthlyExpensesTotal)
   
   return (
     <div className={s.annual_table}>
@@ -41,9 +44,9 @@ const AnnualTable = ({ categoriesWithMonthlyExpensesTotal }: iProps) => {
             </tr>
           </thead>
           <tbody className={s.table_body}>
-            {sortedMonths.map((month: string) => (
+            {sortedMonths.map((month: string,index:number) => (
               <tr>
-                <td className={s.months_column} key={month}>
+                <td className={s.months_column} key={index}>
                   {month}
                 </td>
                 {categoriesWithMonthlyExpensesTotal?.map((item: any) => (
